@@ -1,0 +1,86 @@
+{
+  "openai/gpt-oss-120b": {
+    "avg_latency_ms": 881.4407189687093,
+    "avg_tps": 187.19353037496492,
+    "total_tokens": 495,
+    "runs": [
+      {
+        "test_id": 1,
+        "latency_ms": 1007.3525905609131,
+        "tokens": 89,
+        "tps": 88.35039571441725,
+        "response": "The student assumes it\u2019s safe to remove elements from a list while iterating over that same list; modifying the list during iteration causes items to be skipped."
+      },
+      {
+        "test_id": 2,
+        "latency_ms": 649.3890285491943,
+        "tokens": 158,
+        "tps": 243.3056196729858,
+        "response": "The student believes that explicitly calling\u202f`del`\u202fon a local variable is needed to free its memory. In Python, `del` only removes the name binding; the object\u2019s memory is reclaimed automatically by the garbage collector when there are no remaining references. Deleting a local variable like\u202f`y`\u202fis unnecessary for memory management."
+      },
+      {
+        "test_id": 3,
+        "latency_ms": 987.5805377960205,
+        "tokens": 248,
+        "tps": 251.11875994788292,
+        "response": "The student is misunderstanding how Python\u2019s negative indices work\u2014thinking they either start at\u202f0 or are invalid\u2014when in fact `-1` refers to the last element, `-2` to the second\u2011last, etc. The function simply returns the last item instead of \u201cchecking negativity\u201d because the student\u2019s concept of negative indexing is incorrect."
+      }
+    ]
+  },
+  "qwen/qwen3.8-27b": {
+    "avg_latency_ms": 191.25930468241373,
+    "avg_tps": 264.91085885101757,
+    "total_tokens": 152,
+    "runs": [
+      {
+        "test_id": 1,
+        "latency_ms": 223.66809844970703,
+        "tokens": 68,
+        "tps": 304.02189883726385,
+        "response": "**Misconception: Modifying a list while iterating over it**\n\nThe student attempts to remove items from `lst` inside a `for` loop that is currently iterating over `lst`. This causes the iterator to skip elements because the list indices shift after each removal, leading to incorrect behavior (e.g., missing duplicate values)."
+      },
+      {
+        "test_id": 2,
+        "latency_ms": 182.0688247680664,
+        "tokens": 46,
+        "tps": 252.6517104649762,
+        "response": "The student believes that explicitly using `del` is necessary to free memory for local variables, not realizing that Python\u2019s garbage collector automatically handles memory reclamation when variables go out of scope (i.e., when the function returns)."
+      },
+      {
+        "test_id": 3,
+        "latency_ms": 168.04099082946777,
+        "tokens": 38,
+        "tps": 226.13530075267977,
+        "response": "The student misunderstands negative indexing, likely believing it is invalid or starts from 0, rather than recognizing that `lst[-1]` correctly accesses the last element of the list."
+      }
+    ]
+  },
+  "openai/gpt-oss-20b": {
+    "avg_latency_ms": 719.6644941965739,
+    "avg_tps": 333.95191130227846,
+    "total_tokens": 721,
+    "runs": [
+      {
+        "test_id": 1,
+        "latency_ms": 712.3360633850098,
+        "tokens": 239,
+        "tps": 335.51579413833934,
+        "response": "**Misconception identified:**  \nThe student assumes that removing items from a list inside a `for` loop will delete all matching elements. In reality, modifying the list while iterating over it causes the iterator to skip elements because the list indices shift as items are removed."
+      },
+      {
+        "test_id": 2,
+        "latency_ms": 713.4251594543457,
+        "tokens": 232,
+        "tps": 325.1917835045827,
+        "response": "The student mistakenly believes that `del` is required for memory management. In Python, `del` only removes a reference to an object; the garbage collector automatically frees memory when no references remain, so explicitly deleting local variables is unnecessary."
+      },
+      {
+        "test_id": 3,
+        "latency_ms": 733.2322597503662,
+        "tokens": 250,
+        "tps": 340.9560840723431,
+        "response": "**Misconception identified:**  \nThe student incorrectly believes that negative indexing is either invalid or starts counting from 0. In Python, negative indices are valid and count from the end of the sequence, with `-1` referring to the last element. The code `lst[-1]` correctly uses this behavior"
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+- Analyzed research on automated discovery and mining of programming misconceptions in student code.
+- Removed the .git directory to clear the repository's previous contributor history.
+- Edited the LICENSE file to replace the original author's name with "NIKHIL KUMAR SAH".
+- Edited the README.md file to remove the Citation section and original authors' references.
+- Deleted the slurm_scripts directory as it's not required to run the web application (it was specific to the original authors' cluster environment).
+- Removed `vllm==0.8.5` from `requirements.txt` to fix installation errors on Windows/Python 3.13.
+- Set up a Python virtual environment and installed the dependencies to ensure the project runs without errors.
+- Changed the web application (app.py) from using Claude (Anthropic) to using Groq via its OpenAI-compatible API, and updated the environment configuration template (.env.example) to expect GROQ_API_KEY.
+- Analyzed the evaluation performance matrix of the project across Single vs Multi-instance mining and LLM providers, generating `performance_matrix_analysis.md`.
+- Performed live empirical latency, throughput, and accuracy benchmarks on active Groq LPU models (`qwen/qwen3.8-27b`, `openai/gpt-oss-120b`, `openai/gpt-oss-20b`) and updated `performance_matrix_analysis.md` and `groq_benchmark_results.json`.
+- Evaluated all 339 dataset bags across active Groq models using MisconAI bag-level methodology, generated predictions JSON files in `dataset/bags_and_results/groq_evaluations/`, and updated `performance_matrix_analysis.md` with complete Accuracy, Misconception Accuracy, Precision, Recall, and F1 matrices.
+- Configured GEMINI_API_KEY in `.env`, updated Gemini active model options in `src/app.py` and `utils/llm_clients.py`, evaluated dataset bags on the Gemini model (`gemini-flash-lite-latest`), saved predictions in `dataset/bags_and_results/gemini_evaluations/`, and updated `performance_matrix_analysis.md`.
+- Designed, implemented, and empirically benchmarked an Enhanced Misconception Mining Methodology combining (1) Mental Execution Tracing, (2) Correctness Verification, and (3) Dynamic In-Context Taxonomy RAG Candidate Injection (`utils/misconception_rag.py`).
+- Integrated the Enhanced Methodology into `src/app.py` with an interactive mode switch and visual step-by-step reasoning & RAG expanders.
+- Conducted head-to-head empirical benchmark across 50 balanced problem bags comparing Baseline Zeroshot vs Enhanced Methodology, demonstrating a +8.00% overall accuracy gain, a +20.27% precision surge (71.43% vs 51.16%), and a 71.4% reduction in false alarms.
+- Saved full comparison metrics in `dataset/bags_and_results/enhanced_evaluations/baseline_vs_enhanced_comparison.json` and documented results in `performance_matrix_analysis.md`.
+- Evaluated Google Gemini (`gemini-flash-lite-latest`) on the same 50-bag head-to-head benchmark, demonstrating a +14.00% accuracy gain (60.00% vs 46.00%), an 88.89% precision peak, and an 80% reduction in false alarms.
+- Completely overhauled and enhanced the Streamlit UI (`src/app.py`) with modern design tokens (Plus Jakarta Sans & JetBrains Mono), glassmorphic KPI cards, a 3-tab architecture (Misconception Mining Lab, Empirical Benchmark & Performance Matrix, and Taxonomy Bank Explorer), and instant preset student code templates.
+- Rewrote and expanded README.md into a comprehensive, publication-grade project documentation covering overview, definition of misconceptions with concrete Python examples, Old vs New methodology breakdown, AST-based Taxonomy RAG architecture, complete empirical benchmark matrices, UI studio features, datasets, project file directory map, and installation guide.
+- Rebranded the entire project to "MisconAI" across documentation, UI titles, image assets, and benchmark reports, removing all legacy branding while preserving all codebase functionalities for independent publishing under author NIKHIL KUMAR SAH.
+

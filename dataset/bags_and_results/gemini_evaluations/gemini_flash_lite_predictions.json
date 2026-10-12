@@ -1,0 +1,904 @@
+{
+  "metrics": {
+    "model": "gemini-flash-lite-latest",
+    "total_bags": 60,
+    "total_misc_bags": 45,
+    "total_correct_bags": 15,
+    "tp": 24,
+    "fp": 22,
+    "fn": 3,
+    "tn": 11,
+    "overall_accuracy": 0.5833333333333334,
+    "misconception_accuracy": 0.5333333333333333,
+    "correct_only_accuracy": 0.7333333333333333,
+    "precision": 0.5217391304347826,
+    "recall": 0.8888888888888888,
+    "f1_score": 0.6575342465753423,
+    "evaluation_time_sec": 211.08690190315247
+  },
+  "predictions": [
+    {
+      "bag_index": 0,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 1,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 2,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 3,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 4,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 5,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 6,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [
+        {
+          "description": "Assuming that sets preserve the original order of elements or that converting a set back to a tuple maintains sequence order/indexing."
+        },
+        {
+          "description": "Using standard float division instead of integer/floor division when performing recursive digit extraction."
+        },
+        {
+          "description": "Returning a `set` when a `tuple` or list is logically expected or required by the problem context."
+        },
+        {
+          "description": "Unnecessary index-based iteration over strings or sequences instead of iterating over the elements directly."
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": false,
+      "raw_response": "<misconception>\n  <description>Assuming that sets preserve the original order of elements or that converting a set back to a tuple maintains sequence order/indexing.</description>\n  <explanation>In Student Submission 1, the student converts tuples to sets to find the symmetric difference and then casts the result directly back to a tuple `tuple(set(test_tup1) ^ set(test_tup2))`. Because sets are unordered data structures in Python, the resulting tuple will have an arbitrary, non-deterministic order, which fails if the original relative ordering of the elements in the input tuples matters.</explanation>\n</misconception>\n\n<misconception>\n  <description>Using standard float division instead of integer/floor division when performing recursive digit extraction.</description>\n  <explanation>In Student Submission 3, the student uses `int(n / 10)` to compute the remaining number for the next recursive step. While this happens to work for positive integers, using standard division `/` (which returns a float) combined with an explicit `int()` cast is a conceptual misconception regarding integer arithmetic. In Python, floor division (`//`) should be used for integer reduction to avoid potential floating-point precision issues.</explanation>\n</misconception>\n\n<misconception>\n  <description>Returning a `set` when a `tuple` or list is logically expected or required by the problem context.</description>\n  <explanation>In Student Submission 4, the function is named `tuple_intersection` (implying a collection of tuples or a tuple-based result), but it returns a `set` object (`res = ...; return (res)`). The student conflates mathematical set operations on Python sets with the desired return type format, failing to cast the final set back into a tuple or list.</explanation>\n</misconception>\n\n<misconception>\n  <description>Unnecessary index-based iteration over strings or sequences instead of iterating over the elements directly.</description>\n  <explanation>In Student Submission 5, the student iterates using indices via `range(1, len(str1) + 1)` and manually accesses characters using `str1[i - 1]` to filter characters by position. This is an anti-pattern in Python (often brought over from languages like C or Java) that overlooks Python's capability for direct iteration and built-in functions like `enumerate()`.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 7,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 8,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [
+        {
+          "description": "Confusing string transformation with boolean predicates (returning data instead of a boolean value)"
+        },
+        {
+          "description": "Inefficient algorithmic approach for mathematical bounds due to lack of awareness of standard library or mathematical formulas"
+        },
+        {
+          "description": "Shadowing built-in type names as function parameters"
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": false,
+      "raw_response": "<misconception>\n  <description>Confusing string transformation with boolean predicates (returning data instead of a boolean value)</description>\n  <explanation>In Submission 1, the function `is_lower(string)` implies through its naming convention that it should return a boolean (`True` or `Instead`, it returns the transformed string (`string.lower()`). The student fails to realize that predicate functions must perform a comparison and return a boolean.</explanation>\n</misconception>\n\n<misconception>\n  <description>Inefficient algorithmic approach for mathematical bounds due to lack of awareness of standard library or mathematical formulas</description>\n  <explanation>In Submission 2, the function `highest_Power_of_2(n)` uses a linear search descending from `n` down to 1 (`range(n, 0, -1)`) to find the highest power of 2 less than or equal to `n`. This demonstrates a misconception about algorithmic efficiency, failing to recognize that this can be solved in $O(1)$ or $O(\\log n)$ time using bit manipulation or logarithms.</explanation>\n</misconception>\n\n<misconception>\n  <description>Shadowing built-in type names as function parameters</description>\n  <explanation>In Submission 3 (`insert_element(list, element)`) and Submission 5 (`pack_consecutive_duplicates(list1)` - though less egregious with `list1`), the student uses `list` as a parameter name. In Submission 3 specifically, `list` shadows Python's built-in `list` type, which is a poor programming practice that can lead to bugs and confusion.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 9,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [
+        {
+          "description": "Mutating a list (removing elements) while iterating through it with an index-based loop."
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": false,
+      "raw_response": "<misconception>\n  <description>Mutating a list (removing elements) while iterating through it with an index-based loop.</description>\n  <explanation>In Student Submission 3, the code uses `ludics.remove(ludics[remove_index])` inside a `while` loop while iterating over the list using indices. Mutating a list's size while traversing it alters the indices of subsequent elements, leading to skipped elements, incorrect indexing, or `IndexError` exceptions.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 10,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 11,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [
+        {
+          "description": "Incorrect loop boundary in primality testing (off-by-one error)"
+        },
+        {
+          "description": "Misunderstanding of set properties for uniqueness checks"
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": false,
+      "raw_response": "<misconception>\n  <description>Incorrect loop boundary in primality testing (off-by-one error)</description>\n  <explanation>In Student Submission 4, the `range` function is used with `range(2, num//2)`. In Python, the stop value of `range` is exclusive, meaning the loop will only check up to `num//2 - 1` and miss the potential factor of `num//2` itself (e.g., if `num = 8`, `num//2` is 4, but the loop only checks `i = 2` and misses `4`). Furthermore, the `else` statement is incorrectly aligned inside the `for` loop, causing the function to return `True` prematurely on the very first iteration if that first tested number does not divide the input.</explanation>\n</misconception>\n\n<misconception>\n  <description>Misunderstanding of set properties for uniqueness checks</description>\n  <explanation>In Student Submission 2, the student attempts to check if all elements in a list are unique by writing `len(s) == 1`, where `s = set(arr)`. Converting a list to a set removes duplicates. Checking if the length of that set is equal to 1 only tests if the list contains exactly one unique value (i.e., all elements are identical and there is only one distinct value), rather than testing if all elements in the list are distinct from one another (which requires comparing `len(s) == len(arr)`).</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 12,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 13,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 14,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 15,
+      "prediction_id": "group_misconception_1_0",
+      "group_type": "misconception",
+      "gt_misconception": 1,
+      "predicted_misconceptions": [
+        {
+          "description": "Off-by-one error (exclusive upper bound) when iterating over a range of indices."
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": false,
+      "raw_response": "<misconception>\n  <description>Off-by-one error (exclusive upper bound) when iterating over a range of indices.</description>\n  <explanation>In Student Submission 3, the function attempts to sum elements from index `m` to index `n` inclusive. However, it uses `range(m, n)`. In Python, the `range()` function is exclusive of its stop value, meaning the loop will terminate at `n - 1` and omit the element at index `n`. To include index `n`, the range should be `range(m, n + 1)`.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 16,
+      "prediction_id": "group_misconception_1_1",
+      "group_type": "misconception",
+      "gt_misconception": 1,
+      "predicted_misconceptions": [
+        {
+          "description": "Off-by-one error involving Python's 0-based indexing and sequence bounds (using index 1 as the initial reference or accessing elements incorrectly)."
+        },
+        {
+          "description": "Premature return inside a loop (returning after checking only the first element)."
+        },
+        {
+          "description": "Incorrect loop boundary conditions (off-by-one in nested loop ranges)."
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": false,
+      "raw_response": "<misconception>\n  <description>Off-by-one error involving Python's 0-based indexing and sequence bounds (using index 1 as the initial reference or accessing elements incorrectly).</description>\n  <explanation>In Submission 2, the student initializes `largest` and `smallest` to `nums[1]` instead of `nums[0]`, which will cause an `IndexError` if the list has a length of 1, or skip the first element entirely. In Submission 4, the student accesses `arr[i-1]`, which for `i=0` wraps around to the last element of the list (`arr[-1]`) rather than starting from the beginning. In Submission 6, the student uses `range(1, len(nums)+1)` and shifts indices by `i-1`, demonstrating a fundamental lack of comfort with standard 0-based iteration.</explanation>\n</misconception>\n\n<misconception>\n  <description>Premature return inside a loop (returning after checking only the first element).</description>\n  <explanation>In Submission 5, inside the `prime_num` function, the `else: return True` statement is placed directly inside the `for` loop alongside the `if` check for divisibility. This causes the function to prematurely return `True` (concluding the number is prime) after inspecting only the very first divisor (when `i = 2`), without checking the rest of the potential divisors in the range.</explanation>\n</misconception>\n\n<misconception>\n  <description>Incorrect loop boundary conditions (off-by-one in nested loop ranges).</description>\n  <explanation>In Submission 3, the inner loop uses `range(i + 1, n-1)`. By setting the upper bound to `n-1` instead of `n`, the loop fails to check pairs that include the very last element of the array (at index `n-1`), leading to an incomplete count.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 17,
+      "prediction_id": "group_misconception_1_2",
+      "group_type": "misconception",
+      "gt_misconception": 1,
+      "predicted_misconceptions": [
+        {
+          "description": "Off-by-one error / misunderstanding of Python's 0-based indexing and exclusive range upper bounds."
+        },
+        {
+          "description": "Division by zero or invalid initial sequence indices in loops."
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": false,
+      "raw_response": "<misconception>\n  <description>Off-by-one error / misunderstanding of Python's 0-based indexing and exclusive range upper bounds.</description>\n  <explanation>Multiple students incorrectly set up loop ranges or indices, such as iterating up to `n-1` when they need `n` elements (seen in Submissions 1, 3, 6, and 7), starting ranges from `1` instead of `0` causing out-of-bounds errors or missed elements (seen in Submissions 4 and 5), or failing to account for Python's `range()` being exclusive of the stop value (seen across almost all submissions).</explanation>\n</misconception>\n\n<misconception>\n  <description>Division by zero or invalid initial sequence indices in loops.</description>\n  <explanation>In Submission 6, the loop uses `range(n - 1)` which generates values starting from `0`, leading to a `ZeroDivisionError` when computing `1 / i` during the first iteration. Similarly, Submission 3 initializes the loop to `range(len(list1) - 1)`, unnecessarily truncating the iteration and missing the last element of the list.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 18,
+      "prediction_id": "group_misconception_1_3",
+      "group_type": "misconception",
+      "gt_misconception": 1,
+      "predicted_misconceptions": [
+        {
+          "description": "Off-by-one error in indexing due to mixing 1-based and 0-based indexing."
+        },
+        {
+          "description": "Incorrect index offset usage when iterating through lists with nested loops."
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": false,
+      "raw_response": "<misconception>\n  <description>Off-by-one error in indexing due to mixing 1-based and 0-based indexing.</description>\n  <explanation>In Student Submission 6, the loop runs from `1` to `K+1` (inclusive of `K`), but Python uses 0-based indexing. By accessing `res[i]` starting from `i = 1`, the code misses the first element at index `0` and attempts to access an element past the intended `K` elements, resulting in a slice that is shifted and potentially out of bounds depending on `K` and the list length.</explanation>\n</misconception>\n\n<misconception>\n  <description>Incorrect index offset usage when iterating through lists with nested loops.</description>\n  <explanation>In Student Submission 5, the loops use `idx` and `iidx` ranging from `0` to `len(test_list)`, but the inner indexing accesses `test_list[idx - 1]` and `test_list[iidx - 1]`. Using `idx - 1` when `idx` starts at `0` causes Python to wrap around and access the *last* element of the list (`-1`), leading to incorrect logic and potential logic bugs.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 19,
+      "prediction_id": "group_misconception_10_0",
+      "group_type": "misconception",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 20,
+      "prediction_id": "group_misconception_10_1",
+      "group_type": "misconception",
+      "gt_misconception": 10,
+      "predicted_misconceptions": [
+        {
+          "description": "Misunderstanding of string and list methods regarding in-place mutation vs. returning a new object."
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": true,
+      "raw_response": "<misconception>\n  <description>Misunderstanding of string and list methods regarding in-place mutation vs. returning a new object.</description>\n  <explanation>In Student Submission 3, the code calls `string.split()` without assigning the result to a variable. The `split()` method returns a new list of substrings rather than modifying the original string in place. Because the return value is ignored, `string` remains a string, which causes subsequent code (`string[0]` and iterating with `for i in string`) to iterate over the characters of the string rather than the words in the split list.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 21,
+      "prediction_id": "group_misconception_10_2",
+      "group_type": "misconception",
+      "gt_misconception": 10,
+      "predicted_misconceptions": [
+        {
+          "description": "Misunderstanding of string immutability and method return values in Python (treating string methods as in-place modifiers)."
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": true,
+      "raw_response": "<misconception>\n  <description>Misunderstanding of string immutability and method return values in Python (treating string methods as in-place modifiers).</description>\n  <explanation>Students in submissions 1, 4, and 7 call string methods like `.split()` on a string (`s.split('std'`, `text1.split()`, `str.split(\" \")`) expecting the original string variable to be modified in-place or returning the new value without capturing it in a variable. Because strings are immutable in Python, `.split()` returns a new list but does not alter the original string. Consequently, subsequent operations (like `len(s)`, `join(text1)`, or iterating over `str` character-by-character) operate on the original, unmodified string rather than the resulting list of words/substrings.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 22,
+      "prediction_id": "group_misconception_10_3",
+      "group_type": "misconception",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 23,
+      "prediction_id": "group_misconception_10_4",
+      "group_type": "misconception",
+      "gt_misconception": 10,
+      "predicted_misconceptions": [
+        {
+          "description": "Misunderstanding of immutability and return values for tuples and type conversion functions in Python."
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": false,
+      "raw_response": "<misconception>\n  <description>Misunderstanding of immutability and return values for tuples and type conversion functions in Python.</description>\n  <explanation>In Student Submission 3, the student attempts to modify a tuple by converting it to a list using `list(test_tup)`, appending a dictionary to it, and then casting it back with `tuple(test_tup)`. However, `list()` and `tuple()` create new objects and do not modify the original variable in place. Furthermore, `list.append()` mutates the list object but returns `None`, and the final `tuple()` call's result is discarded because it is not assigned to a variable. Finally, the function returns `test_tup` (which is still the original unmodified tuple, or rather, the code attempts to treat the tuple as if it has an `.append()` method, which tuples do not possess, leading to an AttributeError).</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 24,
+      "prediction_id": "group_misconception_11_0",
+      "group_type": "misconception",
+      "gt_misconception": 11,
+      "predicted_misconceptions": [
+        {
+          "description": "Confusing function output (returning a value) with displaying output (printing a value), leading to the use of `print()` instead of `return` in functions."
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": true,
+      "raw_response": "<misconception>\n  <description>Confusing function output (returning a value) with displaying output (printing a value), leading to the use of `print()` instead of `return` in functions.</description>\n  <explanation>Every single student submission (Submission 1 through 5) defines a function that computes a result (`min_val`, `inv_count`, a damage calculation, an identity matrix, and `count`), but none of them use the `return` statement. Instead, all of them use `print()` at the end of the function. This is a classic beginner misconception where students equate displaying the result on the console with returning data from a function for further use.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 25,
+      "prediction_id": "group_misconception_11_1",
+      "group_type": "misconception",
+      "gt_misconception": 11,
+      "predicted_misconceptions": [
+        {
+          "description": "Confusing function output (returning a value) with function side-effects (printing a value)."
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": true,
+      "raw_response": "<misconception>\n  <description>Confusing function output (returning a value) with function side-effects (printing a value).</description>\n  <explanation>Every single student submission uses the `print()` function inside the function body to output the result instead of using the `return` statement. In Python programming, functions are typically expected to return their computed results so they can be used in further computations, whereas `print()` merely displays the text on the console and evaluates to `None`. This is a very common misconception among beginner programmers who conflate human-readable output with programmatic function output.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 26,
+      "prediction_id": "group_misconception_11_2",
+      "group_type": "misconception",
+      "gt_misconception": 11,
+      "predicted_misconceptions": [
+        {
+          "description": "Confusing function return values with output (printing)"
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": true,
+      "raw_response": "<misconception>\n  <description>Confusing function return values with output (printing)</description>\n  <explanation>Across multiple submissions (Student 1, Student 2, Student 3, Student 4, and Student 5), the students use the `print()` function to output the final result of a computation instead of using the `return` keyword. For example, in Student 1, `harmonic_sum` prints values and implicitly returns `None`, causing `1 / n + harmonic_sum(n - 1)` to fail with a TypeError. Similarly, functions meant to compute values, check conditions, or manipulate data (`find_Max_Num`, `sum_range_list`, `remove_whitespaces`, and `detect_cycle`) print their results directly rather than returning them to the caller, limiting the reusability of the functions.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 27,
+      "prediction_id": "group_misconception_11_3",
+      "group_type": "misconception",
+      "gt_misconception": 11,
+      "predicted_misconceptions": [
+        {
+          "description": "Confusing the `print` function with the `return` statement in functions."
+        },
+        {
+          "description": "Off-by-one error in loop bounds for prime number checking."
+        },
+        {
+          "description": "Premature decision-making inside loops (printing inside a loop instead of aggregating or returning early)."
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": true,
+      "raw_response": "<misconception>\n  <description>Confusing the `print` function with the `return` statement in functions.</description>\n  <explanation>Across multiple submissions (e.g., Submissions 1, 3, 4, 5, 6, 7, and 8), the students use `print()` to output the result of the function computation instead of using `return`. While `print` displays the value on the console, `return` actually passes the result back to the caller, which is expected behavior for reusable functions.</explanation>\n</misconception>\n\n<misconception>\n  <description>Off-by-one error in loop bounds for prime number checking.</description>\n  <explanation>In Submission 1, the student sets the upper bound of the `range` to `num // 2`. In Python, `range` is exclusive at the stop value, meaning it will check up to `num // 2 - 1`. To properly check up to half of the number (inclusive of `num // 2` for even numbers, or generally up to $\\sqrt{num}$), the stop value should be `num // 2 + 1`.</explanation>\n</misconception>\n\n<misconception>\n  <description>Premature decision-making inside loops (printing inside a loop instead of aggregating or returning early).</description>\n  <explanation>In Submission 1, the student places both `print(False)` and `print(True)` inside the loop testing for divisibility. This causes the function to print `True` or `False` for *every* checked divisor `i` rather than checking all possibilities and returning a single definitive boolean outcome after the loop finishes.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 28,
+      "prediction_id": "group_misconception_12_0",
+      "group_type": "misconception",
+      "gt_misconception": 12,
+      "predicted_misconceptions": [
+        {
+          "description": "Scope Misconception (Local vs. Global / Return Value Utilization)"
+        },
+        {
+          "description": "Missing Function Return Statement"
+        },
+        {
+          "description": "Undefined Variables in Global Scope"
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": false,
+      "raw_response": "<misconception>\n  <description>Scope Misconception (Local vs. Global / Return Value Utilization)</description>\n  <explanation>Students in Submissions 1, 2, 5, and 6 attempt to access or rely on variables (`result`, `return result`, `inv_count`, or the computed result in `find_Max_Num`) that are defined inside the local scope of a function from the global scope, or they fail to `return` the computed value from the function altogether. In Submission 1, `result` is printed outside the function without being returned. In Submission 2, `return result` is placed outside the function body at the top level. In Submission 5, `inv_count` is modified inside a nested function without being returned to the outer function or made nonlocal/global. In Submission 6, the function computes `num` but never returns it.</explanation>\n</misconception>\n\n<misconception>\n  <description>Missing Function Return Statement</description>\n  <explanation>Students in Submissions 3 and 6 write functions that process data and build a result (`word_len` in Submission 3 and `num` in Submission 6), but they omit the `return` statement at the end of the function, causing the function to implicitly return `None` when called.</explanation>\n</misconception>\n\n<misconception>\n  <description>Undefined Variables in Global Scope</description>\n  <explanation>Students in Submissions 1 and 2 attempt to call functions using variables (`n` in Submission 1, and `x, y` in Submission 2) as arguments before those variables have been defined or assigned any values in the global scope.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 29,
+      "prediction_id": "group_misconception_12_1",
+      "group_type": "misconception",
+      "gt_misconception": 12,
+      "predicted_misconceptions": [
+        {
+          "description": "Scope Misconception: Variables defined inside a function can be accessed globally outside the function without being returned."
+        },
+        {
+          "description": "Function Return Value Misconception: Assuming function execution automatically propagates local variable values or computed results back to the caller or global scope without a `return` statement."
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": true,
+      "raw_response": "<misconception>\n  <description>Scope Misconception: Variables defined inside a function can be accessed globally outside the function without being returned.</description>\n  <explanation>In Student Submissions 1, 4, and 5, variables defined locally inside function bodies (`cnt`, `max_item`, and `Sum` respectively) are attempted to be printed or accessed in the global scope after calling the function, resulting in a `NameError` because these variables are not in the global scope and the functions do not return them.</explanation>\n</misconception>\n\n<misconception>\n  <description>Function Return Value Misconception: Assuming function execution automatically propagates local variable values or computed results back to the caller or global scope without a `return` statement.</description>\n  <explanation>In Student Submission 2, the function `calculate_effectiveness` computes a variable named `effectiveness`, but it lacks a `return` statement. Consequently, when `pokemon_damage` tries to use `effectiveness`, Python raises a `NameError` because the variable was never returned to the calling function's scope.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 30,
+      "prediction_id": "group_misconception_12_2",
+      "group_type": "misconception",
+      "gt_misconception": 12,
+      "predicted_misconceptions": [
+        {
+          "description": "Missing return statement in functions"
+        },
+        {
+          "description": "Misunderstanding variable scope (local vs. global)"
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": false,
+      "raw_response": "<misconception>\n  <description>Missing return statement in functions</description>\n  <explanation>Students 1 and 4 compute the desired values (in Student 1, the sum of the max and min; in Student 4, the minimum value of a list), but they fail to use the <code>return</code> keyword to send the result back to the caller of the function, resulting in the function implicitly returning <code>None</code>.</explanation>\n</misconception>\n\n<misconception>\n  <description>Misunderstanding variable scope (local vs. global)</description>\n  <explanation>Students 2 and 3 define variables (<code>result</code> and <code>sum_range</code> respectively) inside the body of a function, but then attempt to access and print those variables in the global scope outside the function. This causes a <code>NameError</code> because local variables are not accessible outside their defining function.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 31,
+      "prediction_id": "group_misconception_12_3",
+      "group_type": "misconception",
+      "gt_misconception": 12,
+      "predicted_misconceptions": [
+        {
+          "description": "Variable Scope and Return Value Misconception"
+        },
+        {
+          "description": "Missing Function Return Statement"
+        },
+        {
+          "description": "Function Scope and Local Variable Access"
+        },
+        {
+          "description": "Missing Function Return Statement"
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": false,
+      "raw_response": "<misconception>\n  <description>Variable Scope and Return Value Misconception</description>\n  <explanation>In Student Submission 1, the variable `coin_result` is created locally inside the `flip_coin()` function. The student attempts to access `coin_result` in the `coin_game()` function without returning it from `flip_coin()` or passing it as an argument, demonstrating a misunderstanding of local variable scope.</explanation>\n</misconception>\n\n<misconception>\n  <description>Missing Function Return Statement</description>\n  <explanation>In Student Submission 2, the function `dog_age` calculates the dog's age and stores it in the variable `d_age`, but it fails to include a `return` statement. As a result, calling this function will implicitly return `None` rather than the calculated age.</explanation>\n</misconception>\n\n<misconception>\n  <description>Function Scope and Local Variable Access</description>\n  <explanation>In Student Submission 3, the variable `palindrome` is defined inside the local scope of the function `next_smallest_palindrome`. The student then attempts to print `palindrome` in the global scope outside the function, which will raise a `NameError` because local variables are not accessible outside their defining function.</explanation>\n</misconception>\n\n<misconception>\n  <description>Missing Function Return Statement</description>\n  <explanation>In Student Submission 4, the function `count_bidirectional` computes a count and stores it in the local variable `res`, but it does not contain a `return` statement to send the final result back to the caller.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 32,
+      "prediction_id": "group_misconception_12_4",
+      "group_type": "misconception",
+      "gt_misconception": 12,
+      "predicted_misconceptions": [
+        {
+          "description": "Failure to return a value from a function"
+        },
+        {
+          "description": "Misunderstanding variable scope (Local vs. Global)"
+        },
+        {
+          "description": "Off-by-one error in loop bounds (exclusive upper bound of `range`)"
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": false,
+      "raw_response": "<misconception>\n  <description>Failure to return a value from a function</description>\n  <explanation>In Student Submission 1, the function computes the result using regular expressions but forgets to include a `return` statement, causing the function to implicitly return `None`. Similarly, in Student Submission 3, the function modifies the tuple by converting it to a list and back, but fails to return the resulting tuple.</explanation>\n</misconception>\n\n<misconception>\n  <description>Misunderstanding variable scope (Local vs. Global)</description>\n  <explanation>In Student Submission 2, the `initialize_pointers` helper function defines `slow` and `fast` locally inside its own scope, but these variables are then accessed in the outer function's `while` loop, which would result in a `NameError` because they are not defined in the scope of `detect_cycle`. In Student Submission 4 and Student Submission 5, variables (`is_prime` and `max`) are defined inside functions/loops and then accessed in the global scope via `print()`, which relies on side-effects or can lead to `NameError` if the execution path is missed (e.g., if `num < 1` in Submission 4).</explanation>\n</misconception>\n\n<misconception>\n  <description>Off-by-one error in loop bounds (exclusive upper bound of `range`)</description>\n  <explanation>In Student Submission 4, the student uses `range(2, num // 2)` to check for prime numbers up to `num // 2`. Because Python's `range` function is exclusive of the stop value, it will not check `num // 2` itself, potentially missing divisors for small numbers like 4 (where `num // 2` is 2, and `range(2, 2)` is empty).</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 33,
+      "prediction_id": "group_misconception_13_0",
+      "group_type": "misconception",
+      "gt_misconception": 13,
+      "predicted_misconceptions": [
+        {
+          "description": "Reference assignment (aliasing) does not create a copy of a list."
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": true,
+      "raw_response": "<misconception>\n  <description>Reference assignment (aliasing) does not create a copy of a list.</description>\n  <explanation>In Student Submissions 1, 4, and 5, the students attempt to create a backup or a separate working copy of a list using simple assignment (e.g., `sorted_list = list1`, `backup = arr`, `temp_list = list1`). Because Python variables are references to objects, this results in two variables pointing to the exact same list in memory. Consequently, mutating the new variable (such as sorting it or deleting elements) directly modifies the original input list, which can lead to unintended side effects and bugs.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 34,
+      "prediction_id": "group_misconception_13_1",
+      "group_type": "misconception",
+      "gt_misconception": 13,
+      "predicted_misconceptions": [
+        {
+          "description": "Assignment operator (=) creates a reference to a mutable object rather than a copy, leading to unintended side effects when the \"backup\" or secondary variable is modified."
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": true,
+      "raw_response": "<misconception>\n  <description>Assignment operator (=) creates a reference to a mutable object rather than a copy, leading to unintended side effects when the \"backup\" or secondary variable is modified.</description>\n  <explanation>Across multiple submissions, students attempt to preserve or create working copies of lists using simple assignment (e.g., `word_len = txt` in Sub 1, `backup = chars` in Sub 2, `arr_backup = arr` in Sub 3, `working_list = list1` in Sub 4, `sorted_arr = arr` in Sub 5, `reversed_digits = digits` in Sub 6, `row` appended multiple times in Sub 7, and `remaining = test_list` in Sub 8). Because Python variables are references to objects in memory, mutating `word_len.clear()` clears the original `txt`, modifying `sorted_arr` sorts the original `arr`, and modifying `remaining` alters `test_list` during iteration, demonstrating a fundamental misunderstanding of object referencing versus shallow/deep copying.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 35,
+      "prediction_id": "group_misconception_13_2",
+      "group_type": "misconception",
+      "gt_misconception": 13,
+      "predicted_misconceptions": [
+        {
+          "description": "Misunderstanding mutable variable assignment and aliasing (assuming assignment creates a copy)"
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": true,
+      "raw_response": "<misconception>\n  <description>Misunderstanding mutable variable assignment and aliasing (assuming assignment creates a copy)</description>\n  <explanation>In both Student Submission 3 and Student Submission 4, the students assign a mutable data structure (a list) to a new variable name (<code>modified_version = list_version</code> and <code>original_nums = nums</code>) under the apparent assumption that this creates an independent copy of the data. In Python, this merely creates an alias pointing to the same object in memory, meaning modifications to one affect the other.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 36,
+      "prediction_id": "group_misconception_13_3",
+      "group_type": "misconception",
+      "gt_misconception": 13,
+      "predicted_misconceptions": [
+        {
+          "description": "Aliasing vs. Cloning (Mutating the original data structure via a reference)"
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": false,
+      "raw_response": "<misconception>\n  <description>Aliasing vs. Cloning (Mutating the original data structure via a reference)</description>\n  <explanation>In Submission 5, the student assigns `res = test_list` and then calls `res.sort()`. Because lists in Python are mutable and assignment only copies the reference, `res` and `test_list` point to the exact same list in memory. Consequently, sorting `res` mutates the caller's original `test_list` in place, which is often an unintended side effect when a function should avoid modifying its input arguments.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 37,
+      "prediction_id": "group_misconception_14_0",
+      "group_type": "misconception",
+      "gt_misconception": 14,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 38,
+      "prediction_id": "group_misconception_14_1",
+      "group_type": "misconception",
+      "gt_misconception": 14,
+      "predicted_misconceptions": [
+        {
+          "description": "Unnecessary tracking of loop state variables"
+        },
+        {
+          "description": "Inefficient brute-force search over an unbounded range"
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": true,
+      "raw_response": "<misconception>\n  <description>Unnecessary tracking of loop state variables</description>\n  <explanation>Students in Submissions 3 and 4 introduce redundant variables (`last_checked = i` and `last_checked = x`) inside their loops to keep track of the current or last iterated element. This often stems from a lack of confidence in how loop iterators work or an unnecessary mental model borrowed from index-based languages where tracking the loop cursor manually is common practice.</explanation>\n</misconception>\n\n<misconception>\n  <description>Inefficient brute-force search over an unbounded range</description>\n  <explanation>In Submission 1, the student uses a brute-force `for` loop starting from `num + 1` up to `sys.maxsize` to find the next palindrome. This demonstrates a misconception about algorithmic efficiency and scalability, relying on an upper bound approximation (`sys.maxsize`) rather than mathematical properties or a `while` loop that guarantees termination without arbitrary limits.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 39,
+      "prediction_id": "group_misconception_14_2",
+      "group_type": "misconception",
+      "gt_misconception": 14,
+      "predicted_misconceptions": [
+        {
+          "description": "Redundant tracking and manual index management in loops"
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": false,
+      "raw_response": "<misconception>\n  <description>Redundant tracking and manual index management in loops</description>\n  <explanation>In Student Submission 1, the student introduces variables like `last_i` and `last_j` to track loop indices inside the loops, which is redundant since the loop variables `i` and `j` already track this information. Similarly, in Student Submission 3, the student uses a manual `current_index` variable that they increment alongside the loop variable `i`, demonstrating a lack of familiarity with how Python's `range()` and `for` loops automatically manage iteration and indexing.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 40,
+      "prediction_id": "group_misconception_14_3",
+      "group_type": "misconception",
+      "gt_misconception": 14,
+      "predicted_misconceptions": [
+        {
+          "description": "Unnecessary state tracking or variable assignment mirroring loop iteration"
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": false,
+      "raw_response": "<misconception>\n  <description>Unnecessary state tracking or variable assignment mirroring loop iteration</description>\n  <explanation>Students in submissions 2 and 6 create and update variables (such as `last_index`, `last_i`, `last_diag_i`, and `last_diag_j`) inside loops to track the current loop index or item, seemingly misunderstanding that the loop variable itself persists or that such tracking is redundant when standard iteration constructs are sufficient.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 41,
+      "prediction_id": "group_misconception_15_0",
+      "group_type": "misconception",
+      "gt_misconception": 15,
+      "predicted_misconceptions": [
+        {
+          "description": "Off-by-one error / misunderstanding of 0-based indexing in Python sequences"
+        },
+        {
+          "description": "Misunderstanding of sequence slicing and negative indexing semantics"
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": true,
+      "raw_response": "<misconception>\n  <description>Off-by-one error / misunderstanding of 0-based indexing in Python sequences</description>\n  <explanation>Multiple students struggle with Python's 0-based indexing. For example, in Submission 1, the loop uses `range(1, l+1)` and indexes `arr[i]`, which will cause an `IndexError` when `i` reaches `l`. In Submission 4, the inner loop for checking a palindrome starts at `1` (`range(1, len(s)//2 + 1)`) and uses `s[len(s) - j]`, which misses the first character at index `0` and can lead to incorrect comparisons or out-of-bounds errors. In Submission 5, the slice range `range(1, len(s) - 1)` combined with `s[i+2]` can cause an `IndexError`. In Submission 6, `range(1, n+1)` is used to index a 0-indexed matrix, causing an `IndexError` at the boundaries. In Submission 7, `sorted_nums[len(sorted_nums)]` attempts to access an index equal to the length of the list, which is out of bounds because the last valid index is `len() - 1`.</explanation>\n</misconception>\n\n<misconception>\n  <description>Misunderstanding of sequence slicing and negative indexing semantics</description>\n  <explanation>In Submission 4, the student attempts to check palindromes by comparing `s[j]` with `s[len(s) - j]`. While `len(s) - j` works for 1-based mental models, Python strings can be indexed safely using negative indices (e.g., `~j` or `-j`), but mixing 1-based loop ranges with string lengths often leads to logic flaws or skipped elements (like index 0).</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 42,
+      "prediction_id": "group_misconception_15_1",
+      "group_type": "misconception",
+      "gt_misconception": 15,
+      "predicted_misconceptions": [
+        {
+          "description": "Off-by-one error / Confusion between 0-based indexing and 1-based indexing in Python sequences."
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": true,
+      "raw_response": "<misconception>\n  <description>Off-by-one error / Confusion between 0-based indexing and 1-based indexing in Python sequences.</description>\n  <explanation>Python uses 0-based indexing where valid indices range from `0` to `len(arr) - 1`. In Student Submission 1, the loop variables `i` and `j` start from `1` and go up to `len(arr) + 1`, causing an `IndexError` when `i` or `j` reaches `len(arr)`. Similarly, Student Submission 2 accesses `arr[1]` and loops up to `n + 1`, which will also lead to an `IndexError` when accessing elements beyond the end of the list and skips the first element (`arr[0]`).</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 43,
+      "prediction_id": "group_misconception_15_2",
+      "group_type": "misconception",
+      "gt_misconception": 15,
+      "predicted_misconceptions": [
+        {
+          "description": "Off-by-one error and misunderstanding of Python's 0-indexed sequences in nested loops."
+        },
+        {
+          "description": "Incorrect variable usage in mathematical formulas leading to logical errors (e.g., multiplying by a difference instead of a ratio or constant)."
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": false,
+      "raw_response": "<misconception>\n  <description>Off-by-one error and misunderstanding of Python's 0-indexed sequences in nested loops.</description>\n  <explanation>In Submission 4 (`count_Pairs`), the student uses `range(1, n+1)` and indexes the array using `arr[i]` and `arr[j]`. In Python, lists are 0-indexed, meaning valid indices range from `0` to `n-1`. Starting the loop at `1` and going up to `n` will cause an `IndexError` if `n` is the length of the array, and it will completely miss the element at index `0` while attempting to access an out-of-bounds element at index `n`.</explanation>\n</misconception>\n\n<misconception>\n  <description>Incorrect variable usage in mathematical formulas leading to logical errors (e.g., multiplying by a difference instead of a ratio or constant).</description>\n  <explanation>In Submission 6 (`pokemon_damage`), the student calculates `level_diff = attacker_level - defender_level` and then includes `level_diff / 10` as a multiplicative factor in the damage formula. If the attacker's level is equal to or less than the defender's level, `level_diff` will be `0` or negative, resulting in a damage calculation of `0` or a negative value before the `max(1, ...)` function clamps it to `1`. This misinterprets how level scaling or differences should be applied in the formula.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 44,
+      "prediction_id": "group_misconception_15_3",
+      "group_type": "misconception",
+      "gt_misconception": 15,
+      "predicted_misconceptions": [
+        {
+          "description": "Off-by-one error / misunderstanding of 0-based indexing (using 1-based indexing loops or accessing index 1 as the first element)"
+        },
+        {
+          "description": "Misunderstanding tuple structure in sorting/max functions (lambda key functions)"
+        },
+        {
+          "description": "Off-by-one error with random selection and list indexing"
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": true,
+      "raw_response": "<misconception>\n  <description>Off-by-one error / misunderstanding of 0-based indexing (using 1-based indexing loops or accessing index 1 as the first element)</description>\n  <explanation>Several students incorrectly assume that sequences start at index 1 rather than 0 in Python. For instance, Submission 3 loops from `1` to `len(txt) + 1` and accesses `txt[i]`, which will cause an `IndexError`. Submissions 6 and 8 initialize their tracking variables (`max` and `min_val`) using `list1[1]` instead of `list1[0]`, missing the first element and risking an `IndexError` if the list has only one element. Submission 2 also uses a 1-based range for list traversal.</explanation>\n</misconception>\n\n<misconception>\n  <description>Misunderstanding tuple structure in sorting/max functions (lambda key functions)</description>\n  <explanation>In Submission 1, the student uses `max(dict.items(), key=lambda x: x[2])`. Since `dict.items()` yields 2-tuples containing `(key, value)` where valid indices are `0` and `1`, accessing index `2` (`x[2]`) will raise an `IndexError` (tuple index out of range).</explanation>\n</misconception>\n\n<misconception>\n  <description>Off-by-one error with random selection and list indexing</description>\n  <explanation>In Submission 4, the student generates a random integer between 1 and 2 inclusive (`random.randint(1, 2)`), but attempts to use it as an index for a 0-indexed list (`options = ['Heads', 'Tails']`). When `rand_num` evaluates to `2`, `options[2]` raises an `IndexError` because valid indices are `0` and `1`.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 45,
+      "prediction_id": "group_misconception_16_0",
+      "group_type": "misconception",
+      "gt_misconception": 16,
+      "predicted_misconceptions": [
+        {
+          "description": "Confusing the assignment operator (=) with the equality comparison operator (==)."
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": true,
+      "raw_response": "<misconception>\n  <description>Confusing the assignment operator (=) with the equality comparison operator (==).</description>\n  <explanation>Across multiple submissions (Submissions 3, 4, 5, 6, and 7), the students incorrectly use a single equals sign (=) instead of the double equals sign (==) inside conditional statements (if and while checks). For example, Submission 4 uses `if len(x) = n:` instead of `if len(x) == n:`, and Submission 7 uses `if (arr[i] > arr[j]) = True:` which results in a SyntaxError in Python.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 46,
+      "prediction_id": "group_misconception_16_1",
+      "group_type": "misconception",
+      "gt_misconception": 16,
+      "predicted_misconceptions": [
+        {
+          "description": "Confusing the assignment operator (=) with the equality comparison operator (==)"
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": true,
+      "raw_response": "<misconception>\n  <description>Confusing the assignment operator (=) with the equality comparison operator (==)</description>\n  <explanation>Across multiple submissions (Student 2, Student 3, and Student 4), the single equals sign `=` is used inside `if` statements and conditional expressions where a boolean comparison (`==`) is required. For example, `if n = 1:` in Submission 2, `if test_list[iidx][0] = test_list[idx][1]` in Submission 3, and `if attacker_type = defender_type:` in Submission 4 will all result in a `SyntaxError` in Python.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 47,
+      "prediction_id": "group_misconception_16_2",
+      "group_type": "misconception",
+      "gt_misconception": 16,
+      "predicted_misconceptions": [
+        {
+          "description": "Confusion between the assignment operator (=) and the equality comparison operator (==)"
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": true,
+      "raw_response": "<misconception>\n  <description>Confusion between the assignment operator (=) and the equality comparison operator (==)</description>\n  <explanation>Multiple students use a single equals sign (`=`) inside conditional statements (`if`) where a boolean equality check (`==`) is required. Specifically, Submission 1 uses `if count = max_count:`, Submission 2 uses `if (s[i] = 's' and s[i+1] = 't' and s[i+2] = 'd'):`, and Submission 5 uses `if (num % i) = 0:`. This results in a SyntaxError in Python.</explanation>\n</misconception>\n\n<misconception>\n  <description>Incorrect implementation of loop-based condition checking and premature return/break logic</misconception>\n  <explanation>In Submission 5, the student places an `else: return True` directly inside the `for` loop corresponding to the first checked divisor (`i = 2`). As a result, the function returns `True` prematurely on the very first iteration if the number is not divisible by 2, without checking the rest of the potential divisors in the range.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 48,
+      "prediction_id": "group_misconception_16_3",
+      "group_type": "misconception",
+      "gt_misconception": 16,
+      "predicted_misconceptions": [
+        {
+          "description": "Confusion between the assignment operator (=) and the equality comparison operator (==)."
+        },
+        {
+          "description": "Redundant comparison of a boolean expression to a boolean literal."
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": true,
+      "raw_response": "<misconception>\n  <description>Confusion between the assignment operator (=) and the equality comparison operator (==).</description>\n  <explanation>Multiple student submissions (Submissions 3, 4, 5, 6, and 7) attempt to use the single equals sign (=), which is reserved for variable assignment in Python, inside conditional (`if`) statements where a boolean comparison is required. The correct operator for checking equality is the double equals sign (==).</explanation>\n</misconception>\n\n<misconception>\n  <description>Redundant comparison of a boolean expression to a boolean literal.</description>\n  <explanation>In Submission 1, the student writes `if (x * y < 0) = True:`. The expression `x * y < 0` already evaluates to a boolean value (`True` or `False`). Comparing this boolean result explicitly to `True` using the assignment operator (and syntactically invalid construct) demonstrates a misunderstanding of how boolean expressions function within conditional statements.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 49,
+      "prediction_id": "group_misconception_17_0",
+      "group_type": "misconception",
+      "gt_misconception": 17,
+      "predicted_misconceptions": [
+        {
+          "description": "Confusing variable assignment with type hinting/annotation syntax by using a colon (:) instead of an equals sign (=)."
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": true,
+      "raw_response": "<misconception>\n  <description>Confusing variable assignment with type hinting/annotation syntax by using a colon (:) instead of an equals sign (=).</description>\n  <explanation>Across all five student submissions, the colon character (':') is consistently used in place of the assignment operator ('=') when assigning values to variables (e.g., `result : a * b`, `self.data : data`, `d_age : h_age * 10.5`, `n : len(arr)`, and `dict : defaultdict(int)`). In Python, colons are reserved for type annotations, function signatures, and block definitions, while '=' is used for variable assignment. This indicates a fundamental misunderstanding of Python's syntax for assignment.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 50,
+      "prediction_id": "group_misconception_17_1",
+      "group_type": "misconception",
+      "gt_misconception": 17,
+      "predicted_misconceptions": [
+        {
+          "description": "Confusing variable assignment with variable type annotation syntax."
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": true,
+      "raw_response": "<misconception>\n  <description>Confusing variable assignment with variable type annotation syntax.</description>\n  <explanation>Across all six student submissions, the students use a colon (`:`) instead of an assignment operator (`=`) when attempting to assign values to variables (e.g., `result : (x ^ y) < 0`, `count : 0`, `numstr : str(num)`). In Python, the colon is used for type hints (variable annotations) rather than assigning a value, which would result in a `NameError` when the variable is subsequently referenced because no binding is actually created in the local namespace.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 51,
+      "prediction_id": "group_misconception_17_2",
+      "group_type": "misconception",
+      "gt_misconception": 17,
+      "predicted_misconceptions": [
+        {
+          "description": "Confusion between assignment operators in Python (using `:` instead of `=`)."
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": false,
+      "raw_response": "<misconception>\n  <description>Confusion between assignment operators in Python (using `:` instead of `=`).</description>\n  <explanation>Across all five student submissions, the students incorrectly use the colon (`:`) operator for variable assignment and initialization (e.g., `Sum : 0`, `l : len(arr)`, `result : 1 / n`, `res : sorted(...)`, and `test_tup : list(test_tup)`), which is syntactically invalid in Python outside of type annotations or dictionaries, rather than using the standard assignment operator (`=`).</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 52,
+      "prediction_id": "group_misconception_17_3",
+      "group_type": "misconception",
+      "gt_misconception": 17,
+      "predicted_misconceptions": [
+        {
+          "description": "Confusion between variable assignment and type annotation syntax (using a colon instead of an equals sign)."
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": true,
+      "raw_response": "<misconception>\n  <description>Confusion between variable assignment and type annotation syntax (using a colon instead of an equals sign).</description>\n  <explanation>Across all four student submissions, the students use a colon (:) instead of an assignment operator (=) when initializing or updating variables (e.g., `inv_count : 0`, `result : re.sub(...)`, `word_len : []`, `row : [0] * n`, and `i, j : tup`). In Python, a colon is used for type hints or in syntactic structures like loops and conditionals, whereas the single equals sign (=) is used for variable assignment. This indicates a fundamental misunderstanding of Python's assignment syntax.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 53,
+      "prediction_id": "group_misconception_17_4",
+      "group_type": "misconception",
+      "gt_misconception": 17,
+      "predicted_misconceptions": [
+        {
+          "description": "Using the colon (`:`) instead of the assignment operator (`=`) for variable assignment and initialization."
+        },
+        {
+          "description": "Misunderstanding how the `range()` function handles its upper bound."
+        },
+        {
+          "description": "Premature `return` statement inside a loop preventing full iteration."
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": true,
+      "raw_response": "<misconception>\n  <description>Using the colon (`:`) instead of the assignment operator (`=`) for variable assignment and initialization.</description>\n  <explanation>Across all five student submissions, the colon character `:` is consistently used where the assignment operator `=` belongs (e.g., `cnt : 0`, `sum_range : 0`, `max:len(list1[0])`, `limit : num//2`). This suggests a fundamental confusion regarding Python syntax for variable assignment, possibly conflating it with type hinting syntax, dictionary syntax, or syntax from other pseudocode/programming languages.</explanation>\n</misconception>\n\n<misconception>\n  <description>Misunderstanding how the `range()` function handles its upper bound.</description>\n  <explanation>In Submission 5, the student defines `limit : num//2` and then loops using `range(2, limit)`. Because the `range()` function in Python is exclusive of its stop value, testing a prime number like `num = 9` (where `limit = 4`) will cause the loop to only check `i = 2` and `i = 3`, omitting the check for `i = 4`. Additionally, checking divisibility by numbers up to `num // 2` typically requires `num // 2 + 1` to be inclusive.</explanation>\n</misconception>\n\n<misconception>\n  <description>Premature `return` statement inside a loop preventing full iteration.</description>\n  <explanation>In Submission 5 (`prime_num`), the student places both `return False` and `return True` inside the `for` loop. Specifically, the `else` block causes the function to return `True` on the very first iteration if the number is not divisible by the first checked divisor (`i = 2`), preventing the function from checking the remaining numbers in the range.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 54,
+      "prediction_id": "group_misconception_18_0",
+      "group_type": "misconception",
+      "gt_misconception": 18,
+      "predicted_misconceptions": [
+        {
+          "description": "Incorrect understanding of how the logical `or` operator works with multiple conditions, often treating it like a mathematical set membership or chained equality check."
+        },
+        {
+          "description": "Incorrect understanding of type checking and operator precedence with `or` in conditional statements."
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": false,
+      "raw_response": "<misconception>\n  <description>Incorrect understanding of how the logical `or` operator works with multiple conditions, often treating it like a mathematical set membership or chained equality check.</description>\n  <explanation>Across multiple submissions, students attempt to check if a single variable matches one of several values by chaining conditions with `or` incorrectly. \n  - In Submission 1: `if length == 1 or 3 or 5 or 7 or 9 or 11:` is evaluated by Python as `(length == 1) or 3 or 5...` Since non-zero integers are truthy in Python, this condition always evaluates to `True`.\n  - In Submission 2: `if arr[j] == 0 or 1:` evaluates as `(arr[j] == 0) or 1`, which always evaluates to `True` because `1` is truthy.\n  - In Submission 4: `if result == 'Heads' or 'Tails':` evaluates as `(result == 'Heads') or 'Tails'`, which always evaluates to `True` because the non-empty string `'Tails'` is truthy.\n  The correct approach in Python is to use the `in` operator (e.g., `length in [1, 3, 5, 7, 9, 11]`) or explicitly write out each comparison (e.g., `arr[j] == 0 or arr[j] == 1`).</explanation>\n</misconception>\n\n<misconception>\n  <description>Incorrect understanding of type checking and operator precedence with `or` in conditional statements.</description>\n  <explanation>In Submission 3, the student writes `if type(text1) == str or list:`. Due to operator precedence, Python evaluates this expression as `(type(text1) == str) or list`. Because `list` is a built-in type object (which evaluates to truthy), the condition always evaluates to `True` regardless of the type of `text1`. The student intended to check if `text1` is either a `str` or a `list`, which should be written as `if type(text1) == str or type(text1) == list:` or preferably using `isinstance(text1, (str, list))`. Alternatively, applying `re.sub` directly to a list will also cause a TypeError.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 55,
+      "prediction_id": "group_misconception_18_1",
+      "group_type": "misconception",
+      "gt_misconception": 18,
+      "predicted_misconceptions": [
+        {
+          "description": "Incorrect understanding of how the `or` (and `and`) logical operators evaluate in Python, specifically distributing conditions."
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": false,
+      "raw_response": "<misconception>\n  <description>Incorrect understanding of how the `or` (and `and`) logical operators evaluate in Python, specifically distributing conditions.</description>\n  <explanation>Several students incorrectly chain comparisons or conditions using `or`. For example, in Submission 1, the expression `attacker_type == \"fire\" or \"water\" or \"grass\"` evaluates truthiness rather than checking if `attacker_type` is equal to any of the three strings. Similarly, in Submissions 2, 6, and 8, expressions like `h_age == 1 or 2` and `n == 1 or 2` evaluate to `True` or a truthy value because `2` is always truthy in Python, instead of checking if `h_age` equals 1 or equals 2 (`h_age == 1 or h_age == 2`). Submission 5 exhibits a similar flaw with `len(x) > n or 5`.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 56,
+      "prediction_id": "group_misconception_18_2",
+      "group_type": "misconception",
+      "gt_misconception": 18,
+      "predicted_misconceptions": [
+        {
+          "description": "Incorrect understanding of how the `or` logical operator works in Python, specifically by treating non-empty values as truthy in a way that always evaluates a compound condition to True."
+        },
+        {
+          "description": "Flawed loop condition boundary checks leading to potential `AttributeError` or `NoneType` attribute access when traversing data structures like linked lists."
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": false,
+      "raw_response": "<misconception>\n  <description>Incorrect understanding of how the `or` logical operator works in Python, specifically by treating non-empty values as truthy in a way that always evaluates a compound condition to True.</description>\n  <explanation>Across multiple submissions, students incorrectly construct conditional statements like `if list1[i] != 0 or None:` (Sub 1), `if num == 0 or 1:` (Sub 3), `if x < min_val or x == 0 or -1:` (Sub 4), `if str(i)[::-1] == str(i) or numstr:` (Sub 5), `if i == 'a' or 'the':` (Sub 6), `if test_list[iidx][0] == test_list[idx][1] or test_list[iidx][0]:` (Sub 7), and `if s[i:i+3] == 'std' or 'STD':` (Sub 8). In Python, numbers like `1`, `-1`, and non-empty strings like `'the'`, `'STD'`, and `numstr` are always truthy. Therefore, expressions like `or 1`, `or -1`, or `or 'STD'` always evaluate the entire `or` condition to `True`, bypassing the intended equality checks.</explanation>\n</misconception>\n\n<misconception>\n  <description>Flawed loop condition boundary checks leading to potential `AttributeError` or `NoneType` attribute access when traversing data structures like linked lists.</description>\n  <explanation>In Submission 2, the student writes `while fast != None or fast.next:` for cycle detection. If `fast` becomes `None`, Python evaluates the left side of the `or` (`fast != None`) as `False` and proceeds to evaluate the right side (`fast.next`), which attempts to access an attribute (`.next`) on `None`, resulting in an `AttributeError` rather than safely terminating the loop.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 57,
+      "prediction_id": "group_misconception_18_3",
+      "group_type": "misconception",
+      "gt_misconception": 18,
+      "predicted_misconceptions": [
+        {
+          "description": "Incorrect boolean expression evaluation for multiple conditions"
+        },
+        {
+          "description": "Misunderstanding Python operator precedence and short-circuit evaluation in range/length checks"
+        },
+        {
+          "description": "Redefining built-in function names as variables"
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": false,
+      "raw_response": "<misconception>\n  <description>Incorrect boolean expression evaluation for multiple conditions</description>\n  <explanation>In Submission 1 (`if nums == None or []:`), the student attempts to check if `nums` is `None` or empty. In Python, `[]` is truthy in a boolean context (only empty collections/falsy values evaluate to `False`). Therefore, `[]` evaluates to `True`, making the `if` condition always trigger when `nums` is `None` or `[]`. Similarly, in Submission 5 (`if i != -1 or -999:`), the student writes a condition meant to check if `i` is neither `-1` nor `-999`. Because `-999` is a non-zero integer (truthy), `or -999` always evaluates to `True`, bypassing the intended exclusion.</explanation>\n</misconception>\n\n<misconception>\n  <description>Misunderstanding Python operator precedence and short-circuit evaluation in range/length checks</description>\n  <explanation>In Submission 4 (`if n == 0 or 1:`), the student attempts to check if `n` is equal to `0` or `1`. Due to operator precedence and truthiness in Python, the expression is evaluated as `(n == 0) or (1)`. Since `1` is truthy, the entire `if` condition always evaluates to `True` regardless of the value of `n`.</explanation>\n</misconception>\n\n<misconception>\n  <description>Redefining built-in function names as variables</description>\n  <explanation>In Submission 5 (`dict = defaultdict(int)`), the student uses the built-in type name `dict` as a local variable name. While syntactically valid in Python, this shadows the built-in `dict` type, which is a poor programming practice and can lead to unexpected errors if built-in dictionary functions need to be called later.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 58,
+      "prediction_id": "group_misconception_19_0",
+      "group_type": "misconception",
+      "gt_misconception": 19,
+      "predicted_misconceptions": [
+        {
+          "description": "Unreachable Code after a Return Statement"
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": true,
+      "raw_response": "<misconception>\n  <description>Unreachable Code after a Return Statement</description>\n  <explanation>Every single student submission contains code placed immediately after a `return` statement within the same block, which is rendered completely unreachable because the `return` statement terminates the function execution immediately. In Submission 1, the `for` loop is placed after the `return`. In Submission 2, `random.seed()` and `result = None` are placed after `return`. In Submission 3, `return False` and the subsequent `while` loop are placed after an early `return False`. In Submission 4, `dict.clear()` is placed after the `return` statement. In Submission 5, the reset operations (`Sum = 0`, `l = 0`) are placed after the `return` statement.</explanation>\n</misconception>"
+    },
+    {
+      "bag_index": 59,
+      "prediction_id": "group_misconception_19_1",
+      "group_type": "misconception",
+      "gt_misconception": 19,
+      "predicted_misconceptions": [
+        {
+          "description": "Unreachable code after a return statement"
+        }
+      ],
+      "no_predicted_misconceptions": false,
+      "bag_match": true,
+      "raw_response": "<misconception>\n  <description>Unreachable code after a return statement</description>\n  <explanation>Every single student submission places executable statements (such as sorting, resetting variables, additional returns, or print statements) immediately after a `return` statement within a function. Because the `return` statement causes the function to exit immediately, any code placed after it in the same block will never be executed.</explanation>\n</misconception>"
+    }
+  ]
+}

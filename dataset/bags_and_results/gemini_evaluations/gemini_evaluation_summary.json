@@ -1,0 +1,19 @@
+{
+  "gemini-flash-lite-latest": {
+    "model": "gemini-flash-lite-latest",
+    "total_bags": 60,
+    "total_misc_bags": 45,
+    "total_correct_bags": 15,
+    "tp": 24,
+    "fp": 22,
+    "fn": 3,
+    "tn": 11,
+    "overall_accuracy": 0.5833333333333334,
+    "misconception_accuracy": 0.5333333333333333,
+    "correct_only_accuracy": 0.7333333333333333,
+    "precision": 0.5217391304347826,
+    "recall": 0.8888888888888888,
+    "f1_score": 0.6575342465753423,
+    "evaluation_time_sec": 211.08690190315247
+  }
+}

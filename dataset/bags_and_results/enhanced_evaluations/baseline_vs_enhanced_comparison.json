@@ -1,0 +1,1093 @@
+{
+  "model": "qwen/qwen3.8-27b",
+  "baseline": {
+    "mode": "Baseline Zeroshot",
+    "total_bags": 50,
+    "tp": 22,
+    "fp": 21,
+    "fn": 6,
+    "tn": 1,
+    "overall_accuracy": 0.46,
+    "misconception_accuracy": 0.6285714285714286,
+    "correct_only_accuracy": 0.06666666666666667,
+    "precision": 0.5116279069767442,
+    "recall": 0.7857142857142857,
+    "f1_score": 0.619718309859155,
+    "elapsed_sec": 4533.532742977142,
+    "predictions": [
+      {
+        "bag_index": 0,
+        "group_type": "correct_only",
+        "gt_misconception": "NONE",
+        "matched": true,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 1,
+        "group_type": "correct_only",
+        "gt_misconception": "NONE",
+        "matched": false,
+        "predictions": [
+          {
+            "description": "The student believes that iterating through all indices `i` and `j` from `i` to `n` and swapping `b[i][j]` with `b[j][i]` will correctly transpose a square matrix without side effects."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 2,
+        "group_type": "correct_only",
+        "gt_misconception": "NONE",
+        "matched": false,
+        "predictions": [
+          {
+            "description": "The student believes that the `isalpha()` method can be used to distinguish between string representations of numbers and non-numeric strings within a mixed-type list, and that `float()` can be applied to any non-alpha element to convert it to a float."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 3,
+        "group_type": "correct_only",
+        "gt_misconception": "NONE",
+        "matched": false,
+        "predictions": [
+          {
+            "description": "The student believes that the bitwise AND operation (`&`) between a number and a mask can be used to check if all bits in a specific range are set by verifying if the result is zero."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 4,
+        "group_type": "correct_only",
+        "gt_misconception": "NONE",
+        "matched": false,
+        "predictions": [
+          {
+            "description": "The student believes that a list contains unique elements if and only if the length of the set created from it is equal to 1."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 5,
+        "group_type": "correct_only",
+        "gt_misconception": "NONE",
+        "matched": false,
+        "predictions": [
+          {
+            "description": "The student believes that the `+=` operator can be used to concatenate a tuple to a list, resulting in a list containing the tuple's elements."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 6,
+        "group_type": "correct_only",
+        "gt_misconception": "NONE",
+        "matched": false,
+        "predictions": [
+          {
+            "description": "The student believes that the symmetric difference operator (`^`) on sets returns a tuple, or that wrapping a set in `tuple()` is the correct way to return the result of a set operation when a tuple is expected, without considering that the order of elements in a set is arbitrary and thus the resulting tuple order is non-deterministic."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 7,
+        "group_type": "correct_only",
+        "gt_misconception": "NONE",
+        "matched": false,
+        "predictions": [
+          {
+            "description": "The student believes that the `all()` function returns a boolean value directly, or that the generator expression inside `all()` is evaluated in a way that produces a boolean result for the entire list comparison, rather than understanding that `all()` consumes an iterable of booleans."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 8,
+        "group_type": "correct_only",
+        "gt_misconception": "NONE",
+        "matched": false,
+        "predictions": [
+          {
+            "description": "The student believes that the `is_lower` function should return the lowercased version of the string rather than a boolean indicating whether the string is already lowercase."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 9,
+        "group_type": "correct_only",
+        "gt_misconception": "NONE",
+        "matched": false,
+        "predictions": [
+          {
+            "description": "The student believes that the `sum()` function counts the number of elements in a list, rather than calculating the arithmetic sum of those elements."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 10,
+        "group_type": "correct_only",
+        "gt_misconception": "NONE",
+        "matched": false,
+        "predictions": [
+          {
+            "description": "The student believes that the largest negative number in a list is the minimum value of the entire list, and that the list is guaranteed to contain only negative numbers or that the first element is negative."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 11,
+        "group_type": "correct_only",
+        "gt_misconception": "NONE",
+        "matched": false,
+        "predictions": [
+          {
+            "description": "The student believes that if a number is not divisible by the first tested divisor (2), it is immediately prime, ignoring the need to check all potential divisors."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 12,
+        "group_type": "correct_only",
+        "gt_misconception": "NONE",
+        "matched": false,
+        "predictions": [
+          {
+            "description": "The student believes that the `for` loop variable `i` in `range(a, b+1)` does not automatically increment, or that manual incrementing is required to advance to the next number in the range."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 13,
+        "group_type": "correct_only",
+        "gt_misconception": "NONE",
+        "matched": false,
+        "predictions": [
+          {
+            "description": "The student believes that the median of two sorted arrays of size `n` can be found by simply merging the first `n+1` elements and taking the average of the two middle values of that partial merge, or that the `n`-th and `(n+1)`-th smallest elements of the combined array are sufficient to determine the median without considering the remaining elements."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 14,
+        "group_type": "correct_only",
+        "gt_misconception": "NONE",
+        "matched": false,
+        "predictions": [
+          {
+            "description": "The student believes that an undulating number is one where every digit is equal to the digit two positions before it (i.e., the number repeats a pattern of length 2, like 121212), rather than one where the digits alternate between increasing and decreasing (like 132432)."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 15,
+        "group_type": "misconception",
+        "gt_misconception": 1,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "The student believes that `range(m, n)` includes the index `n`."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 16,
+        "group_type": "misconception",
+        "gt_misconception": 1,
+        "matched": false,
+        "predictions": [
+          {
+            "description": "The student believes that the `else` clause of a `for` loop (or the `else` of an `if` inside the loop) executes immediately after the first iteration, causing the function to return prematurely."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 17,
+        "group_type": "misconception",
+        "gt_misconception": 1,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "The student believes that the range of indices for a list of length `n` is `1` to `n` (inclusive), rather than `0` to `n-1`."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 18,
+        "group_type": "misconception",
+        "gt_misconception": 1,
+        "matched": false,
+        "predictions": [
+          {
+            "description": "The student believes that the condition for two items to be \"bidirectional\" (or connected) is that the second element of the previous item in the list equals the first element of the current item, and vice versa, using indices `idx - 1` and `iidx - 1` in a nested loop that iterates over all pairs."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 19,
+        "group_type": "misconception",
+        "gt_misconception": "NONE",
+        "matched": false,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 20,
+        "group_type": "misconception",
+        "gt_misconception": 10,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "The student believes that calling `string.split()` modifies the original string object in place, allowing subsequent indexing (`string[0]`) to access the first word of the split result."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 21,
+        "group_type": "misconception",
+        "gt_misconception": 10,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "The student believes that calling string methods like `split()` modifies the original string object in place, or that the result of `split()` is automatically assigned to the variable if not explicitly captured."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 22,
+        "group_type": "misconception",
+        "gt_misconception": "NONE",
+        "matched": false,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 23,
+        "group_type": "misconception",
+        "gt_misconception": 10,
+        "matched": false,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 24,
+        "group_type": "misconception",
+        "gt_misconception": 11,
+        "matched": false,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 25,
+        "group_type": "misconception",
+        "gt_misconception": 11,
+        "matched": false,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 26,
+        "group_type": "misconception",
+        "gt_misconception": 11,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "The student believes that a recursive function can be used to calculate a sum by printing intermediate results, and that the return value of the recursive call is implicitly available for arithmetic operations without being explicitly returned from the base case or the function itself."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 27,
+        "group_type": "misconception",
+        "gt_misconception": 11,
+        "matched": false,
+        "predictions": [
+          {
+            "description": "The student believes that a prime number check can be performed by iterating through divisors and printing the result for each individual divisor check, rather than determining the overall primality of the number after checking all potential divisors."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 28,
+        "group_type": "misconception",
+        "gt_misconception": 12,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "The student believes that a variable defined inside a nested function (or a local scope) is accessible in the outer scope after the nested function executes, or that the nested function modifies the outer variable by default."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 29,
+        "group_type": "misconception",
+        "gt_misconception": 12,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "The student believes that variables defined inside a function are accessible in the global scope after the function call."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 30,
+        "group_type": "misconception",
+        "gt_misconception": 12,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "The student believes that local variables defined inside a function are accessible in the global scope after the function call."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 31,
+        "group_type": "misconception",
+        "gt_misconception": 12,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "The student believes that variables defined inside a function (local scope) are accessible in the global scope or in other functions without being explicitly returned or declared global."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 32,
+        "group_type": "misconception",
+        "gt_misconception": 12,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "The student believes that variables defined inside a function (like `max` in Submission 5) are accessible in the global scope after the function executes, or that the function implicitly returns the value of the last evaluated expression."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 33,
+        "group_type": "misconception",
+        "gt_misconception": 13,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "The student believes that assigning a list to a new variable (e.g., `temp_list = list1`) creates an independent copy of the list, allowing them to modify `temp_list` without affecting the original `list1`."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 34,
+        "group_type": "misconception",
+        "gt_misconception": 13,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "The student believes that assigning a list to a new variable (e.g., `backup = chars`) creates an independent copy of the list, allowing them to modify the new variable without affecting the original list."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 35,
+        "group_type": "misconception",
+        "gt_misconception": 13,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "The student believes that assigning a list to a new variable creates an independent copy of the list, allowing them to modify the new variable without affecting the original list."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 36,
+        "group_type": "misconception",
+        "gt_misconception": 13,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "The student believes that assigning a list to a new variable (e.g., `res = test_list`) creates an independent copy of the list, allowing them to sort `res` without modifying the original `test_list`."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 37,
+        "group_type": "misconception",
+        "gt_misconception": 14,
+        "matched": false,
+        "predictions": [
+          {
+            "description": "The student believes that using a list to store visited nodes and checking for membership via linear search (or relying on the loop structure) is an efficient or standard way to detect cycles, and may not fully grasp that a cycle implies infinite traversal if not detected, or that the `range(10000)` limit is an arbitrary hack rather than a logical bound."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 38,
+        "group_type": "misconception",
+        "gt_misconception": 14,
+        "matched": false,
+        "predictions": [
+          {
+            "description": "The student believes that iterating through a range up to `sys.maxsize` is an efficient or standard way to find the next palindrome, or that `sys.maxsize` is a suitable upper bound for such a search without considering performance implications."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 39,
+        "group_type": "misconception",
+        "gt_misconception": 14,
+        "matched": false,
+        "predictions": [
+          {
+            "description": "The student believes that the loop variable `i` in a `for` loop is not the current index of the iteration, or that it is safe to ignore the loop variable in favor of a manually incremented variable that starts at the same value, without realizing that the loop variable `i` already tracks the current position correctly."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 40,
+        "group_type": "misconception",
+        "gt_misconception": 14,
+        "matched": false,
+        "predictions": [
+          {
+            "description": "The student believes that tracking the last processed index or element (e.g., `last_index`, `last_num`, `last_i`) is a necessary or standard part of the algorithm logic, even when it is not used for the final result or subsequent calculations."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 41,
+        "group_type": "misconception",
+        "gt_misconception": 15,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "The student believes that list indices in Python start at 1 and that the last element of a list of length n is at index n."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 42,
+        "group_type": "misconception",
+        "gt_misconception": 15,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "The student believes that Python list indices start at 1 and that the `range` function should be used with `len(arr) + 1` to include the last element, leading to off-by-one errors and potential `IndexError` exceptions."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 43,
+        "group_type": "misconception",
+        "gt_misconception": 15,
+        "matched": false,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 44,
+        "group_type": "misconception",
+        "gt_misconception": 15,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "The student believes that list indices start at 1, or that the first element of a list is accessed using index 1."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 45,
+        "group_type": "misconception",
+        "gt_misconception": 16,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "The student believes that a single equals sign (=) is used for comparison in conditional statements and loops, rather than the double equals sign (==)."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 46,
+        "group_type": "misconception",
+        "gt_misconception": 16,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "The student believes that the single equals sign (`=`) is used for comparison in conditional statements (if/elif) and assignment in logical expressions."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 47,
+        "group_type": "misconception",
+        "gt_misconception": 16,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "The student believes that the single equals sign (=) is used for comparison in conditional statements, rather than the double equals sign (==)."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 48,
+        "group_type": "misconception",
+        "gt_misconception": 16,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "The student believes that the single equals sign (`=`) can be used for comparison in conditional statements (if statements), confusing assignment with equality testing."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 49,
+        "group_type": "misconception",
+        "gt_misconception": 17,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "The student believes that the colon operator (`:`) is used for variable assignment in Python, rather than the equals sign (`=`)."
+          }
+        ],
+        "no_misc": false
+      }
+    ]
+  },
+  "enhanced": {
+    "mode": "Enhanced Methodology",
+    "total_bags": 50,
+    "tp": 15,
+    "fp": 6,
+    "fn": 17,
+    "tn": 12,
+    "overall_accuracy": 0.54,
+    "misconception_accuracy": 0.42857142857142855,
+    "correct_only_accuracy": 0.8,
+    "precision": 0.7142857142857143,
+    "recall": 0.46875,
+    "f1_score": 0.5660377358490566,
+    "elapsed_sec": 913.4871165752411,
+    "predictions": [
+      {
+        "bag_index": 0,
+        "group_type": "correct_only",
+        "gt_misconception": "NONE",
+        "matched": true,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 1,
+        "group_type": "correct_only",
+        "gt_misconception": "NONE",
+        "matched": true,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 2,
+        "group_type": "correct_only",
+        "gt_misconception": "NONE",
+        "matched": true,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 3,
+        "group_type": "correct_only",
+        "gt_misconception": "NONE",
+        "matched": true,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 4,
+        "group_type": "correct_only",
+        "gt_misconception": "NONE",
+        "matched": true,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 5,
+        "group_type": "correct_only",
+        "gt_misconception": "NONE",
+        "matched": true,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 6,
+        "group_type": "correct_only",
+        "gt_misconception": "NONE",
+        "matched": true,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 7,
+        "group_type": "correct_only",
+        "gt_misconception": "NONE",
+        "matched": true,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 8,
+        "group_type": "correct_only",
+        "gt_misconception": "NONE",
+        "matched": true,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 9,
+        "group_type": "correct_only",
+        "gt_misconception": "NONE",
+        "matched": true,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 10,
+        "group_type": "correct_only",
+        "gt_misconception": "NONE",
+        "matched": false,
+        "predictions": [
+          {
+            "description": "The student believes that finding the \"largest negative\" number is equivalent to finding the minimum value in the list, or fails to distinguish between the minimum of the entire list and the maximum of the subset of negative numbers."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 11,
+        "group_type": "correct_only",
+        "gt_misconception": "NONE",
+        "matched": false,
+        "predictions": [
+          {
+            "description": "Student believes that the `return True` statement inside the `else` block of the loop will execute after the loop completes if no divisors are found, or that the logic structure correctly handles the \"no divisor found\" case within the loop body."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 12,
+        "group_type": "correct_only",
+        "gt_misconception": "NONE",
+        "matched": true,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 13,
+        "group_type": "correct_only",
+        "gt_misconception": "NONE",
+        "matched": true,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 14,
+        "group_type": "correct_only",
+        "gt_misconception": "NONE",
+        "matched": false,
+        "predictions": [
+          {
+            "description": "The student misunderstands the definition of an \"undulating\" number, incorrectly implementing a check for a repeating pattern of period 2 (digits at distance 2 are equal) instead of checking for alternating digits (adjacent digits are different)."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 15,
+        "group_type": "misconception",
+        "gt_misconception": 1,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "The student believes that `range(m, n)` includes the upper bound n."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 16,
+        "group_type": "misconception",
+        "gt_misconception": 1,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "Student believes that `range(n - 1)` produces values from 1 to n - 2 inclusive."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 17,
+        "group_type": "misconception",
+        "gt_misconception": 1,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "Student believes that range(n - 1) produces values from 1 to n - 2 inclusive."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 18,
+        "group_type": "misconception",
+        "gt_misconception": 1,
+        "matched": false,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 19,
+        "group_type": "misconception",
+        "gt_misconception": "NONE",
+        "matched": false,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 20,
+        "group_type": "misconception",
+        "gt_misconception": 10,
+        "matched": false,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 21,
+        "group_type": "misconception",
+        "gt_misconception": 10,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "Student believes that string methods like `split()` modify the original string in-place or that their return values are automatically stored in the original variable without explicit assignment."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 22,
+        "group_type": "misconception",
+        "gt_misconception": "NONE",
+        "matched": false,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 23,
+        "group_type": "misconception",
+        "gt_misconception": 10,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "The student believes that calling a conversion function like `list()` modifies the original object in place, or that tuples are mutable and support list methods like `append`."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 24,
+        "group_type": "misconception",
+        "gt_misconception": 11,
+        "matched": false,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 25,
+        "group_type": "misconception",
+        "gt_misconception": 11,
+        "matched": false,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 26,
+        "group_type": "misconception",
+        "gt_misconception": 11,
+        "matched": false,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 27,
+        "group_type": "misconception",
+        "gt_misconception": 11,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "Student believes that a function can be defined without the def keyword."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 28,
+        "group_type": "misconception",
+        "gt_misconception": 12,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "Student believes that variables defined inside a function are accessible outside the function."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 29,
+        "group_type": "misconception",
+        "gt_misconception": 12,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "Student believes that function return values are automatically stored in a variable named `result` without explicit assignment."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 30,
+        "group_type": "misconception",
+        "gt_misconception": 12,
+        "matched": false,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 31,
+        "group_type": "misconception",
+        "gt_misconception": 12,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "Student believes that variables defined inside a function are accessible outside the function."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 32,
+        "group_type": "misconception",
+        "gt_misconception": 12,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "Student believes that variables defined inside a function are accessible outside the function."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 33,
+        "group_type": "misconception",
+        "gt_misconception": 13,
+        "matched": false,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 34,
+        "group_type": "misconception",
+        "gt_misconception": 13,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "Student believes that appending a list object to another list creates a new, independent copy of that list rather than a reference to the original object."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 35,
+        "group_type": "misconception",
+        "gt_misconception": 13,
+        "matched": false,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 36,
+        "group_type": "misconception",
+        "gt_misconception": 13,
+        "matched": false,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 37,
+        "group_type": "misconception",
+        "gt_misconception": 14,
+        "matched": false,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 38,
+        "group_type": "misconception",
+        "gt_misconception": 14,
+        "matched": false,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 39,
+        "group_type": "misconception",
+        "gt_misconception": 14,
+        "matched": false,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 40,
+        "group_type": "misconception",
+        "gt_misconception": 14,
+        "matched": false,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 41,
+        "group_type": "misconception",
+        "gt_misconception": 15,
+        "matched": false,
+        "predictions": [
+          {
+            "description": "Student believes that range(n) produces values from 1 to n inclusive."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 42,
+        "group_type": "misconception",
+        "gt_misconception": 15,
+        "matched": false,
+        "predictions": [
+          {
+            "description": "Student believes that range(n) produces values from 1 to n inclusive."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 43,
+        "group_type": "misconception",
+        "gt_misconception": 15,
+        "matched": false,
+        "predictions": [
+          {
+            "description": "Student believes that range(n) produces values from 1 to n inclusive."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 44,
+        "group_type": "misconception",
+        "gt_misconception": 15,
+        "matched": false,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 45,
+        "group_type": "misconception",
+        "gt_misconception": 16,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "Student confuses the assignment operator (`=`) with the equality comparison operator (`==`) in conditional statements."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 46,
+        "group_type": "misconception",
+        "gt_misconception": 16,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "Student believes that the single equals sign `=` can be used for equality comparison in conditional statements."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 47,
+        "group_type": "misconception",
+        "gt_misconception": 16,
+        "matched": false,
+        "predictions": [],
+        "no_misc": true
+      },
+      {
+        "bag_index": 48,
+        "group_type": "misconception",
+        "gt_misconception": 16,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "Student confuses the assignment operator `=` with the comparison operator `==` in conditional statements."
+          }
+        ],
+        "no_misc": false
+      },
+      {
+        "bag_index": 49,
+        "group_type": "misconception",
+        "gt_misconception": 17,
+        "matched": true,
+        "predictions": [
+          {
+            "description": "The student believes that the colon operator (`:`) is used for variable assignment instead of the equals sign (`=`)."
+          }
+        ],
+        "no_misc": false
+      }
+    ]
+  }
+}

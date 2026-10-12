@@ -1,0 +1,3411 @@
+{
+  "metrics": {
+    "model": "openai/gpt-oss-20b",
+    "total_bags": 339,
+    "total_misc_bags": 279,
+    "total_correct_bags": 60,
+    "tp": 0,
+    "fp": 0,
+    "fn": 279,
+    "tn": 60,
+    "overall_accuracy": 0.17699115044247787,
+    "misconception_accuracy": 0.0,
+    "correct_only_accuracy": 1.0,
+    "precision": 0,
+    "recall": 0.0,
+    "f1_score": 0,
+    "evaluation_time_sec": 1142.4687559604645
+  },
+  "predictions": [
+    {
+      "bag_index": 0,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 1,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 2,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 3,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 4,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 5,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 6,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 7,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 8,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 9,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 10,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 11,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 12,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 13,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 14,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 15,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 16,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 17,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 18,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 19,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 20,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 21,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 22,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 23,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 24,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 25,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 26,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 27,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 28,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 29,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 30,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 31,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 32,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 33,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 34,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 35,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 36,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 37,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 38,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 39,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 40,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 41,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 42,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 43,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 44,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 45,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 46,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 47,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 48,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 49,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 50,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 51,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 52,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 53,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 54,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 55,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 56,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 57,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 58,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 59,
+      "prediction_id": "group_correct_only_None_0",
+      "group_type": "correct_only",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": true,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 60,
+      "prediction_id": "group_misconception_1_0",
+      "group_type": "misconception",
+      "gt_misconception": 1,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 61,
+      "prediction_id": "group_misconception_1_1",
+      "group_type": "misconception",
+      "gt_misconception": 1,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 62,
+      "prediction_id": "group_misconception_1_2",
+      "group_type": "misconception",
+      "gt_misconception": 1,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 63,
+      "prediction_id": "group_misconception_1_3",
+      "group_type": "misconception",
+      "gt_misconception": 1,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 64,
+      "prediction_id": "group_misconception_10_0",
+      "group_type": "misconception",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 65,
+      "prediction_id": "group_misconception_10_1",
+      "group_type": "misconception",
+      "gt_misconception": 10,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 66,
+      "prediction_id": "group_misconception_10_2",
+      "group_type": "misconception",
+      "gt_misconception": 10,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 67,
+      "prediction_id": "group_misconception_10_3",
+      "group_type": "misconception",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 68,
+      "prediction_id": "group_misconception_10_4",
+      "group_type": "misconception",
+      "gt_misconception": 10,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 69,
+      "prediction_id": "group_misconception_11_0",
+      "group_type": "misconception",
+      "gt_misconception": 11,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 70,
+      "prediction_id": "group_misconception_11_1",
+      "group_type": "misconception",
+      "gt_misconception": 11,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 71,
+      "prediction_id": "group_misconception_11_2",
+      "group_type": "misconception",
+      "gt_misconception": 11,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 72,
+      "prediction_id": "group_misconception_11_3",
+      "group_type": "misconception",
+      "gt_misconception": 11,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 73,
+      "prediction_id": "group_misconception_12_0",
+      "group_type": "misconception",
+      "gt_misconception": 12,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 74,
+      "prediction_id": "group_misconception_12_1",
+      "group_type": "misconception",
+      "gt_misconception": 12,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 75,
+      "prediction_id": "group_misconception_12_2",
+      "group_type": "misconception",
+      "gt_misconception": 12,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 76,
+      "prediction_id": "group_misconception_12_3",
+      "group_type": "misconception",
+      "gt_misconception": 12,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 77,
+      "prediction_id": "group_misconception_12_4",
+      "group_type": "misconception",
+      "gt_misconception": 12,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 78,
+      "prediction_id": "group_misconception_13_0",
+      "group_type": "misconception",
+      "gt_misconception": 13,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 79,
+      "prediction_id": "group_misconception_13_1",
+      "group_type": "misconception",
+      "gt_misconception": 13,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 80,
+      "prediction_id": "group_misconception_13_2",
+      "group_type": "misconception",
+      "gt_misconception": 13,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 81,
+      "prediction_id": "group_misconception_13_3",
+      "group_type": "misconception",
+      "gt_misconception": 13,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 82,
+      "prediction_id": "group_misconception_14_0",
+      "group_type": "misconception",
+      "gt_misconception": 14,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 83,
+      "prediction_id": "group_misconception_14_1",
+      "group_type": "misconception",
+      "gt_misconception": 14,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 84,
+      "prediction_id": "group_misconception_14_2",
+      "group_type": "misconception",
+      "gt_misconception": 14,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 85,
+      "prediction_id": "group_misconception_14_3",
+      "group_type": "misconception",
+      "gt_misconception": 14,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 86,
+      "prediction_id": "group_misconception_15_0",
+      "group_type": "misconception",
+      "gt_misconception": 15,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 87,
+      "prediction_id": "group_misconception_15_1",
+      "group_type": "misconception",
+      "gt_misconception": 15,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 88,
+      "prediction_id": "group_misconception_15_2",
+      "group_type": "misconception",
+      "gt_misconception": 15,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 89,
+      "prediction_id": "group_misconception_15_3",
+      "group_type": "misconception",
+      "gt_misconception": 15,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 90,
+      "prediction_id": "group_misconception_16_0",
+      "group_type": "misconception",
+      "gt_misconception": 16,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 91,
+      "prediction_id": "group_misconception_16_1",
+      "group_type": "misconception",
+      "gt_misconception": 16,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 92,
+      "prediction_id": "group_misconception_16_2",
+      "group_type": "misconception",
+      "gt_misconception": 16,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 93,
+      "prediction_id": "group_misconception_16_3",
+      "group_type": "misconception",
+      "gt_misconception": 16,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 94,
+      "prediction_id": "group_misconception_17_0",
+      "group_type": "misconception",
+      "gt_misconception": 17,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 95,
+      "prediction_id": "group_misconception_17_1",
+      "group_type": "misconception",
+      "gt_misconception": 17,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 96,
+      "prediction_id": "group_misconception_17_2",
+      "group_type": "misconception",
+      "gt_misconception": 17,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 97,
+      "prediction_id": "group_misconception_17_3",
+      "group_type": "misconception",
+      "gt_misconception": 17,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 98,
+      "prediction_id": "group_misconception_17_4",
+      "group_type": "misconception",
+      "gt_misconception": 17,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 99,
+      "prediction_id": "group_misconception_18_0",
+      "group_type": "misconception",
+      "gt_misconception": 18,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 100,
+      "prediction_id": "group_misconception_18_1",
+      "group_type": "misconception",
+      "gt_misconception": 18,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 101,
+      "prediction_id": "group_misconception_18_2",
+      "group_type": "misconception",
+      "gt_misconception": 18,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 102,
+      "prediction_id": "group_misconception_18_3",
+      "group_type": "misconception",
+      "gt_misconception": 18,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 103,
+      "prediction_id": "group_misconception_19_0",
+      "group_type": "misconception",
+      "gt_misconception": 19,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 104,
+      "prediction_id": "group_misconception_19_1",
+      "group_type": "misconception",
+      "gt_misconception": 19,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 105,
+      "prediction_id": "group_misconception_19_2",
+      "group_type": "misconception",
+      "gt_misconception": 19,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 106,
+      "prediction_id": "group_misconception_19_3",
+      "group_type": "misconception",
+      "gt_misconception": 19,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 107,
+      "prediction_id": "group_misconception_2_0",
+      "group_type": "misconception",
+      "gt_misconception": 2,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 108,
+      "prediction_id": "group_misconception_2_1",
+      "group_type": "misconception",
+      "gt_misconception": 2,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 109,
+      "prediction_id": "group_misconception_2_2",
+      "group_type": "misconception",
+      "gt_misconception": 2,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 110,
+      "prediction_id": "group_misconception_2_3",
+      "group_type": "misconception",
+      "gt_misconception": 2,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 111,
+      "prediction_id": "group_misconception_20_0",
+      "group_type": "misconception",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 112,
+      "prediction_id": "group_misconception_20_1",
+      "group_type": "misconception",
+      "gt_misconception": 20,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 113,
+      "prediction_id": "group_misconception_20_2",
+      "group_type": "misconception",
+      "gt_misconception": 20,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 114,
+      "prediction_id": "group_misconception_20_3",
+      "group_type": "misconception",
+      "gt_misconception": 20,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 115,
+      "prediction_id": "group_misconception_21_0",
+      "group_type": "misconception",
+      "gt_misconception": 21,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 116,
+      "prediction_id": "group_misconception_21_1",
+      "group_type": "misconception",
+      "gt_misconception": 21,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 117,
+      "prediction_id": "group_misconception_21_2",
+      "group_type": "misconception",
+      "gt_misconception": 21,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 118,
+      "prediction_id": "group_misconception_21_3",
+      "group_type": "misconception",
+      "gt_misconception": 21,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 119,
+      "prediction_id": "group_misconception_22_0",
+      "group_type": "misconception",
+      "gt_misconception": 22,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 120,
+      "prediction_id": "group_misconception_22_1",
+      "group_type": "misconception",
+      "gt_misconception": 22,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 121,
+      "prediction_id": "group_misconception_22_2",
+      "group_type": "misconception",
+      "gt_misconception": 22,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 122,
+      "prediction_id": "group_misconception_22_3",
+      "group_type": "misconception",
+      "gt_misconception": 22,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 123,
+      "prediction_id": "group_misconception_23_0",
+      "group_type": "misconception",
+      "gt_misconception": 23,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 124,
+      "prediction_id": "group_misconception_23_1",
+      "group_type": "misconception",
+      "gt_misconception": 23,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 125,
+      "prediction_id": "group_misconception_23_2",
+      "group_type": "misconception",
+      "gt_misconception": 23,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 126,
+      "prediction_id": "group_misconception_23_3",
+      "group_type": "misconception",
+      "gt_misconception": 23,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 127,
+      "prediction_id": "group_misconception_24_0",
+      "group_type": "misconception",
+      "gt_misconception": 24,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 128,
+      "prediction_id": "group_misconception_24_1",
+      "group_type": "misconception",
+      "gt_misconception": 24,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 129,
+      "prediction_id": "group_misconception_24_2",
+      "group_type": "misconception",
+      "gt_misconception": 24,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 130,
+      "prediction_id": "group_misconception_24_3",
+      "group_type": "misconception",
+      "gt_misconception": 24,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 131,
+      "prediction_id": "group_misconception_25_0",
+      "group_type": "misconception",
+      "gt_misconception": 25,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 132,
+      "prediction_id": "group_misconception_25_1",
+      "group_type": "misconception",
+      "gt_misconception": 25,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 133,
+      "prediction_id": "group_misconception_25_2",
+      "group_type": "misconception",
+      "gt_misconception": 25,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 134,
+      "prediction_id": "group_misconception_25_3",
+      "group_type": "misconception",
+      "gt_misconception": 25,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 135,
+      "prediction_id": "group_misconception_28_0",
+      "group_type": "misconception",
+      "gt_misconception": 28,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 136,
+      "prediction_id": "group_misconception_28_1",
+      "group_type": "misconception",
+      "gt_misconception": 28,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 137,
+      "prediction_id": "group_misconception_28_2",
+      "group_type": "misconception",
+      "gt_misconception": 28,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 138,
+      "prediction_id": "group_misconception_28_3",
+      "group_type": "misconception",
+      "gt_misconception": 28,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 139,
+      "prediction_id": "group_misconception_29_0",
+      "group_type": "misconception",
+      "gt_misconception": 29,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 140,
+      "prediction_id": "group_misconception_29_1",
+      "group_type": "misconception",
+      "gt_misconception": 29,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 141,
+      "prediction_id": "group_misconception_29_2",
+      "group_type": "misconception",
+      "gt_misconception": 29,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 142,
+      "prediction_id": "group_misconception_29_3",
+      "group_type": "misconception",
+      "gt_misconception": 29,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 143,
+      "prediction_id": "group_misconception_29_4",
+      "group_type": "misconception",
+      "gt_misconception": 29,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 144,
+      "prediction_id": "group_misconception_3_0",
+      "group_type": "misconception",
+      "gt_misconception": 3,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 145,
+      "prediction_id": "group_misconception_3_1",
+      "group_type": "misconception",
+      "gt_misconception": 3,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 146,
+      "prediction_id": "group_misconception_3_2",
+      "group_type": "misconception",
+      "gt_misconception": 3,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 147,
+      "prediction_id": "group_misconception_3_3",
+      "group_type": "misconception",
+      "gt_misconception": 3,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 148,
+      "prediction_id": "group_misconception_30_0",
+      "group_type": "misconception",
+      "gt_misconception": 30,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 149,
+      "prediction_id": "group_misconception_30_1",
+      "group_type": "misconception",
+      "gt_misconception": 30,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 150,
+      "prediction_id": "group_misconception_30_2",
+      "group_type": "misconception",
+      "gt_misconception": 30,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 151,
+      "prediction_id": "group_misconception_30_3",
+      "group_type": "misconception",
+      "gt_misconception": 30,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 152,
+      "prediction_id": "group_misconception_31_0",
+      "group_type": "misconception",
+      "gt_misconception": 31,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 153,
+      "prediction_id": "group_misconception_31_1",
+      "group_type": "misconception",
+      "gt_misconception": 31,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 154,
+      "prediction_id": "group_misconception_31_2",
+      "group_type": "misconception",
+      "gt_misconception": 31,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 155,
+      "prediction_id": "group_misconception_31_3",
+      "group_type": "misconception",
+      "gt_misconception": 31,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 156,
+      "prediction_id": "group_misconception_31_4",
+      "group_type": "misconception",
+      "gt_misconception": 31,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 157,
+      "prediction_id": "group_misconception_32_0",
+      "group_type": "misconception",
+      "gt_misconception": 32,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 158,
+      "prediction_id": "group_misconception_32_1",
+      "group_type": "misconception",
+      "gt_misconception": 32,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 159,
+      "prediction_id": "group_misconception_32_2",
+      "group_type": "misconception",
+      "gt_misconception": 32,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 160,
+      "prediction_id": "group_misconception_32_3",
+      "group_type": "misconception",
+      "gt_misconception": 32,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 161,
+      "prediction_id": "group_misconception_33_0",
+      "group_type": "misconception",
+      "gt_misconception": 33,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 162,
+      "prediction_id": "group_misconception_33_1",
+      "group_type": "misconception",
+      "gt_misconception": 33,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 163,
+      "prediction_id": "group_misconception_33_2",
+      "group_type": "misconception",
+      "gt_misconception": 33,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 164,
+      "prediction_id": "group_misconception_33_3",
+      "group_type": "misconception",
+      "gt_misconception": 33,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 165,
+      "prediction_id": "group_misconception_34_0",
+      "group_type": "misconception",
+      "gt_misconception": 34,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 166,
+      "prediction_id": "group_misconception_34_1",
+      "group_type": "misconception",
+      "gt_misconception": 34,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 167,
+      "prediction_id": "group_misconception_34_2",
+      "group_type": "misconception",
+      "gt_misconception": 34,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 168,
+      "prediction_id": "group_misconception_34_3",
+      "group_type": "misconception",
+      "gt_misconception": 34,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 169,
+      "prediction_id": "group_misconception_34_4",
+      "group_type": "misconception",
+      "gt_misconception": 34,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 170,
+      "prediction_id": "group_misconception_35_0",
+      "group_type": "misconception",
+      "gt_misconception": 35,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 171,
+      "prediction_id": "group_misconception_35_1",
+      "group_type": "misconception",
+      "gt_misconception": 35,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 172,
+      "prediction_id": "group_misconception_35_2",
+      "group_type": "misconception",
+      "gt_misconception": 35,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 173,
+      "prediction_id": "group_misconception_35_3",
+      "group_type": "misconception",
+      "gt_misconception": 35,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 174,
+      "prediction_id": "group_misconception_36_0",
+      "group_type": "misconception",
+      "gt_misconception": 36,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 175,
+      "prediction_id": "group_misconception_36_1",
+      "group_type": "misconception",
+      "gt_misconception": 36,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 176,
+      "prediction_id": "group_misconception_36_2",
+      "group_type": "misconception",
+      "gt_misconception": 36,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 177,
+      "prediction_id": "group_misconception_36_3",
+      "group_type": "misconception",
+      "gt_misconception": 36,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 178,
+      "prediction_id": "group_misconception_37_0",
+      "group_type": "misconception",
+      "gt_misconception": 37,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 179,
+      "prediction_id": "group_misconception_37_1",
+      "group_type": "misconception",
+      "gt_misconception": 37,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 180,
+      "prediction_id": "group_misconception_37_2",
+      "group_type": "misconception",
+      "gt_misconception": 37,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 181,
+      "prediction_id": "group_misconception_37_3",
+      "group_type": "misconception",
+      "gt_misconception": 37,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 182,
+      "prediction_id": "group_misconception_37_4",
+      "group_type": "misconception",
+      "gt_misconception": 37,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 183,
+      "prediction_id": "group_misconception_38_0",
+      "group_type": "misconception",
+      "gt_misconception": 38,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 184,
+      "prediction_id": "group_misconception_38_1",
+      "group_type": "misconception",
+      "gt_misconception": 38,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 185,
+      "prediction_id": "group_misconception_38_2",
+      "group_type": "misconception",
+      "gt_misconception": 38,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 186,
+      "prediction_id": "group_misconception_38_3",
+      "group_type": "misconception",
+      "gt_misconception": 38,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 187,
+      "prediction_id": "group_misconception_4_0",
+      "group_type": "misconception",
+      "gt_misconception": 4,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 188,
+      "prediction_id": "group_misconception_4_1",
+      "group_type": "misconception",
+      "gt_misconception": 4,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 189,
+      "prediction_id": "group_misconception_4_2",
+      "group_type": "misconception",
+      "gt_misconception": 4,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 190,
+      "prediction_id": "group_misconception_4_3",
+      "group_type": "misconception",
+      "gt_misconception": 4,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 191,
+      "prediction_id": "group_misconception_40_0",
+      "group_type": "misconception",
+      "gt_misconception": 40,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 192,
+      "prediction_id": "group_misconception_40_1",
+      "group_type": "misconception",
+      "gt_misconception": 40,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 193,
+      "prediction_id": "group_misconception_40_2",
+      "group_type": "misconception",
+      "gt_misconception": 40,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 194,
+      "prediction_id": "group_misconception_40_3",
+      "group_type": "misconception",
+      "gt_misconception": 40,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 195,
+      "prediction_id": "group_misconception_41_0",
+      "group_type": "misconception",
+      "gt_misconception": 41,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 196,
+      "prediction_id": "group_misconception_41_1",
+      "group_type": "misconception",
+      "gt_misconception": 41,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 197,
+      "prediction_id": "group_misconception_41_2",
+      "group_type": "misconception",
+      "gt_misconception": 41,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 198,
+      "prediction_id": "group_misconception_41_3",
+      "group_type": "misconception",
+      "gt_misconception": 41,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 199,
+      "prediction_id": "group_misconception_44_0",
+      "group_type": "misconception",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 200,
+      "prediction_id": "group_misconception_44_1",
+      "group_type": "misconception",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 201,
+      "prediction_id": "group_misconception_44_2",
+      "group_type": "misconception",
+      "gt_misconception": 44,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 202,
+      "prediction_id": "group_misconception_44_3",
+      "group_type": "misconception",
+      "gt_misconception": 44,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 203,
+      "prediction_id": "group_misconception_46_0",
+      "group_type": "misconception",
+      "gt_misconception": 46,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 204,
+      "prediction_id": "group_misconception_46_1",
+      "group_type": "misconception",
+      "gt_misconception": 46,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 205,
+      "prediction_id": "group_misconception_46_2",
+      "group_type": "misconception",
+      "gt_misconception": 46,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 206,
+      "prediction_id": "group_misconception_46_3",
+      "group_type": "misconception",
+      "gt_misconception": 46,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 207,
+      "prediction_id": "group_misconception_47_0",
+      "group_type": "misconception",
+      "gt_misconception": 47,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 208,
+      "prediction_id": "group_misconception_47_1",
+      "group_type": "misconception",
+      "gt_misconception": 47,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 209,
+      "prediction_id": "group_misconception_47_2",
+      "group_type": "misconception",
+      "gt_misconception": 47,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 210,
+      "prediction_id": "group_misconception_47_3",
+      "group_type": "misconception",
+      "gt_misconception": 47,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 211,
+      "prediction_id": "group_misconception_49_0",
+      "group_type": "misconception",
+      "gt_misconception": 49,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 212,
+      "prediction_id": "group_misconception_49_1",
+      "group_type": "misconception",
+      "gt_misconception": 49,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 213,
+      "prediction_id": "group_misconception_49_2",
+      "group_type": "misconception",
+      "gt_misconception": 49,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 214,
+      "prediction_id": "group_misconception_49_3",
+      "group_type": "misconception",
+      "gt_misconception": 49,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 215,
+      "prediction_id": "group_misconception_5_0",
+      "group_type": "misconception",
+      "gt_misconception": 5,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 216,
+      "prediction_id": "group_misconception_5_1",
+      "group_type": "misconception",
+      "gt_misconception": 5,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 217,
+      "prediction_id": "group_misconception_5_2",
+      "group_type": "misconception",
+      "gt_misconception": 5,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 218,
+      "prediction_id": "group_misconception_5_3",
+      "group_type": "misconception",
+      "gt_misconception": 5,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 219,
+      "prediction_id": "group_misconception_50_0",
+      "group_type": "misconception",
+      "gt_misconception": 50,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 220,
+      "prediction_id": "group_misconception_50_1",
+      "group_type": "misconception",
+      "gt_misconception": 50,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 221,
+      "prediction_id": "group_misconception_50_2",
+      "group_type": "misconception",
+      "gt_misconception": 50,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 222,
+      "prediction_id": "group_misconception_50_3",
+      "group_type": "misconception",
+      "gt_misconception": 50,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 223,
+      "prediction_id": "group_misconception_51_0",
+      "group_type": "misconception",
+      "gt_misconception": 51,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 224,
+      "prediction_id": "group_misconception_51_1",
+      "group_type": "misconception",
+      "gt_misconception": 51,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 225,
+      "prediction_id": "group_misconception_51_2",
+      "group_type": "misconception",
+      "gt_misconception": 51,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 226,
+      "prediction_id": "group_misconception_51_3",
+      "group_type": "misconception",
+      "gt_misconception": 51,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 227,
+      "prediction_id": "group_misconception_52_0",
+      "group_type": "misconception",
+      "gt_misconception": 52,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 228,
+      "prediction_id": "group_misconception_52_1",
+      "group_type": "misconception",
+      "gt_misconception": 52,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 229,
+      "prediction_id": "group_misconception_52_2",
+      "group_type": "misconception",
+      "gt_misconception": 52,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 230,
+      "prediction_id": "group_misconception_52_3",
+      "group_type": "misconception",
+      "gt_misconception": 52,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 231,
+      "prediction_id": "group_misconception_54_0",
+      "group_type": "misconception",
+      "gt_misconception": 54,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 232,
+      "prediction_id": "group_misconception_54_1",
+      "group_type": "misconception",
+      "gt_misconception": 54,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 233,
+      "prediction_id": "group_misconception_54_2",
+      "group_type": "misconception",
+      "gt_misconception": 54,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 234,
+      "prediction_id": "group_misconception_54_3",
+      "group_type": "misconception",
+      "gt_misconception": 54,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": ""
+    },
+    {
+      "bag_index": 235,
+      "prediction_id": "group_misconception_55_0",
+      "group_type": "misconception",
+      "gt_misconception": 55,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 236,
+      "prediction_id": "group_misconception_55_1",
+      "group_type": "misconception",
+      "gt_misconception": 55,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 237,
+      "prediction_id": "group_misconception_55_2",
+      "group_type": "misconception",
+      "gt_misconception": 55,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 238,
+      "prediction_id": "group_misconception_55_3",
+      "group_type": "misconception",
+      "gt_misconception": 55,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 239,
+      "prediction_id": "group_misconception_56_0",
+      "group_type": "misconception",
+      "gt_misconception": 56,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 240,
+      "prediction_id": "group_misconception_56_1",
+      "group_type": "misconception",
+      "gt_misconception": 56,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 241,
+      "prediction_id": "group_misconception_56_2",
+      "group_type": "misconception",
+      "gt_misconception": 56,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 242,
+      "prediction_id": "group_misconception_56_3",
+      "group_type": "misconception",
+      "gt_misconception": 56,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 243,
+      "prediction_id": "group_misconception_57_0",
+      "group_type": "misconception",
+      "gt_misconception": 57,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 244,
+      "prediction_id": "group_misconception_57_1",
+      "group_type": "misconception",
+      "gt_misconception": 57,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 245,
+      "prediction_id": "group_misconception_57_2",
+      "group_type": "misconception",
+      "gt_misconception": 57,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 246,
+      "prediction_id": "group_misconception_58_0",
+      "group_type": "misconception",
+      "gt_misconception": 58,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 247,
+      "prediction_id": "group_misconception_58_1",
+      "group_type": "misconception",
+      "gt_misconception": 58,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 248,
+      "prediction_id": "group_misconception_58_2",
+      "group_type": "misconception",
+      "gt_misconception": 58,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 249,
+      "prediction_id": "group_misconception_58_3",
+      "group_type": "misconception",
+      "gt_misconception": 58,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 250,
+      "prediction_id": "group_misconception_58_4",
+      "group_type": "misconception",
+      "gt_misconception": 58,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 251,
+      "prediction_id": "group_misconception_59_0",
+      "group_type": "misconception",
+      "gt_misconception": 59,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 252,
+      "prediction_id": "group_misconception_59_1",
+      "group_type": "misconception",
+      "gt_misconception": 59,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 253,
+      "prediction_id": "group_misconception_59_2",
+      "group_type": "misconception",
+      "gt_misconception": 59,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 254,
+      "prediction_id": "group_misconception_59_3",
+      "group_type": "misconception",
+      "gt_misconception": 59,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 255,
+      "prediction_id": "group_misconception_6_0",
+      "group_type": "misconception",
+      "gt_misconception": 6,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 256,
+      "prediction_id": "group_misconception_6_1",
+      "group_type": "misconception",
+      "gt_misconception": 6,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 257,
+      "prediction_id": "group_misconception_6_2",
+      "group_type": "misconception",
+      "gt_misconception": 6,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 258,
+      "prediction_id": "group_misconception_6_3",
+      "group_type": "misconception",
+      "gt_misconception": 6,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 259,
+      "prediction_id": "group_misconception_60_0",
+      "group_type": "misconception",
+      "gt_misconception": 60,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 260,
+      "prediction_id": "group_misconception_60_1",
+      "group_type": "misconception",
+      "gt_misconception": 60,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 261,
+      "prediction_id": "group_misconception_60_2",
+      "group_type": "misconception",
+      "gt_misconception": 60,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 262,
+      "prediction_id": "group_misconception_60_3",
+      "group_type": "misconception",
+      "gt_misconception": 60,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 263,
+      "prediction_id": "group_misconception_62_0",
+      "group_type": "misconception",
+      "gt_misconception": 62,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 264,
+      "prediction_id": "group_misconception_62_1",
+      "group_type": "misconception",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 265,
+      "prediction_id": "group_misconception_62_2",
+      "group_type": "misconception",
+      "gt_misconception": 62,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 266,
+      "prediction_id": "group_misconception_62_3",
+      "group_type": "misconception",
+      "gt_misconception": 62,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 267,
+      "prediction_id": "group_misconception_66_0",
+      "group_type": "misconception",
+      "gt_misconception": 66,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 268,
+      "prediction_id": "group_misconception_66_1",
+      "group_type": "misconception",
+      "gt_misconception": 66,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 269,
+      "prediction_id": "group_misconception_66_2",
+      "group_type": "misconception",
+      "gt_misconception": 66,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 270,
+      "prediction_id": "group_misconception_66_3",
+      "group_type": "misconception",
+      "gt_misconception": 66,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 271,
+      "prediction_id": "group_misconception_7_0",
+      "group_type": "misconception",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 272,
+      "prediction_id": "group_misconception_7_1",
+      "group_type": "misconception",
+      "gt_misconception": 7,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 273,
+      "prediction_id": "group_misconception_7_2",
+      "group_type": "misconception",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 274,
+      "prediction_id": "group_misconception_7_3",
+      "group_type": "misconception",
+      "gt_misconception": 7,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 275,
+      "prediction_id": "group_misconception_9_0",
+      "group_type": "misconception",
+      "gt_misconception": 9,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 276,
+      "prediction_id": "group_misconception_9_1",
+      "group_type": "misconception",
+      "gt_misconception": 9,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 277,
+      "prediction_id": "group_misconception_9_2",
+      "group_type": "misconception",
+      "gt_misconception": 9,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 278,
+      "prediction_id": "group_misconception_9_3",
+      "group_type": "misconception",
+      "gt_misconception": 9,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 279,
+      "prediction_id": "group_misconception_9_4",
+      "group_type": "misconception",
+      "gt_misconception": 9,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 280,
+      "prediction_id": "group_misconception_27_0",
+      "group_type": "misconception",
+      "gt_misconception": 27,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 281,
+      "prediction_id": "group_misconception_27_1",
+      "group_type": "misconception",
+      "gt_misconception": 27,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 282,
+      "prediction_id": "group_misconception_27_2",
+      "group_type": "misconception",
+      "gt_misconception": 27,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 283,
+      "prediction_id": "group_misconception_27_3",
+      "group_type": "misconception",
+      "gt_misconception": 27,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 284,
+      "prediction_id": "group_misconception_39_0",
+      "group_type": "misconception",
+      "gt_misconception": 39,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 285,
+      "prediction_id": "group_misconception_39_1",
+      "group_type": "misconception",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 286,
+      "prediction_id": "group_misconception_39_2",
+      "group_type": "misconception",
+      "gt_misconception": 39,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 287,
+      "prediction_id": "group_misconception_39_3",
+      "group_type": "misconception",
+      "gt_misconception": 39,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 288,
+      "prediction_id": "group_misconception_39_4",
+      "group_type": "misconception",
+      "gt_misconception": 39,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 289,
+      "prediction_id": "group_misconception_45_0",
+      "group_type": "misconception",
+      "gt_misconception": 45,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 290,
+      "prediction_id": "group_misconception_45_1",
+      "group_type": "misconception",
+      "gt_misconception": 45,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 291,
+      "prediction_id": "group_misconception_45_2",
+      "group_type": "misconception",
+      "gt_misconception": 45,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 292,
+      "prediction_id": "group_misconception_45_3",
+      "group_type": "misconception",
+      "gt_misconception": 45,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 293,
+      "prediction_id": "group_misconception_45_4",
+      "group_type": "misconception",
+      "gt_misconception": 45,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 294,
+      "prediction_id": "group_misconception_48_0",
+      "group_type": "misconception",
+      "gt_misconception": 48,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 295,
+      "prediction_id": "group_misconception_48_1",
+      "group_type": "misconception",
+      "gt_misconception": 48,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 296,
+      "prediction_id": "group_misconception_48_2",
+      "group_type": "misconception",
+      "gt_misconception": 48,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 297,
+      "prediction_id": "group_misconception_48_3",
+      "group_type": "misconception",
+      "gt_misconception": 48,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 298,
+      "prediction_id": "group_misconception_63_0",
+      "group_type": "misconception",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 299,
+      "prediction_id": "group_misconception_63_1",
+      "group_type": "misconception",
+      "gt_misconception": 63,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 300,
+      "prediction_id": "group_misconception_63_2",
+      "group_type": "misconception",
+      "gt_misconception": 63,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 301,
+      "prediction_id": "group_misconception_63_3",
+      "group_type": "misconception",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 302,
+      "prediction_id": "group_misconception_65_0",
+      "group_type": "misconception",
+      "gt_misconception": 65,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 303,
+      "prediction_id": "group_misconception_65_1",
+      "group_type": "misconception",
+      "gt_misconception": 65,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 304,
+      "prediction_id": "group_misconception_65_2",
+      "group_type": "misconception",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 305,
+      "prediction_id": "group_misconception_65_3",
+      "group_type": "misconception",
+      "gt_misconception": 65,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 306,
+      "prediction_id": "group_misconception_8_0",
+      "group_type": "misconception",
+      "gt_misconception": 8,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 307,
+      "prediction_id": "group_misconception_8_1",
+      "group_type": "misconception",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 308,
+      "prediction_id": "group_misconception_8_2",
+      "group_type": "misconception",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 309,
+      "prediction_id": "group_misconception_8_3",
+      "group_type": "misconception",
+      "gt_misconception": 8,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 310,
+      "prediction_id": "group_misconception_8_4",
+      "group_type": "misconception",
+      "gt_misconception": 8,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 311,
+      "prediction_id": "group_misconception_26_0",
+      "group_type": "misconception",
+      "gt_misconception": 26,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 312,
+      "prediction_id": "group_misconception_26_1",
+      "group_type": "misconception",
+      "gt_misconception": 26,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 313,
+      "prediction_id": "group_misconception_26_2",
+      "group_type": "misconception",
+      "gt_misconception": 26,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 314,
+      "prediction_id": "group_misconception_26_3",
+      "group_type": "misconception",
+      "gt_misconception": 26,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 315,
+      "prediction_id": "group_misconception_42_0",
+      "group_type": "misconception",
+      "gt_misconception": 42,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 316,
+      "prediction_id": "group_misconception_42_1",
+      "group_type": "misconception",
+      "gt_misconception": 42,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 317,
+      "prediction_id": "group_misconception_42_2",
+      "group_type": "misconception",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 318,
+      "prediction_id": "group_misconception_42_3",
+      "group_type": "misconception",
+      "gt_misconception": 42,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 319,
+      "prediction_id": "group_misconception_43_0",
+      "group_type": "misconception",
+      "gt_misconception": 43,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 320,
+      "prediction_id": "group_misconception_43_1",
+      "group_type": "misconception",
+      "gt_misconception": 43,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 321,
+      "prediction_id": "group_misconception_43_2",
+      "group_type": "misconception",
+      "gt_misconception": 43,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 322,
+      "prediction_id": "group_misconception_43_3",
+      "group_type": "misconception",
+      "gt_misconception": 43,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 323,
+      "prediction_id": "group_misconception_61_0",
+      "group_type": "misconception",
+      "gt_misconception": 61,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 324,
+      "prediction_id": "group_misconception_61_1",
+      "group_type": "misconception",
+      "gt_misconception": 61,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 325,
+      "prediction_id": "group_misconception_61_2",
+      "group_type": "misconception",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 326,
+      "prediction_id": "group_misconception_61_3",
+      "group_type": "misconception",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 327,
+      "prediction_id": "group_misconception_64_0",
+      "group_type": "misconception",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 328,
+      "prediction_id": "group_misconception_64_1",
+      "group_type": "misconception",
+      "gt_misconception": 64,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 329,
+      "prediction_id": "group_misconception_64_2",
+      "group_type": "misconception",
+      "gt_misconception": 64,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 330,
+      "prediction_id": "group_misconception_64_3",
+      "group_type": "misconception",
+      "gt_misconception": 64,
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 331,
+      "prediction_id": "group_misconception_67_0",
+      "group_type": "misconception",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 332,
+      "prediction_id": "group_misconception_67_1",
+      "group_type": "misconception",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 333,
+      "prediction_id": "group_misconception_67_2",
+      "group_type": "misconception",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 334,
+      "prediction_id": "group_misconception_67_3",
+      "group_type": "misconception",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 335,
+      "prediction_id": "group_misconception_53_0",
+      "group_type": "misconception",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 336,
+      "prediction_id": "group_misconception_53_1",
+      "group_type": "misconception",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 337,
+      "prediction_id": "group_misconception_53_2",
+      "group_type": "misconception",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    },
+    {
+      "bag_index": 338,
+      "prediction_id": "group_misconception_53_3",
+      "group_type": "misconception",
+      "gt_misconception": "NONE",
+      "predicted_misconceptions": [],
+      "no_predicted_misconceptions": true,
+      "bag_match": false,
+      "raw_response": "<no_misconceptions/>"
+    }
+  ]
+}

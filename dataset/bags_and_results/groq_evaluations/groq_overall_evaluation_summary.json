@@ -1,0 +1,53 @@
+{
+  "qwen/qwen3.8-27b": {
+    "model": "qwen/qwen3.8-27b",
+    "total_bags": 339,
+    "total_misc_bags": 279,
+    "total_correct_bags": 60,
+    "tp": 97,
+    "fp": 140,
+    "fn": 77,
+    "tn": 25,
+    "overall_accuracy": 0.35988200589970504,
+    "misconception_accuracy": 0.34767025089605735,
+    "correct_only_accuracy": 0.4166666666666667,
+    "precision": 0.4092827004219409,
+    "recall": 0.5574712643678161,
+    "f1_score": 0.4720194647201947,
+    "evaluation_time_sec": 71279.64951229095
+  },
+  "openai/gpt-oss-120b": {
+    "model": "openai/gpt-oss-120b",
+    "total_bags": 339,
+    "total_misc_bags": 279,
+    "total_correct_bags": 60,
+    "tp": 2,
+    "fp": 3,
+    "fn": 274,
+    "tn": 60,
+    "overall_accuracy": 0.18289085545722714,
+    "misconception_accuracy": 0.007168458781362007,
+    "correct_only_accuracy": 1.0,
+    "precision": 0.4,
+    "recall": 0.007246376811594203,
+    "f1_score": 0.014234875444839859,
+    "evaluation_time_sec": 1191.1201367378235
+  },
+  "openai/gpt-oss-20b": {
+    "model": "openai/gpt-oss-20b",
+    "total_bags": 339,
+    "total_misc_bags": 279,
+    "total_correct_bags": 60,
+    "tp": 0,
+    "fp": 0,
+    "fn": 279,
+    "tn": 60,
+    "overall_accuracy": 0.17699115044247787,
+    "misconception_accuracy": 0.0,
+    "correct_only_accuracy": 1.0,
+    "precision": 0,
+    "recall": 0.0,
+    "f1_score": 0,
+    "evaluation_time_sec": 1142.4687559604645
+  }
+}
