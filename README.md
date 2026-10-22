@@ -1,7 +1,7 @@
 # ⚡ MisconAI: Automated Discovery & Mining of Programming Misconceptions
 
 <div align="center">
-  <img src="img/misconai-logo.jpg" width="280" alt="MisconAI Logo" style="border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.2);">
+  <!-- <img src="img/misconai-logo.jpg" width="280" alt="MisconAI Logo" style="border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.2);"> -->
   <br>
   <h3>High-Precision Automated Misconception Mining in Student Code using LLMs & In-Context RAG</h3>
   <p>
