@@ -1,0 +1,752 @@
+================================================================================
+         MisconAI -- Automated Discovery & Mining of Programming Misconceptions
+                       Written by: NIKHIL KUMAR SAH
+                       Date      : October 2026
+================================================================================
+
+
+================================================================================
+SECTION 1 -- WHAT IS THIS PROJECT?
+================================================================================
+
+MisconAI is an end-to-end AI research framework and interactive web application
+that automatically analyzes student Python code submissions and identifies the
+underlying programming misconceptions -- the false mental models or wrong
+beliefs a student holds about how the Python language works.
+
+The key insight is this: when a student writes buggy code, the bug is rarely
+random. It almost always points to a systematic, repeatable misunderstanding
+about a language feature (e.g., thinking range(n) includes n, or thinking
+tuples can be appended to, or confusing = with ==). These are called
+PROGRAMMING MISCONCEPTIONS.
+
+Traditional tools like unit tests and linters only tell you THAT the code is
+wrong -- they cannot tell you WHY the student made the mistake or what
+conceptual gap it reveals.
+
+MisconAI fills that gap. It uses Large Language Models (LLMs) -- powered by
+Groq LPU and Google Gemini -- to reason about student code and map it to an
+established taxonomy of 67 standardized Python misconceptions.
+
+
+================================================================================
+SECTION 2 -- WHAT IS A PROGRAMMING MISCONCEPTION?
+================================================================================
+
+A programming misconception is a SYSTEMATIC and FALSE belief held by a
+programmer about how a language feature, built-in function, or data structure
+works. It is:
+
+  - Concrete and reproducible (shows up across multiple different problems)
+  - Not a simple typo or accidental syntax error
+  - Caused by a gap in the programmer's mental model of the language
+
+REAL EXAMPLES IN PYTHON:
+
+  1. Range Boundary Misconception
+     WRONG belief : range(n) generates numbers 1, 2, ..., n (inclusive of n)
+     CORRECT fact : range(n) generates numbers 0, 1, ..., n-1 (exclusive of n)
+
+     Code showing this misconception:
+         for i in range(n):       # student thinks i goes up to n
+             factorial *= i       # but when i=0, this multiplies by 0 -- BUG
+
+  2. Tuple Immutability Misconception
+     WRONG belief : You can append to a tuple by calling .append() on it
+     CORRECT fact : Tuples are immutable; .append() only works on lists
+
+     Code showing this misconception:
+         test_tup.append(100)     # will raise AttributeError at runtime
+
+  3. Assignment vs Equality Confusion
+     WRONG belief : = and == are interchangeable in conditions
+     CORRECT fact : = is assignment; == is comparison
+
+     Code showing this misconception:
+         if x = 0:                # SyntaxError: cannot assign inside if
+             print(zero)
+
+  4. Boolean Operator Distribution
+     WRONG belief : if x == a or b checks whether x equals a OR equals b
+     CORRECT fact : Python evaluates a or b first, then compares x to result
+
+     Code showing this misconception:
+         if x == 'a' or 'b':      # Always True because 'b' is truthy
+
+
+================================================================================
+SECTION 3 -- THE DATASET
+================================================================================
+
+The project evaluates against three key datasets:
+
+  A) problems_processed.json (501 Programming Tasks)
+     - Curated from MBPP (438), Socratic Debugging (27), Auckland Logic
+       Errors (8), FalconCode (6), and handcrafted educator tasks (19)
+     - Averaging 3.31 automated unit tests per problem
+
+  B) misconception_bank.json (67 Standardized Misconceptions)
+     - Adapted from Python Misconception Bank (17 items), SIDELib (36 items),
+       and educational research (14 items)
+     - Indexed with related code constructs and canonical error examples
+
+  C) corrupted_codes_best/ (1,063 Ground-Truth Code Samples)
+     - Synthetic and student code paired with validated misconception labels
+
+  D) bags_and_results/ -- Multi-Instance Problem Bags
+     - Each bag is a group of 2-4 student code samples for the SAME problem
+     - The model sees the whole bag and identifies which ones carry a
+       misconception and which are clean / correct solutions
+     - 339 bags evaluated across all 67 misconceptions
+
+
+================================================================================
+SECTION 4 -- THE TWO METHODS
+================================================================================
+
+MisconAI provides two distinct misconception detection approaches.
+You can switch between them live inside the web app (the sidebar toggle).
+
+--------------------------------------------------------------------------------
+METHOD 1 -- BASELINE (Old Method / Standard Zero-Shot)
+--------------------------------------------------------------------------------
+
+WHAT IT DOES:
+  The student's code is directly passed to an LLM with a simple prompt:
+  Identify any programming misconception present in this Python code.
+
+  The model receives nothing else -- no hints, no reference definitions,
+  no structured reasoning steps. It simply produces a free-text answer.
+
+HOW IT WORKS:
+  Student Code -------> Simple Prompt -------> LLM -------> Free Text Answer
+
+PROBLEMS WITH THIS APPROACH:
+  1. SEVERE HALLUCINATION / FALSE POSITIVES:
+     LLMs primed to find bugs assume EVERY piece of code must be broken.
+     On perfectly clean, correct programs, the baseline falsely reported
+     a misconception 93.3% of the time (only 1 out of 15 clean bags was
+     correctly identified as misconception-free on Groq!).
+
+  2. VOCABULARY / TAXONOMY MISMATCH:
+     The model generates its own ad-hoc descriptions that do not align
+     with the established educational research taxonomy of 67 defined
+     misconceptions. Teachers cannot use these results directly.
+
+  3. NO VERIFICATION STEP:
+     The model never checks whether the code might simply be an alternative
+     correct solution. It jumps straight to finding a bug.
+
+SUMMARY OF FLAWS:
+  - 93.3% false positive rate on clean code (Groq Baseline)
+  - 46.67% false positive rate on clean code (Gemini Baseline)
+  - Overall accuracy only 46% for both models
+  - Outputs do not match standardized misconception taxonomy
+
+--------------------------------------------------------------------------------
+METHOD 2 -- ENHANCED (New Method / Trace + RAG + Verification)
+--------------------------------------------------------------------------------
+
+WHAT IT DOES:
+  The Enhanced Methodology solves the baseline's problems through three
+  critical innovations working together in a structured pipeline.
+
+HOW IT WORKS:
+
+  Student Code
+       |
+       v
+  [Step 1] AST & Construct Feature Extractor
+       Parses the Python Abstract Syntax Tree to identify code constructs:
+       - ast.Subscript  --> slicing operations
+       - ast.For        --> loop structures
+       - ast.Call       --> built-in function calls
+       - ast.Compare    --> comparison operators
+       - ast.BoolOp     --> boolean expressions (and/or)
+
+       |
+       v
+  [Step 2] Taxonomy RAG Engine (misconception_rag.py)
+       Uses the extracted constructs to search the 67-misconception bank
+       and retrieves the TOP-5 most relevant candidate misconception
+       definitions from the official taxonomy. These are injected directly
+       into the LLM prompt as in-context reference examples.
+
+       |
+       v
+  [Step 3] Structured Prompting Pipeline (3 gates):
+
+       A) <trace> -- Mental Execution Trace
+          The LLM must mentally simulate the program STEP-BY-STEP on a
+          concrete test case before drawing any conclusions.
+          Example: Step 1: n=5, so range(n) = range(5) = [0,1,2,3,4].
+ Step 2: factorial starts at 1. Step 3: i=0,
+ factorial = 1 x 0 = 0. Step 4: i=1, factorial = 0x1...
+
+       B) <verification> -- Correctness Verification Gate
+          BEFORE labeling anything a misconception, the model explicitly
+          checks: Is this code actually correct? Could it be a valid
+ alternative solution to the problem? If the code is valid,
+          it MUST output NONE. This gate eliminates false alarms on
+          clean code.
+
+       C) In-Context Candidate Taxonomy Matching
+          The model selects from the RAG-retrieved top-5 candidates
+          instead of generating a free-form description, ensuring the
+          output aligns with the standardized taxonomy.
+
+       |
+       v
+  High-Precision Output: [Verified Misconception ID / NONE (Clean Code)]
+
+THREE INNOVATIONS IN DETAIL:
+
+  Innovation 1 -- Mental Execution Tracing
+  Why   : LLMs hallucinate when reasoning purely abstractly about code.
+  How   : Force a concrete step-by-step simulation, just like a debugger,
+          before any conclusion. The <trace> tag is required in the output.
+  Result: The model sees exactly what value each variable holds at each
+          step, making hallucinations much harder to produce.
+
+  Innovation 2 -- Correctness Verification Filter
+  Why   : Baseline LLMs assume buggy code and always find something wrong.
+  How   : Explicit <verification> gate checks code validity FIRST.
+          If verified clean, output is forced to NONE immediately.
+  Result: False positives on clean code dropped by 71-80%.
+
+  Innovation 3 -- AST-Based Taxonomy RAG (Retrieval-Augmented Generation)
+  Why   : Free-form descriptions diverge from educational taxonomy definitions.
+  How   : Parse the code AST constructs, retrieve matching misconception
+          definitions from the official 67-item bank, inject into prompt.
+  Result: Outputs map directly to standardized misconception IDs that
+          educators can use for curriculum planning and targeted feedback.
+
+
+================================================================================
+SECTION 5 -- ACCURACY COMPARISON: BASELINE vs ENHANCED METHOD
+================================================================================
+
+Both methods were evaluated on 50 BALANCED problem bags:
+  - 35 bags containing actual misconceptions (positive cases)
+  - 15 bags containing correct, clean student code (negative cases)
+
+NOTE: TP = True Positives  (correctly found a misconception that exists)
+      FP = False Positives (wrongly flagged clean code as having a misconception)
+      FN = False Negatives (missed a real misconception)
+      TN = True Negatives  (correctly identified clean code as clean)
+
+--------------------------------------------------------------------------------
+ENGINE A: GROQ LPU -- qwen/qwen3.8-27b (50 Balanced Bags)
+--------------------------------------------------------------------------------
+
+  Metric                    | Baseline (Old)   | Enhanced (New)  | Difference
+  --------------------------|------------------|-----------------|-------------
+  Total Bags                | 50               | 50              | --
+  True Positives  (TP)      | 22               | 15              | -7
+  False Positives (FP)      | 21               | 6               | -15  [GOOD]
+  False Negatives (FN)      | 6                | 17              | +11
+  True Negatives  (TN)      | 1                | 12              | +11  [GOOD]
+  --------------------------|------------------|-----------------|-------------
+  Overall Accuracy          | 46.00%           | 54.00%          | +8.00%
+  Precision                 | 51.16%           | 71.43%          | +20.27%
+  Recall                    | 78.57%           | 46.88%          | -31.69%
+  F1 Score                  | 61.97%           | 56.60%          | -5.37%
+  Clean Code Accuracy       | 6.67%  (1/15)    | 80.00% (12/15)  | +73.33%
+  False Alarm Reduction     | --               | --              | -71.4%
+
+  KEY INSIGHT FOR GROQ:
+  The baseline was catching more real misconceptions (higher recall) but
+  at the cost of 21 false alarms on clean code -- essentially crying wolf.
+  Only 1 out of 15 clean code bags was correctly identified as clean.
+  The Enhanced method reduced those false alarms from 21 -> 6 (a 71.4%
+  drop) and correctly identified 12/15 clean bags, making it far more
+  trustworthy and usable in a real classroom setting.
+
+--------------------------------------------------------------------------------
+ENGINE B: GOOGLE GEMINI -- gemini-flash-lite-latest (50 Balanced Bags)
+--------------------------------------------------------------------------------
+
+  Metric                    | Baseline (Old)   | Enhanced (New)  | Difference
+  --------------------------|------------------|-----------------|-------------
+  Total Bags                | 50               | 50              | --
+  True Positives  (TP)      | 16               | 16              | 0
+  False Positives (FP)      | 10               | 2               | -8   [GOOD]
+  False Negatives (FN)      | 17               | 18              | +1
+  True Negatives  (TN)      | 7                | 14              | +7   [GOOD]
+  --------------------------|------------------|-----------------|-------------
+  Overall Accuracy          | 46.00%           | 60.00%          | +14.00%
+  Precision                 | 61.54%           | 88.89%          | +27.35%
+  Recall                    | 48.48%           | 47.06%          | -1.42%
+  F1 Score                  | 54.24%           | 61.54%          | +7.30%
+  Clean Code Accuracy       | 46.67% (7/15)    | 93.33% (14/15)  | +46.67%
+  False Alarm Reduction     | --               | --              | -80.0%
+
+  KEY INSIGHT FOR GEMINI:
+  Gemini shows the most dramatic improvement with the Enhanced method.
+  Overall accuracy jumped by +14 percentage points (46% -> 60%).
+  Precision surged to 88.89% -- nearly 9 out of every 10 misconception
+  flags are now REAL misconceptions, not false alarms.
+  Clean code detection jumped from 46.67% to 93.33% (nearly perfect).
+  False positives collapsed from 10 -> just 2 out of 50 bags.
+
+--------------------------------------------------------------------------------
+COLUMN-WISE SUMMARY OF IMPROVEMENTS (Both Models Side by Side)
+--------------------------------------------------------------------------------
+
+  Metric              | Groq Gain        | Gemini Gain     | Better Gainer
+  --------------------|------------------|-----------------|---------------
+  Overall Accuracy    | +8.00%           | +14.00%         | Gemini (+14%)
+  Precision           | +20.27%          | +27.35%         | Gemini (+27%)
+  Clean Code Accuracy | +73.33%          | +46.67%         | Groq   (+73%)
+  False Positive Drop | -71.4%           | -80.0%          | Gemini (-80%)
+  True Negative Gain  | +1100%  (1->12)  | +100%   (7->14) | Groq   (x12)
+  F1 Score Change     | -5.37% (tradeoff)| +7.30%          | Gemini (+7%)
+
+  WHAT THE TRADE-OFF MEANS:
+  The Enhanced method accepts a trade-off: it misses more actual
+  misconceptions (lower recall) in exchange for almost NEVER wrongly
+  accusing clean code (higher precision, much fewer false alarms).
+  In a real classroom context, this is the right trade-off -- a teacher
+  would rather miss one misconception than falsely blame a student who
+  wrote correct code.
+
+
+================================================================================
+SECTION 6 -- FULL DATASET BENCHMARK (339 BAGS, 67 MISCONCEPTIONS)
+================================================================================
+
+Groq Models -- Baseline Zero-Shot on Full 339-Bag Dataset:
+
+  Model                   | Bags | TP  | FP  | FN  | TN | Accuracy | F1
+  ------------------------|------|-----|-----|-----|----| ---------|---------
+  qwen/qwen3.8-27b        | 339  | 97  | 140 | 77  | 25 | 35.99%   | 47.20%
+  openai/gpt-oss-120b     | 339  | 2   | 3   | 274 | 60 | 18.29%   | 1.42%
+  openai/gpt-oss-20b      | 339  | 0   | 0   | 279 | 60 | 17.70%   | N/A
+
+  NOTE: gpt-oss-120b and gpt-oss-20b essentially refused to predict any
+  misconceptions (near-zero recall). The qwen model was the most active
+  but still had a very high false positive rate (140 FPs out of 339).
+
+Gemini Model -- Baseline Zero-Shot on 60 Representative Bags:
+
+  Model                      | Bags | TP | FP | FN | TN | Accuracy | Recall
+  ---------------------------|------|----|----|----|----|---------  |--------
+  gemini-flash-lite-latest   | 60   | 24 | 22 | 3  | 11 | 58.33%   | 88.89%
+
+  NOTE: Gemini had exceptional recall (88.89%) -- it found 24/27 real
+  misconceptions -- but at the cost of 22 false positives.
+
+
+================================================================================
+SECTION 7 -- ALL MODELS LEADERBOARD (Best to Worst Overall Accuracy)
+================================================================================
+
+  Rank | Model & Provider                         | Method   | Accuracy | F1
+  -----|------------------------------------------|----------|----------|-------
+   1   | OpenAI o3-mini (Medium Effort)           | Bag/Multi| 78.49%   | 76.55%
+   2   | OpenAI o3-mini (Low Effort)              | Bag/Multi| 76.98%   | 75.49%
+   3   | Qwen 3 8B / Gemini 2.5 Flash (Paper)    | Bag/Multi| 73.96%   | 65.95%
+   4   | Claude Sonnet 4.5 (Reasoning)            | Bag/Multi| 68.68%   | 80.35%
+   5   | Gemini flash-lite (Enhanced) [OUR WORK] | Bag/Multi| 60.00%   | 61.54%
+   6   | Gemini flash-lite (Baseline)             | Bag/Multi| 58.33%   | 65.75%
+   7   | Groq qwen3.8-27b (Enhanced) [OUR WORK]  | Bag/Multi| 54.00%   | 56.60%
+   8   | Groq qwen3.8-27b (Baseline Zero-Shot)    | Bag/Multi| 35.99%   | 47.20%
+   9   | Groq gpt-oss-120b (Baseline)             | Bag/Multi| 18.29%   | 1.42%
+  10   | Groq gpt-oss-20b  (Baseline)             | Bag/Multi| 17.70%   | N/A
+
+  [OUR WORK] = Enhanced Methodology developed and applied in MisconAI
+
+
+================================================================================
+SECTION 8 -- THE WEB APPLICATION (MisconAI Studio)
+================================================================================
+
+The project includes a fully interactive Streamlit web application at:
+  src/app.py  -->  Run with: streamlit run src/app.py
+  Then open: http://localhost:8501
+
+It has FOUR TABS:
+
+  TAB 1 -- Misconception Mining Lab
+  - Paste any Python student code (or choose a built-in preset)
+  - Select AI engine: Groq (qwen/gpt-oss) or Gemini
+  - Toggle between Baseline and Enhanced methodology in the sidebar
+  - See full output:
+      * Red/Amber card : Misconception found (with ID and description)
+      * Green card     : Code is verified CLEAN -- no misconception
+      * Expandable trace section    : Step-by-step mental execution
+      * Expandable verification     : The correctness check result
+      * Expandable RAG candidates   : Top-5 taxonomy entries retrieved
+
+  TAB 2 -- Python Misconception Chatbot (NEW)
+  - 75 curated Python questions across 18 topics
+  - Student selects any question and types their answer in plain English
+  - AI evaluates the answer using RAG + Chain-of-Thought analysis
+  - If correct  : Green banner + reinforcement explanation
+  - If wrong    : Named misconception + explanation + trace + RAG panel
+  - No scoring -- pure misconception discovery and learning tool
+  (See SECTION 9 below for full technical explanation)
+
+  TAB 3 -- Empirical Benchmark & Performance Matrix
+  - Interactive KPI metric cards (Accuracy, Precision, False Positives)
+  - Side-by-side column-wise comparison: Old vs New method
+  - Full leaderboard: Groq, Gemini, OpenAI o3-mini, Claude rankings
+
+  TAB 4 -- Taxonomy Bank Explorer
+  - Browse all 67 Python misconceptions from the official bank
+  - Search by keyword (range, tuple, slicing, recursion, boolean)
+  - Expandable cards with definition + example code for each
+
+Built-in Preset Student Codes you can test immediately (Tab 1):
+  1. Factorial with range(n)         --> Range Boundary Misconception
+  2. Tuple In-Place Mutability       --> Tuple Immutability Misconception
+  3. Conditional = vs ==             --> Assignment-in-Condition Misconception
+  4. Clean Recursive Factorial       --> Should return NONE (verified clean)
+  5. Clean Matrix Transpose          --> Should return NONE (verified clean)
+
+
+================================================================================
+SECTION 9 -- PYTHON MISCONCEPTION CHATBOT: FULL TECHNICAL EXPLANATION
+================================================================================
+
+PURPOSE
+-------
+The Python Misconception Chatbot is an interactive learning tool built into
+Tab 2 of MisconAI Studio. Unlike the Mining Lab (which analyses Python CODE),
+the Chatbot targets CONCEPTUAL UNDERSTANDING.
+
+A student picks a Python concept question, writes their understanding in
+plain English, and the AI evaluates their mental model -- telling them
+exactly what they got right, what they got wrong, and WHY their thinking
+leads to a misconception.
+
+IMPORTANT: There is NO scoring, NO multiple choice, NO quiz game. The goal
+is purely to help students discover and fix misconceptions about Python.
+
+
+QUESTION BANK
+-------------
+75 questions covering 18 topic areas:
+
+  Basics, Strings, Lists, Tuples, Sets, Dicts, Control Flow,
+  Functions, OOP, Exceptions, Comprehensions, File I/O, Modules,
+  Generators, Decorators, Types, Built-ins, Memory, Scope,
+  Recursion, Operators, Advanced, Iterators, Python 3
+
+Each question is designed to surface a specific known misconception.
+Example questions:
+  - "What happens when you do a = [1,2,3]; b = a; b.append(4)? What does a print?"
+  - "What does [1,2,3].append(4) return?"
+  - "Why is using def f(lst=[]) dangerous?"
+  - "What does range(5) produce? Does it include 5?"
+  - "What is the difference between is and == in Python?"
+
+Each question in the bank stores:
+  - topic          : The concept category
+  - question       : The question text shown to the student
+  - correct_answer : The authoritative reference answer (shown in expander)
+  - context        : Brief technical note for the LLM
+  - misconception_hint : The most common wrong belief about this concept
+
+
+HOW THE CHATBOT WORKS -- STEP BY STEP
+--------------------------------------
+
+Step 1 -- Student selects question and types answer
+  - Left panel: topic filter dropdown + scrollable question radio list
+  - Right panel: question card + free-text area
+  - Student writes their explanation in natural language
+    (e.g. "I think b = a makes a copy so a stays the same")
+
+Step 2 -- RAG Retrieval (misconception_rag.py)
+  - Query built from: topic + question text + student answer + misconception_hint
+  - Query sent to MisconceptionRAG indexer
+  - Top-K most relevant entries retrieved from misconception_bank.json (67 items)
+  - Retrieved candidates formatted as in-context reference for the LLM prompt
+
+Step 3 -- Enhanced Chain-of-Thought LLM Prompt
+  The prompt includes:
+    A) The question + correct reference answer
+    B) The student's free-text answer
+    C) The RAG-retrieved misconception candidates
+  
+  The LLM is required to produce structured XML output:
+
+    <reasoning>
+      <trace>
+        Walk through the student's answer step by step.
+        What mental model are they using? Is their reasoning sound?
+      </trace>
+      <verification>
+        Compare student's answer to the correct Python behavior.
+        Identify exactly what is right or wrong.
+      </verification>
+    </reasoning>
+
+    <misconception>
+      <description>
+        If correct: NONE
+        If wrong  : Name the specific misconception concisely
+                    (e.g. "Reference Copy Confusion")
+      </description>
+      <explanation>
+        If correct: Brief confirmation + reinforcing example
+        If wrong  : 
+          1. Acknowledge what part of the student's thinking is reasonable
+          2. Explain exactly what Python actually does, with a code example
+          3. Give a memorable tip or mental model to remember
+      </explanation>
+    </misconception>
+
+Step 4 -- Response Parsing
+  - parse_mining_response() extracts the XML tags from the LLM output
+  - Fields extracted: trace, verification, description, explanation
+  - retrieved_candidates list also attached to result
+
+Step 5 -- Display Diagnosis
+  If answer is CORRECT:
+    - Green banner: "Correct Understanding"
+    - Reinforcement explanation shown
+
+  If answer has MISCONCEPTION:
+    - Red banner: "Misconception Detected"
+    - Named misconception pill (e.g. "Reference Copy Confusion")
+    - Friendly explanation + code example + memorable tip
+    - Expandable: "How Your Reasoning Led Here" (trace)
+    - Expandable: "What Python Actually Does" (verification)
+    - Expandable: "Related Misconceptions from Taxonomy Bank" (RAG entries)
+    - Reference answer always available in a separate expander
+
+
+METHODS USED -- THE THREE INNOVATIONS APPLIED TO CHATBOT
+---------------------------------------------------------
+
+The chatbot reuses the EXACT same three innovations from the Enhanced Method
+(originally built for code analysis) but applies them to free-text answers:
+
+  Innovation 1 -- RAG Retrieval
+    Original use : Parse student code AST constructs, search misconception bank
+    Chatbot use  : Build query from topic + question + student answer,
+                   search the same 67-entry bank
+    Why it helps : Grounds the LLM in real, standardized misconception
+                   definitions instead of hallucinating free-form descriptions
+
+  Innovation 2 -- Mental Execution Trace (<trace> tag)
+    Original use : LLM simulates step-by-step code execution
+    Chatbot use  : LLM traces the student's conceptual reasoning
+                   ("The student believes X because they think Y...")
+    Why it helps : Forces explicit reasoning about the student's mental model
+                   before jumping to a conclusion
+
+  Innovation 3 -- Correctness Verification Gate (<verification> tag)
+    Original use : Check if code might be a valid alternative solution
+    Chatbot use  : Compare student's answer to Python's actual behavior
+    Why it helps : Prevents false positives -- if the answer is actually
+                   correct, the system outputs NONE and confirms understanding
+
+
+KEY DESIGN DECISIONS
+--------------------
+
+  Free-text (not multiple choice)
+    Reason: Multiple choice lets students guess. Free-text forces them to
+    articulate their actual mental model. The LLM evaluates REASONING
+    QUALITY, not keyword matching.
+
+  No scoring system
+    Reason: The chatbot is a learning tool, not an exam. Scores create
+    anxiety and encourage gaming. Without scores, students explore freely.
+
+  Topic filter on the left
+    Reason: Students can target specific weak areas ("I keep confusing
+    Lists concepts") instead of working through all 75 in order.
+
+  Reference answer in expander
+    Reason: Full transparency. Students always have access to the
+    authoritative answer but must attempt their own first.
+
+  Same LLM model selection as Mining Lab
+    Reason: The sidebar provider/model toggle applies globally. Researchers
+    can compare how Groq vs Gemini diagnoses the same misconception.
+
+
+EXAMPLE INTERACTION
+-------------------
+
+Question selected: Q12 (Lists)
+  "What happens when you do a = [1,2,3]; b = a; b.append(4); print(a)?
+   Explain what b = a does."
+
+Student types:
+  "I think b = a creates a new independent copy of the list, so
+   modifying b won't change a. So print(a) should output [1,2,3]."
+
+RAG retrieves: Misconceptions about reference semantics, variable binding,
+               shallow copy vs reference copy
+
+LLM analysis:
+  <trace>
+    The student believes that b = a creates a separate copy of the list
+    because in many languages (and intuitively), assigning one variable to
+    another "duplicates" the data. This is a classic reference vs. value
+    copy confusion.
+  </trace>
+  <verification>
+    In Python, b = a does NOT copy the list. Both b and a now point to the
+    same list object in memory. b.append(4) mutates that shared object, so
+    print(a) outputs [1,2,3,4], not [1,2,3].
+  </verification>
+  <description>
+    Reference Copy Confusion (b = a copies reference, not value)
+  </description>
+  <explanation>
+    Your thinking is logical -- in everyday language, "b gets a" sounds
+    like copying. But in Python, variables are labels that point to objects.
+    b = a makes b point to the SAME list object that a points to.
+    
+    Proof:
+      a = [1, 2, 3]
+      b = a
+      print(a is b)   # True -- same object!
+      b.append(4)
+      print(a)        # [1, 2, 3, 4] -- a changed too!
+    
+    To make a real independent copy, use:
+      b = a[:]          # slice copy
+      b = list(a)       # list() copy  
+      b = a.copy()      # .copy() method
+    
+    Memorable tip: In Python, = always copies the ADDRESS (reference),
+    never the data itself. Think of it like copying a sticky note that
+    points to a box -- two notes, one box.
+  </explanation>
+
+
+
+  TAB 1 -- Misconception Mining Lab
+  - Paste any Python student code (or choose a built-in preset)
+  - Select AI engine: Groq (qwen/gpt-oss) or Gemini
+  - Toggle between Baseline and Enhanced methodology in the sidebar
+  - See full output:
+      * Red/Amber card : Misconception found (with ID and description)
+      * Green card     : Code is verified CLEAN -- no misconception
+      * Expandable trace section    : Step-by-step mental execution
+      * Expandable verification     : The correctness check result
+      * Expandable RAG candidates   : Top-5 taxonomy entries retrieved
+
+  TAB 2 -- Empirical Benchmark & Performance Matrix
+  - Interactive KPI metric cards (Accuracy, Precision, False Positives)
+  - Side-by-side column-wise comparison: Old vs New method
+  - Full leaderboard: Groq, Gemini, OpenAI o3-mini, Claude rankings
+
+  TAB 3 -- Taxonomy Bank Explorer
+  - Browse all 67 Python misconceptions from the official bank
+  - Search by keyword (range, tuple, slicing, recursion, boolean)
+  - Expandable cards with definition + example code for each
+
+Built-in Preset Student Codes you can test immediately:
+  1. Factorial with range(n)         --> Range Boundary Misconception
+  2. Tuple In-Place Mutability       --> Tuple Immutability Misconception
+  3. Conditional = vs ==             --> Assignment-in-Condition Misconception
+  4. Clean Recursive Factorial       --> Should return NONE (verified clean)
+  5. Clean Matrix Transpose          --> Should return NONE (verified clean)
+
+
+================================================================================
+SECTION 9 -- KEY PROJECT FILES
+================================================================================
+
+  src/app.py
+    --> The main Streamlit web UI with all 3 tabs, all model integrations,
+        visual output cards, and expanders.
+
+  utils/llm_clients.py
+    --> API connector classes for Groq, Google Gemini, and OpenAI.
+        Handles API key loading, request formatting, and response parsing.
+
+  utils/misconception_rag.py
+    --> The AST-based RAG retrieval engine. Parses Python code, extracts
+        constructs, searches the misconception bank, returns top-k candidates.
+
+  src/prompt_templates/mining/enhanced-cot-mining.md
+    --> The Enhanced methodology prompt template with trace, verification,
+        and candidate injection placeholders.
+
+  src/prompt_templates/mining/zeroshot-no-reasoning.md
+    --> The Baseline methodology prompt template (simple zero-shot).
+
+  dataset/misconception_bank.json
+    --> 67 standardized Python misconceptions with definitions and examples.
+
+  dataset/problems_processed.json
+    --> 501 programming problems with unit tests.
+
+  dataset/corrupted_codes_best/
+    --> 1,063 ground-truth annotated code samples.
+
+  performance_matrix_analysis.md
+    --> Full empirical evaluation report with all benchmark tables.
+
+  .env  (NOT committed to GitHub -- keep private!)
+    --> GROQ_API_KEY=your_key
+        GEMINI_API_KEY=your_key
+
+
+================================================================================
+SECTION 10 -- QUICK START
+================================================================================
+
+  Step 1: Install dependencies:
+    pip install -r requirements.txt
+
+  Step 2: Create .env file with your API keys:
+    GROQ_API_KEY=gsk_...
+    GEMINI_API_KEY=AIza...
+
+  Step 3: Run the web app:
+    streamlit run src/app.py
+
+  Step 4: Open browser at: http://localhost:8501
+
+  Step 5: Select a preset student code (e.g., Factorial range(n))
+    Choose your model (Groq or Gemini)
+    Toggle Baseline vs Enhanced in the sidebar
+    Click Analyze Code and compare the results!
+
+
+================================================================================
+SECTION 11 -- CONCLUSION
+================================================================================
+
+MisconAI demonstrates that:
+
+  1. Simple zero-shot prompting (Baseline) is unreliable for misconception
+     detection -- it hallucinates bugs in clean code 47-93% of the time.
+
+  2. The Enhanced Methodology (Trace + Verification + RAG) dramatically
+     reduces false alarms:
+       - Groq  : -71.4% reduction in false positives
+       - Gemini: -80.0% reduction in false positives
+
+  3. Precision improves dramatically:
+       - Groq  : 51.16% --> 71.43% (+20.27%)
+       - Gemini: 61.54% --> 88.89% (+27.35%)
+
+  4. Clean code is now correctly handled:
+       - Groq  : 6.67% --> 80.00% clean code accuracy (+73.33%)
+       - Gemini: 46.67% --> 93.33% clean code accuracy (+46.67%)
+
+  5. The trade-off is lower Recall (some misconceptions are missed) but
+     this is acceptable in educational settings where FALSE accusations
+     are more damaging than occasionally missing a real error.
+
+  The project shows a clear path forward: structured, multi-step LLM
+  reasoning with retrieval-augmented grounding is significantly more
+  reliable than naive prompting for educational AI applications.
+
+================================================================================
+  Author : NIKHIL KUMAR SAH
+  Project: MisconAI -- Automated Discovery & Mining of Programming Misconceptions
+  License: MIT License (c) 2026 NIKHIL KUMAR SAH
+  GitHub : https://github.com/nikhilkumarsah/miscon-ai
+================================================================================

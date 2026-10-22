@@ -20,11 +20,12 @@
 4. [Architecture & In-Context Taxonomy RAG](#-architecture--in-context-taxonomy-rag)
 5. [Empirical Performance Matrix & Benchmark Results](#-empirical-performance-matrix--benchmark-results)
 6. [Streamlit Web Application (MisconAI Studio)](#-streamlit-web-application-misconai-studio)
-7. [Datasets & Benchmark Composition](#-datasets--benchmark-composition)
-8. [Project File Structure](#-project-file-structure)
-9. [Installation & Setup](#-installation--setup)
-10. [Running the Application & Evaluations](#-running-the-application--evaluations)
-11. [License](#-license)
+7. [🤖 Python Misconception Chatbot — How It Works](#-python-misconception-chatbot--how-it-works)
+8. [Datasets & Benchmark Composition](#-datasets--benchmark-composition)
+9. [Project File Structure](#-project-file-structure)
+10. [Installation & Setup](#-installation--setup)
+11. [Running the Application & Evaluations](#-running-the-application--evaluations)
+12. [License](#-license)
 
 ---
 
@@ -179,15 +180,146 @@ The interactive web application ([src/app.py](src/app.py)) provides a modern, gl
      - ✅ Green confirmation card for verified clean code.
      - Interactive expanders for **Step-by-Step Execution Trace**, **Verification Check**, and **RAG Taxonomy Candidates**.
 
-2. **📈 Empirical Benchmark & Performance Matrix (Tab 2):**
+2. **🤖 Python Misconception Chatbot (Tab 2):** *(New)*
+   - **75 curated Python questions** spanning 18 topics (Basics, Strings, Lists, Tuples, Sets, Dicts, Control Flow, Functions, OOP, Exceptions, Comprehensions, File I/O, Modules, Generators, Decorators, Types, Built-ins, Memory, Scope, Recursion, Operators, Advanced, Iterators, Python 3).
+   - **Free-text answers** — student writes their understanding in natural language (no multiple choice).
+   - **RAG-Enhanced diagnosis** using the Enhanced Methodology pipeline — retrieves related misconceptions from the 67-entry taxonomy bank and runs Chain-of-Thought analysis.
+   - **Correct answers** → reinforcement explanation with a confirming code example.
+   - **Wrong answers** → named misconception + friendly explanation + reasoning trace + RAG taxonomy matches.
+   - Pure learning tool — no scoring, no game mechanics. Focus on understanding *why* a concept works the way it does.
+
+3. **📈 Empirical Benchmark & Performance Matrix (Tab 3):**
    - High-contrast KPI metric cards with live gain indicators.
    - Interactive column-wise difference tables displaying Old vs New accuracy, precision, and false alarm reduction.
    - Leaderboard comparing Groq, Gemini, OpenAI o3-mini, and Claude.
 
-3. **📚 Taxonomy Bank Explorer (Tab 3):**
+4. **📚 Taxonomy Bank Explorer (Tab 4):**
    - Instant search and filtering across all **67 Python misconceptions**.
    - Search by keyword (`range`, `slicing`, `tuple`, `recursion`) or construct ID.
    - Expandable documentation cards with code examples and expected outputs.
+
+---
+
+## 🤖 Python Misconception Chatbot — How It Works
+
+The **Python Misconception Chatbot** (Tab 2 of MisconAI Studio) is an interactive learning tool that diagnoses a student's conceptual misunderstandings from their **free-text answers** using the same Enhanced Methodology pipeline used for automated code mining.
+
+### 🎯 Purpose
+Unlike the Mining Lab (which analyses code), the Chatbot targets **conceptual understanding** — a student selects a Python concept question, explains their understanding in plain English, and the AI tells them precisely what they got right, what they got wrong, and *why* their mental model is incorrect.
+
+### 🔄 End-to-End Flow
+
+```
+┌────────────────────────────────────────────────────────────────────────────┐
+│                  Python Misconception Chatbot — Architecture               │
+│                                                                            │
+│  [Question Bank]  75 questions across 18 topics                           │
+│       │                                                                    │
+│       ▼                                                                    │
+│  Student selects a question + types their answer in natural language       │
+│       │                                                                    │
+│       ▼                                                                    │
+│  ┌─────────────────────────────────────────────────────┐                  │
+│  │  Step 1: RAG Retrieval (misconception_rag.py)        │                  │
+│  │  Query = topic + question + student_answer +         │                  │
+│  │          misconception_hint                          │                  │
+│  │  → Retrieves Top-K related misconceptions from      │                  │
+│  │    the 67-entry misconception_bank.json              │                  │
+│  └─────────────────────────────────────────────────────┘                  │
+│       │                                                                    │
+│       ▼                                                                    │
+│  ┌─────────────────────────────────────────────────────┐                  │
+│  │  Step 2: Enhanced Chain-of-Thought Prompt            │                  │
+│  │  Injected context:                                   │                  │
+│  │    • The question text + correct reference answer    │                  │
+│  │    • The student's free-text answer                  │                  │
+│  │    • RAG-retrieved taxonomy candidates               │                  │
+│  │  Required output format:                             │                  │
+│  │    <reasoning>                                       │                  │
+│  │      <trace>  ← How the student's mental model works│                  │
+│  │      <verification>  ← What Python actually does    │                  │
+│  │    <misconception>                                   │                  │
+│  │      <description>  ← Named misconception or NONE   │                  │
+│  │      <explanation>  ← Friendly pedagogical fix      │                  │
+│  └─────────────────────────────────────────────────────┘                  │
+│       │                                                                    │
+│       ▼                                                                    │
+│  ┌─────────────────────────────────────────────────────┐                  │
+│  │  Step 3: Structured Response Parsing                 │                  │
+│  │  parse_mining_response() extracts XML tags →        │                  │
+│  │    trace, verification, description, explanation     │                  │
+│  └─────────────────────────────────────────────────────┘                  │
+│       │                                                                    │
+│       ▼                                                                    │
+│  ✅ CORRECT  → Green banner + reinforcing explanation                      │
+│  ⚠️ MISCONCEPTION → Named misconception + explanation + trace + RAG panel  │
+└────────────────────────────────────────────────────────────────────────────┘
+```
+
+### 🧠 Methods Used
+
+The chatbot reuses the **same three core innovations** as the Enhanced Methodology:
+
+| Method | How it applies to the Chatbot |
+|--------|-------------------------------|
+| **RAG Retrieval** | The student's answer text + topic is used as the RAG query to fetch the most relevant misconception entries from `misconception_bank.json` and inject them into the LLM prompt. |
+| **`<trace>` — Mental Model Analysis** | The LLM traces the student's reasoning: *"The student appears to believe that `b = a` copies the list because..."* — it models the incorrect mental model step by step. |
+| **`<verification>` — Python Reality Check** | The LLM explicitly states what Python actually does and why, grounded in language semantics, not hallucination. |
+
+### 📋 Question Bank Design
+
+The 75 questions are designed to target the most common Python misconceptions in introductory programming education:
+
+| Topic Category | Example Misconceptions Targeted |
+|---|---|
+| **Lists** | Reference vs. copy (`b = a`), `.append()` returns `None`, slicing exclusivity |
+| **Strings** | Immutability, 0-based indexing, method return values |
+| **Functions** | Mutable default arguments, implicit `None` return, `*args` vs `**kwargs` |
+| **Control Flow** | `range()` exclusivity, `break` vs `continue`, `for/else` semantics |
+| **OOP** | `self` is convention not keyword, `__init__` vs `__new__`, `@staticmethod` vs `@classmethod` |
+| **Memory** | `is` vs `==`, shallow vs deep copy, variable referencing |
+| **Types** | `bool` is subclass of `int`, dynamic typing, type hints not enforced |
+| **Scope** | LEGB rule, `global` vs `nonlocal`, closures |
+| **Advanced** | GIL, generators vs lists, star unpacking |
+
+### ⚡ Diagnosis Output Structure
+
+When a student submits a **wrong or partial answer**, the chatbot produces:
+
+```
+⚠️  Misconception Detected
+    ─────────────────────────────────────────
+    🧩  Misconception: [Named misconception, e.g. "Reference Copy Confusion"]
+
+    📖  Explanation & Correction:
+        [Friendly text: why the student's thinking is logical but wrong,
+         what Python actually does, concrete code example, memorable tip]
+
+    🔍  How Your Reasoning Led Here (Trace expander):
+        [Step-by-step mental model the student was using]
+
+    🛡️  What Python Actually Does (Verification expander):
+        [The actual Python runtime behavior with evidence]
+
+    📚  Related Misconceptions from Taxonomy Bank (RAG expander):
+        [Top matching entries from the 67-misconception bank]
+
+    📋  Reference Answer (always available in expander)
+```
+
+When the answer is **correct**:
+```
+✅  Correct Understanding
+    [Reinforcement explanation confirming why the student's model is sound]
+```
+
+### 🔑 Key Design Decisions
+
+1. **Free-text over multiple choice** — Forces the student to actually articulate their mental model, not guess. The LLM evaluates *reasoning quality*, not keyword matching.
+2. **No scoring** — The chatbot is a learning tool, not an assessment. Removing scores reduces anxiety and encourages exploration.
+3. **Topic filter** — Students can drill into specific topics (e.g., "I struggle with Lists") rather than being forced through sequential questions.
+4. **Reference answer always available** — Transparency: students can always see the authoritative explanation after attempting their own answer.
+5. **Same LLM + model selection as Mining Lab** — The sidebar provider/model toggle applies to the chatbot too, so students and researchers can compare how different models diagnose misconceptions.
 
 ---
 
