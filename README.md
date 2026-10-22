@@ -54,53 +54,111 @@ In computer science education research, a **programming misconception** is defin
 
 ---
 
-## 🔬 Core Methodologies: Old (Baseline) vs. New (Enhanced)
+## 🔬 Core Methodologies: Single-Instance vs Multi-Instance × Baseline vs Enhanced
 
-MisconAI supports two distinct mining paradigms:
+MisconAI is built around two orthogonal dimensions:
+
+**Dimension 1 — Input Strategy:**
+- **Single-Instance:** One student code submission → LLM detects the misconception in that code alone
+- **Multi-Instance (Bag):** A *bag* of 2–4 student code submissions for the **same problem** → LLM identifies the *common* misconception shared across the bag
+
+**Dimension 2 — Prompting Method:**
+- **Baseline (Standard Zero-Shot w/ Structured Output):** Structured prompt with clear terminology, XML output format, and `NONE` handling — but no reasoning trace and no RAG
+- **Enhanced (CoT + RAG):** Adds Execution Tracing, Correctness Verification, and In-Context RAG taxonomy injection on top of the baseline
+
+This gives **four strategies** in total:
 
 ```
-┌────────────────────────────────────────────────────────────────────────┐
-│                        Old Method: Baseline Zero-Shot                  │
-│                                                                        │
-│   Student Code ──────> Prompt: "Find misconception" ──────> LLM       │
-│                                                                        │
-│   ❌ Flaw: 93.3% False Positive rate on clean code                     │
-│   ❌ Flaw: Severe terminology drift from standard CS taxonomy          │
-└────────────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────────┐
+│  STRATEGY 1: Single-Instance Baseline (zeroshot.md / zeroshot-no-reasoning.md)   │
+│                                                                                  │
+│  One Student Code ─────────────────────────────────────────────────► LLM           │
+│  Structured prompt with:                                                         │
+│    • Misconception terminology definition                                        │
+│    • Required XML output: <reasoning> <misconception> <description>              │
+│    • NONE handling if no misconception found                                    │
+│  Missing: No execution trace, No verification gate, No RAG                      │
+│  Result: High false positive rate on clean code                                 │
+└──────────────────────────────────────────────────────────────────────┘
 
-┌────────────────────────────────────────────────────────────────────────┐
-│                     New Method: Enhanced Methodology                   │
-│                                                                        │
-│   Student Code ───> [AST / Construct Feature Extractor]                │
-│                            │                                           │
-│                            ▼                                           │
-│                   [Taxonomy RAG Engine]                                │
-│                   (Retrieves Top-K Misconception Candidates)           │
-│                            │                                           │
-│                            ▼                                           │
-│                 [Structured Prompting Pipeline]                        │
-│                   ├─ 1. Mental Execution Trace                         │
-│                   ├─ 2. Correctness Verification Filter                │
-│                   └─ 3. In-Context Candidate Taxonomy Matching         │
-│                            │                                           │
-│                            ▼                                           │
-│         High-Precision Output: [Verified Misconception / Clean]        │
-└────────────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────────┐
+│  STRATEGY 2: Multi-Instance Baseline — Bag Method (zeroshot-multi.md)           │
+│                                                                                  │
+│  Bag of 2–4 Student Codes (same problem) ──────────────────────────► LLM           │
+│  Structured prompt instructs LLM to:                                             │
+│    • Analyse all code samples together                                          │
+│    • Find the ONE common misconception shared across the bag                    │
+│    • Output NONE if no common pattern found                                     │
+│  Power: Multiple examples of the same misconception reinforce the signal        │
+│  Same structured XML output format as Strategy 1                                │
+└──────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────┐
+│  STRATEGY 3: Single-Instance Enhanced (enhanced-cot-mining.md) [OUR WORK]       │
+│                                                                                  │
+│  One Student Code                                                                │
+│       │                                                                          │
+│       ▼                                                                          │
+│  [AST / Construct Feature Extractor]                                             │
+│       │                                                                          │
+│       ▼                                                                          │
+│  [Taxonomy RAG Engine] ─── Top-K Candidates from 67-misconception bank           │
+│       │                                                                          │
+│       ▼                                                                          │
+│  [Enhanced Structured Prompt] adds 3 gates on top of Baseline:                  │
+│    1. <trace>        ← Mental step-by-step code execution before conclusion     │
+│    2. <verification> ← Explicit correctness gate (forces NONE on clean code)    │
+│    3. RAG candidates ← Top-K definitions injected from taxonomy bank            │
+│       │                                                                          │
+│       ▼                                                                          │
+│  High-Precision Output: [Verified Misconception / NONE (Clean Code)]            │
+└──────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────┐
+│  STRATEGY 4: Multi-Instance Enhanced — Bag + RAG [Best Performers]             │
+│                                                                                  │
+│  Bag of 2–4 Student Codes ─► RAG Retrieval ─► Enhanced Prompt ─► LLM            │
+│  Combines the collective signal from multiple code samples (Strategy 2)         │
+│  with the RAG + trace + verification pipeline (Strategy 3).                     │
+│  This is the method used by o3-mini, Claude, Gemini 2.5 in the leaderboard.    │
+└──────────────────────────────────────────────────────────────────────┘
 ```
 
-### 1. Old Method (Standard Baseline Zero-Shot)
-* **Mechanism:** Passes student code directly into an LLM with the prompt: *"Identify any programming misconception present in this code."*
-* **The Problem:** 
-  - **Severe Hallucination / False Positives:** LLMs primed to look for bugs assume every piece of code *must* be broken. On perfectly working programs, the baseline falsely hallucinated misconceptions **93.3%** of the time.
-  - **Vocabulary Mismatch:** The model generated ad-hoc descriptions rather than aligning with established educational research definitions.
+### What “Baseline” Really Means
 
-### 2. New Method (Enhanced Methodology)
-To resolve these issues, the Enhanced Methodology incorporates three critical innovations:
-1. **Mental Execution Tracing (`<trace>`):** The LLM must mentally simulate step-by-step program execution on a concrete test case before drawing any conclusions.
-2. **Correctness & False-Positive Verification (`<verification>`):** An explicit verification gate tests whether the student's solution is actually valid or an acceptable alternative. If valid, the system outputs `<misconception>NONE</misconception>`, drastically eliminating false alarms.
-3. **In-Context Taxonomy RAG (`utils/misconception_rag.py`):** Automatically parses AST constructs (slicing, loops, mutability, boolean expressions, built-ins) and injects the top-5 relevant candidate definitions from the official 67-misconception bank directly into the prompt context.
+> **Important correction:** The Baseline is NOT naive or unstructured prompting. It uses a carefully crafted structured prompt with XML output format, precise misconception terminology, and `NONE` handling. It is called “Baseline” because it represents the **zero-shot structured prompting without reasoning steps** — the state-of-the-art before the Enhanced innovations were added.
+
+| Feature | Baseline (Strategies 1 & 2) | Enhanced (Strategies 3 & 4) |
+|---|---|---|
+| Structured XML output | ✅ Yes | ✅ Yes |
+| Misconception terminology | ✅ Yes | ✅ Yes |
+| `NONE` if no misconception | ✅ Yes | ✅ Yes |
+| `<trace>` execution step | ❌ No | ✅ Yes |
+| `<verification>` gate | ❌ No | ✅ Yes |
+| RAG taxonomy injection | ❌ No | ✅ Yes |
+| Multi-code bag support | Strategy 2 ✅ | Strategy 4 ✅ |
+
+### Why Single vs. Multi-Instance Matters
+
+**Single-Instance** is harder: the LLM sees only one code sample, so weak patterns are easy to miss or hallucinate.
+
+**Multi-Instance (Bag)** is more powerful: seeing 2–4 students all making the same type of error creates a much stronger signal that a shared underlying misconception exists. This is why top models (o3-mini, Claude) all use the Multi-Instance strategy.
+
+### 1. Baseline Method (Standard Structured Zero-Shot)
+* **Template files:** `zeroshot.md` (single), `zeroshot-multi.md` (bag), `zeroshot-no-reasoning.md` (no chain-of-thought), `zeroshot-no-reasoning-multi.md` (bag, no CoT)
+* **Mechanism:** Passes student code(s) into a structured prompt with misconception terminology, XML output format, and NONE handling. The LLM reasons freely but with **no forced execution tracing, no verification gate, and no RAG candidates**.
+* **The Problem:**
+  - **High False Positives:** Without a verification gate, the LLM tends to flag clean code. On Groq, baseline had **93.3% false positive rate** on clean code.
+  - **Terminology Drift:** Without taxonomy candidates injected, descriptions drift away from standardized misconception definitions.
+
+### 2. Enhanced Method (CoT + Verification + RAG)
+To resolve these issues, the Enhanced Methodology adds three critical innovations on top of the Baseline:
+1. **Mental Execution Tracing (`<trace>`):** The LLM must mentally simulate step-by-step program execution on a concrete test case **before** drawing any conclusions.
+2. **Correctness & False-Positive Verification (`<verification>`):** An explicit gate checks whether the student’s solution is actually valid or an acceptable alternative. If valid, output is forced to `NONE`.
+3. **In-Context Taxonomy RAG (`utils/misconception_rag.py`):** Parses AST constructs and injects the top-K relevant definitions from the 67-misconception bank directly into the prompt.
 
 ---
+
 
 ## 🏗️ Architecture & In-Context Taxonomy RAG
 
@@ -117,8 +175,11 @@ The codebase is organized into modular components:
   - **OpenAI Client:** Full support for `o3-mini`, `o1-mini`, `gpt-4o`, and reasoning effort controls.
 
 * **Prompt Engineering Templates (`src/prompt_templates/mining/`):**
-  - `enhanced-cot-mining.md`: Formats execution tracing, verification gates, and candidate injections.
-  - `zeroshot-no-reasoning.md`: Preserves the original baseline prompt for side-by-side benchmarking.
+  - `zeroshot.md`: Single-instance baseline with structured XML output and terminology.
+  - `zeroshot-multi.md`: Multi-instance (bag) baseline — finds common misconception across multiple codes.
+  - `zeroshot-no-reasoning.md`: Single-instance baseline without chain-of-thought (fastest, ablation study).
+  - `zeroshot-no-reasoning-multi.md`: Multi-instance baseline without CoT.
+  - `enhanced-cot-mining.md`: Enhanced single-instance with `<trace>`, `<verification>`, and RAG candidate injection.
 
 ---
 
