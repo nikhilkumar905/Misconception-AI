@@ -1,0 +1,22 @@
+name: misconai
+
+services:
+  api:
+    build: .
+    image: misconai-api
+    env_file: .env
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ./web
+      args:
+        MISCONAI_API_URL: http://api:8000
+    image: misconai-web
+    depends_on:
+      - api
+    ports:
+      - "3000:3000"
+    restart: unless-stopped

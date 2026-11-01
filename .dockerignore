@@ -1,0 +1,9 @@
+.git
+.env
+venv
+**/__pycache__
+web
+img
+*.txt
+!requirements.txt
+*.md

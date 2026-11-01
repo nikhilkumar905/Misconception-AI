@@ -1,508 +1,302 @@
-# ⚡ MisconAI: Automated Discovery & Mining of Programming Misconceptions
+# MisconAI — Diagnosing Programming Misconceptions in Student Code
 
 <div align="center">
-  <!-- <img src="img/misconai-logo.jpg" width="280" alt="MisconAI Logo" style="border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.2);"> -->
-  <br>
-  <h3>High-Precision Automated Misconception Mining in Student Code using LLMs & In-Context RAG</h3>
+  <h3>High-precision misconception mining with execution tracing, verification and taxonomy RAG</h3>
   <p>
-    <b>Author:</b> NIKHIL KUMAR SAH &nbsp;|&nbsp; 
-    <b>Engines:</b> Groq LPU & Google Gemini &nbsp;|&nbsp; 
-    <b>Benchmark:</b> 501 Problems & 67 Misconceptions
+    <b>Engines:</b> Groq · Google Gemini · OpenAI &nbsp;|&nbsp;
+    <b>Taxonomy:</b> 67 misconceptions &nbsp;|&nbsp;
+    <b>Problems:</b> 501
   </p>
 </div>
 
 ---
 
-## 📖 Table of Contents
-1. [Overview & Motivation](#-overview--motivation)
-2. [What is a Programming Misconception?](#-what-is-a-programming-misconception)
-3. [Core Methodologies: Old (Baseline) vs. New (Enhanced)](#-core-methodologies-old-baseline-vs-new-enhanced)
-4. [Architecture & In-Context Taxonomy RAG](#-architecture--in-context-taxonomy-rag)
-5. [Empirical Performance Matrix & Benchmark Results](#-empirical-performance-matrix--benchmark-results)
-6. [Streamlit Web Application (MisconAI Studio)](#-streamlit-web-application-misconai-studio)
-7. [🤖 Python Misconception Chatbot — How It Works](#-python-misconception-chatbot--how-it-works)
-8. [Datasets & Benchmark Composition](#-datasets--benchmark-composition)
-9. [Project File Structure](#-project-file-structure)
-10. [Installation & Setup](#-installation--setup)
-11. [Running the Application & Evaluations](#-running-the-application--evaluations)
-12. [License](#-license)
+## Table of contents
+1. [Overview](#overview)
+2. [What is a programming misconception?](#what-is-a-programming-misconception)
+3. [The Enhanced Methodology](#the-enhanced-methodology)
+4. [Architecture](#architecture)
+5. [Results](#results)
+6. [MisconAI Studio (web app)](#misconai-studio-web-app)
+7. [Concept tutor — how it works](#concept-tutor--how-it-works)
+8. [Datasets](#datasets)
+9. [Project structure](#project-structure)
+10. [Installation](#installation)
+11. [Running the app](#running-the-app)
+12. [Acknowledgments](#acknowledgments)
+13. [License](#license)
 
 ---
 
-## 🌟 Overview & Motivation
+## Overview
 
-When students learn computer science and Python programming, their errors are rarely random typos. Instead, they often stem from **underlying conceptual misconceptions**—false mental models about language syntax, semantics, or runtime behavior (e.g., believing `range(n)` includes `n`, assuming tuples can be modified in place, or confusing `=` with `==`).
+When students learn Python, their errors are rarely random typos. They usually come from **conceptual misconceptions** — false mental models of language semantics (believing `range(n)` includes `n`, that tuples can be modified in place, or confusing `=` with `==`).
 
-Traditional automated grading systems (unit tests and linters) only flag *that* code failed, leaving teachers and students without insight into *why* the student wrote the code that way.
-
-**MisconAI** is an end-to-end research framework and interactive web platform that automatically analyzes student code submissions, performs step-by-step runtime simulations, filters false positives, and maps student logic to an established taxonomy of **67 standardized Python misconceptions**.
+Unit tests and linters only report *that* code failed. **MisconAI** explains *why*: it analyzes a student submission, simulates its execution, filters out false alarms on correct code, and maps the error onto a taxonomy of **67 standardized Python misconceptions**.
 
 ---
 
-## 🧠 What is a Programming Misconception?
+## What is a programming misconception?
 
-In computer science education research, a **programming misconception** is defined as:
-* A systematic, false belief held by a programmer about language semantics, built-in functions, or data structures.
-* It is **concrete and reproducible** across multiple problems.
-* It is **distinguished from mere syntax errors or problem misreadings** (e.g., a missing colon or an accidental typo is not a conceptual misconception).
+A **programming misconception** is:
+* a systematic, false belief about language semantics, built-in functions or data structures;
+* **concrete and reproducible** across different problems;
+* **distinct from typos, syntax slips or a misread prompt**.
 
-### Canonical Examples in Python:
-1. **Range Boundary Misconception:** Student believes `range(n)` produces values from `1` to `n` inclusive (rather than `0` to `n - 1`).
-2. **Tuple Immutability Misconception:** Student believes tuples can be appended to in place via `test_tup.append(val)` or that `list(test_tup)` permanently mutates the tuple.
-3. **Operator Equivalence Confusion:** Student uses the single equals sign `=` (assignment) inside conditional checks `if x = 0:` instead of the equality operator `==`.
-4. **Boolean Precedence / Distribution:** Student writes `if x == a or b:` believing it checks if `x` is equal to `a` or equal to `b`.
+### Examples
+1. **Range boundary** — believing `range(n)` yields `1 … n` instead of `0 … n-1`.
+2. **Tuple immutability** — calling `test_tup.append(val)`, or expecting `list(test_tup)` to mutate the tuple.
+3. **Assignment vs. equality** — writing `if x = 0:` instead of `if x == 0:`.
+4. **Boolean distribution** — writing `if x == a or b:` and expecting it to test `x == a or x == b`.
 
 ---
 
-## 🔬 Core Methodologies: Single-Instance vs Multi-Instance × Baseline vs Enhanced
+## The Enhanced Methodology
 
-MisconAI is built around two orthogonal dimensions:
-
-**Dimension 1 — Input Strategy:**
-- **Single-Instance:** One student code submission → LLM detects the misconception in that code alone
-- **Multi-Instance (Bag):** A *bag* of 2–4 student code submissions for the **same problem** → LLM identifies the *common* misconception shared across the bag
-
-**Dimension 2 — Prompting Method:**
-- **Baseline (Standard Zero-Shot w/ Structured Output):** Structured prompt with clear terminology, XML output format, and `NONE` handling — but no reasoning trace and no RAG
-- **Enhanced (CoT + RAG):** Adds Execution Tracing, Correctness Verification, and In-Context RAG taxonomy injection on top of the baseline
-
-This gives **four strategies** in total:
+MisconAI uses a single analysis pipeline built around three mechanisms that force the model to reason before it diagnoses:
 
 ```
 ┌──────────────────────────────────────────────────────────────────────┐
-│  STRATEGY 1: Single-Instance Baseline (zeroshot.md / zeroshot-no-reasoning.md)   │
-│                                                                                  │
-│  One Student Code ─────────────────────────────────────────────────► LLM           │
-│  Structured prompt with:                                                         │
-│    • Misconception terminology definition                                        │
-│    • Required XML output: <reasoning> <misconception> <description>              │
-│    • NONE handling if no misconception found                                    │
-│  Missing: No execution trace, No verification gate, No RAG                      │
-│  Result: High false positive rate on clean code                                 │
-└──────────────────────────────────────────────────────────────────────┘
-
-┌──────────────────────────────────────────────────────────────────────┐
-│  STRATEGY 2: Multi-Instance Baseline — Bag Method (zeroshot-multi.md)           │
-│                                                                                  │
-│  Bag of 2–4 Student Codes (same problem) ──────────────────────────► LLM           │
-│  Structured prompt instructs LLM to:                                             │
-│    • Analyse all code samples together                                          │
-│    • Find the ONE common misconception shared across the bag                    │
-│    • Output NONE if no common pattern found                                     │
-│  Power: Multiple examples of the same misconception reinforce the signal        │
-│  Same structured XML output format as Strategy 1                                │
-└──────────────────────────────────────────────────────────────────────┘
-
-┌──────────────────────────────────────────────────────────────────────┐
-│  STRATEGY 3: Single-Instance Enhanced (enhanced-cot-mining.md) [OUR WORK]       │
-│                                                                                  │
-│  One Student Code                                                                │
-│       │                                                                          │
-│       ▼                                                                          │
-│  [AST / Construct Feature Extractor]                                             │
-│       │                                                                          │
-│       ▼                                                                          │
-│  [Taxonomy RAG Engine] ─── Top-K Candidates from 67-misconception bank           │
-│       │                                                                          │
-│       ▼                                                                          │
-│  [Enhanced Structured Prompt] adds 3 gates on top of Baseline:                  │
-│    1. <trace>        ← Mental step-by-step code execution before conclusion     │
-│    2. <verification> ← Explicit correctness gate (forces NONE on clean code)    │
-│    3. RAG candidates ← Top-K definitions injected from taxonomy bank            │
-│       │                                                                          │
-│       ▼                                                                          │
-│  High-Precision Output: [Verified Misconception / NONE (Clean Code)]            │
-└──────────────────────────────────────────────────────────────────────┘
-
-┌──────────────────────────────────────────────────────────────────────┐
-│  STRATEGY 4: Multi-Instance Enhanced — Bag + RAG [Best Performers]             │
-│                                                                                  │
-│  Bag of 2–4 Student Codes ─► RAG Retrieval ─► Enhanced Prompt ─► LLM            │
-│  Combines the collective signal from multiple code samples (Strategy 2)         │
-│  with the RAG + trace + verification pipeline (Strategy 3).                     │
-│  This is the method used by o3-mini, Claude, Gemini 2.5 in the leaderboard.    │
+│  Student code                                                        │
+│       │                                                              │
+│       ▼                                                              │
+│  [Construct extractor]  loops · indexing · operators · calls · …     │
+│       │                                                              │
+│       ▼                                                              │
+│  [Taxonomy RAG]  top-K candidates from the 67-misconception bank     │
+│       │                                                              │
+│       ▼                                                              │
+│  [Enhanced prompt]                                                   │
+│    1. <trace>         mental step-by-step execution on a test input  │
+│    2. <verification>  correctness gate — valid code ⇒ NONE           │
+│    3. RAG candidates  reference definitions injected in context      │
+│       │                                                              │
+│       ▼                                                              │
+│  Verified misconception  ──or──  NONE (clean code)                   │
 └──────────────────────────────────────────────────────────────────────┘
 ```
 
-### What “Baseline” Really Means
+1. **Mental execution tracing (`<trace>`)** — the model simulates the program on a concrete input *before* drawing any conclusion, so diagnoses are grounded in actual behaviour.
+2. **Correctness verification (`<verification>`)** — an explicit gate asks whether the code is actually valid or an acceptable alternative. If it is, the output is forced to `NONE`. This is what keeps false alarms low on clean code.
+3. **In-context taxonomy RAG (`utils/misconception_rag.py`)** — the code's constructs are matched against the misconception bank and the most relevant definitions are injected into the prompt, keeping descriptions aligned with standard terminology.
 
-> **Important correction:** The Baseline is NOT naive or unstructured prompting. It uses a carefully crafted structured prompt with XML output format, precise misconception terminology, and `NONE` handling. It is called “Baseline” because it represents the **zero-shot structured prompting without reasoning steps** — the state-of-the-art before the Enhanced innovations were added.
+The output is structured XML:
 
-| Feature | Baseline (Strategies 1 & 2) | Enhanced (Strategies 3 & 4) |
-|---|---|---|
-| Structured XML output | ✅ Yes | ✅ Yes |
-| Misconception terminology | ✅ Yes | ✅ Yes |
-| `NONE` if no misconception | ✅ Yes | ✅ Yes |
-| `<trace>` execution step | ❌ No | ✅ Yes |
-| `<verification>` gate | ❌ No | ✅ Yes |
-| RAG taxonomy injection | ❌ No | ✅ Yes |
-| Multi-code bag support | Strategy 2 ✅ | Strategy 4 ✅ |
+```xml
+<reasoning>
+  <trace>…</trace>
+  <verification>…</verification>
+</reasoning>
+<misconception>
+  <description>The student believes …</description>
+  <explanation>…</explanation>
+</misconception>
+```
 
-### Why Single vs. Multi-Instance Matters
-
-**Single-Instance** is harder: the LLM sees only one code sample, so weak patterns are easy to miss or hallucinate.
-
-**Multi-Instance (Bag)** is more powerful: seeing 2–4 students all making the same type of error creates a much stronger signal that a shared underlying misconception exists. This is why top models (o3-mini, Claude) all use the Multi-Instance strategy.
-
-### 1. Baseline Method (Standard Structured Zero-Shot)
-* **Template files:** `zeroshot.md` (single), `zeroshot-multi.md` (bag), `zeroshot-no-reasoning.md` (no chain-of-thought), `zeroshot-no-reasoning-multi.md` (bag, no CoT)
-* **Mechanism:** Passes student code(s) into a structured prompt with misconception terminology, XML output format, and NONE handling. The LLM reasons freely but with **no forced execution tracing, no verification gate, and no RAG candidates**.
-* **The Problem:**
-  - **High False Positives:** Without a verification gate, the LLM tends to flag clean code. On Groq, baseline had **93.3% false positive rate** on clean code.
-  - **Terminology Drift:** Without taxonomy candidates injected, descriptions drift away from standardized misconception definitions.
-
-### 2. Enhanced Method (CoT + Verification + RAG)
-To resolve these issues, the Enhanced Methodology adds three critical innovations on top of the Baseline:
-1. **Mental Execution Tracing (`<trace>`):** The LLM must mentally simulate step-by-step program execution on a concrete test case **before** drawing any conclusions.
-2. **Correctness & False-Positive Verification (`<verification>`):** An explicit gate checks whether the student’s solution is actually valid or an acceptable alternative. If valid, output is forced to `NONE`.
-3. **In-Context Taxonomy RAG (`utils/misconception_rag.py`):** Parses AST constructs and injects the top-K relevant definitions from the 67-misconception bank directly into the prompt.
+The full prompt is in [src/prompt_templates/mining/enhanced-cot-mining.md](src/prompt_templates/mining/enhanced-cot-mining.md).
 
 ---
 
+## Architecture
 
-## 🏗️ Architecture & In-Context Taxonomy RAG
+* **RAG retrieval engine — [utils/misconception_rag.py](utils/misconception_rag.py)**
+  - Detects code constructs (range, loops, indexing, boolean operators, identity, return/print, division, …).
+  - Indexes `dataset/misconception_bank.json` by related construct and keyword.
+  - Scores every entry and formats the top-K as an in-context reference section.
 
-The codebase is organized into modular components:
+* **Analysis engine — [src/core/engine.py](src/core/engine.py)**
+  - Builds the enhanced prompt, calls the selected provider and parses the trace / verification / diagnosis tags.
+  - Shared by the mining lab (code) and the concept tutor (free-text answers).
 
-* **RAG Retrieval Engine (`utils/misconception_rag.py`):**
-  - Analyzes Python Abstract Syntax Trees (AST) and regex patterns to identify code constructs (e.g. `ast.Subscript`, `ast.For`, `ast.Call`, `ast.Compare`).
-  - Pre-indexes `dataset/misconception_bank.json` across construct categories and keywords.
-  - Retrieves the top-$k$ reference candidate definitions and formats them into an in-context reference section for the LLM prompt.
-
-* **Unified LLM Clients (`utils/llm_clients.py`):**
-  - **Groq API Client:** High-speed inference using the OpenAI-compatible SDK with LPU hardware acceleration.
-  - **Google Gemini Client:** Native Google GenAI integration supporting `gemini-flash-lite-latest` and reasoning models.
-  - **OpenAI Client:** Full support for `o3-mini`, `o1-mini`, `gpt-4o`, and reasoning effort controls.
-
-* **Prompt Engineering Templates (`src/prompt_templates/mining/`):**
-  - `zeroshot.md`: Single-instance baseline with structured XML output and terminology.
-  - `zeroshot-multi.md`: Multi-instance (bag) baseline — finds common misconception across multiple codes.
-  - `zeroshot-no-reasoning.md`: Single-instance baseline without chain-of-thought (fastest, ablation study).
-  - `zeroshot-no-reasoning-multi.md`: Multi-instance baseline without CoT.
-  - `enhanced-cot-mining.md`: Enhanced single-instance with `<trace>`, `<verification>`, and RAG candidate injection.
+* **LLM clients — [utils/llm_clients.py](utils/llm_clients.py)**
+  - **Groq** via the OpenAI-compatible API (LPU inference).
+  - **Google Gemini** via the native GenAI SDK, with thinking-budget support.
+  - **OpenAI** including `o3-mini` / `o1-mini` reasoning-effort controls.
 
 ---
 
-## 📊 Empirical Performance Matrix & Benchmark Results
+## Results
 
-### 1. Baseline (Old) vs. Enhanced (New) Head-to-Head Comparison
-Evaluated on **50 balanced dataset bags** (35 misconception bags + 15 correct-only bags) using the official MisconAI ground-truth evaluation methodology:
+Evaluated on **50 balanced bags** — 35 bags containing a ground-truth misconception and 15 bags of correct code only.
 
-| Evaluated Engine & Model | Metric | Baseline (Old Method) | Enhanced (New Method) | Gain / Difference ($\Delta$) |
-| :--- | :--- | :---: | :---: | :---: |
-| **Google Gemini**<br>*(gemini-flash-lite-latest)* | **Overall Accuracy** | 46.00% | **60.00%** | <span style="color:green">**+14.00%**</span> |
-| | **Precision** | 61.54% | **88.89%** | <span style="color:green">**+27.35%**</span> |
-| | **Clean Code Accuracy** | 46.67% (7/15) | **93.33% (14/15)** | <span style="color:green">**+46.67%**</span> |
-| | **False Positives** | 10 false alarms | **2 false alarms** | **-80.0% reduction** |
-| | **F1 Score** | 54.24% | **61.54%** | <span style="color:green">**+7.30%**</span> |
-| | | | | |
-| **Groq LPU**<br>*(qwen/qwen3.8-27b)* | **Overall Accuracy** | 46.00% | **54.00%** | <span style="color:green">**+8.00%**</span> |
-| | **Precision** | 51.16% | **71.43%** | <span style="color:green">**+20.27%**</span> |
-| | **Clean Code Accuracy** | 6.67% (1/15) | **80.00% (12/15)** | <span style="color:green">**+73.33%**</span> |
-| | **False Positives** | 21 false alarms | **6 false alarms** | **-71.4% reduction** |
-| | **True Negatives** | 1 verified clean | **12 verified clean** | **+1100% boost** |
+| Model | Accuracy | Precision | Recall | F1 | Clean-code accuracy | False alarms |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Google Gemini** (`gemini-flash-lite-latest`) | **60.00%** | **88.89%** | 47.06% | **61.54%** | **93.33%** (14/15) | **2** |
+| **Groq** (`qwen/qwen3.8-27b`) | 54.00% | 71.43% | 46.88% | 56.60% | 80.00% (12/15) | 6 |
 
-### 2. Full Dataset Bags Benchmark (339 Bags across 67 Misconceptions)
-
-| Model & Provider | Strategy | Overall Accuracy | Precision | Recall | F1 Score |
+| Model | TP | FP | FN | TN |
 | :--- | :---: | :---: | :---: | :---: |
-| **OpenAI o3-mini (Medium Effort)** *(Top Proprietary)* | Multi-Instance (Bag) | **78.49%** | 83.27% | 70.83% | **76.55%** |
-| **OpenAI o3-mini (Low Effort)** | Multi-Instance (Bag) | **76.98%** | 85.65% | 67.49% | **75.49%** |
-| **Claude Sonnet 4.5 (Reasoning)** | Multi-Instance (Bag) | **68.68%** | 83.76% | 77.21% | **80.35%** |
-| **Gemini 2.5 Flash (Paper Baseline)** | Multi-Instance (Bag) | **62.83%** | 79.79% | 56.20% | **65.95%** |
-| **Google Gemini (`gemini-flash-lite`)** *(Enhanced)* | Multi-Instance (Bag) | **60.00%** | **88.89%** | 47.06% | **61.54%** |
-| **Groq (`qwen/qwen3.8-27b`)** *(Enhanced)* | Multi-Instance (Bag) | **54.00%** | **71.43%** | 46.88% | **56.60%** |
-| **Groq (`qwen/qwen3.8-27b`)** *(Baseline Zero-Shot)* | Multi-Instance (Bag) | **35.99%** | 40.93% | 55.75% | **47.20%** |
-| **Groq (`openai/gpt-oss-120b`)** | Multi-Instance (Bag) | **18.29%** | 40.00% | 0.72% | 1.42% |
+| Gemini Flash Lite | 16 | 2 | 18 | 14 |
+| Qwen 3.8 27B | 15 | 6 | 17 | 12 |
 
-*Detailed markdown report available in [performance_matrix_analysis.md](performance_matrix_analysis.md).*
+**Reading the numbers:** the verification gate is deliberately conservative. When the model cannot establish that the code is wrong, it answers `NONE` instead of inventing a misconception. That buys high precision and clean-code accuracy at the cost of some recall.
+
+Raw results: [dataset/bags_and_results/gemini_evaluations/](dataset/bags_and_results/gemini_evaluations/) and [dataset/bags_and_results/enhanced_evaluations/](dataset/bags_and_results/enhanced_evaluations/).
 
 ---
 
-## 💻 Streamlit Web Application (MisconAI Studio)
+## MisconAI Studio (web app)
 
-The interactive web application ([src/app.py](src/app.py)) provides a modern, glassmorphic interface:
+A **Next.js** frontend ([web/](web/)) backed by a **FastAPI** service ([src/server.py](src/server.py)) that wraps the analysis engine.
 
-<div align="center">
-  <img src="img/misconai-architecture.png" width="750" alt="MisconAI Architecture" style="border-radius: 8px;">
-</div>
+* **Design:** an official navy / royal-blue palette with a restrained gold accent, IBM Plex Sans and Plex Mono, and a responsive layout from phone to desktop.
+* **Engine picker:** the provider and model are chosen once from the picker in the header. The choice is remembered and shared by every page. A status dot shows whether that provider's API key is configured.
 
-### Features:
-1. **🔬 Misconception Mining Lab (Tab 1):**
-   - **Preset Selector:** One-click testing with authentic student code presets:
-     - `Factorial range(n)` (Boundary misunderstanding)
-     - `Tuple In-Place Mutability` (Attempting `.append()` on tuples)
-     - `Conditional Assignment '=' vs '=='` (Assignment in `if` branch)
-     - `Clean Recursive Factorial` (Valid code verification)
-     - `Clean Matrix Transpose` (Valid code verification)
-   - **Methodology Switcher:** Live sidebar toggle between **Enhanced (Trace + RAG)** and **Standard (Basic Zero-Shot)**.
-   - **Visual Output Cards:** 
-     - 🐛 Red/Amber diagnostic card for identified misconceptions.
-     - ✅ Green confirmation card for verified clean code.
-     - Interactive expanders for **Step-by-Step Execution Trace**, **Verification Check**, and **RAG Taxonomy Candidates**.
-
-2. **🤖 Python Misconception Chatbot (Tab 2):** *(New)*
-   - **75 curated Python questions** spanning 18 topics (Basics, Strings, Lists, Tuples, Sets, Dicts, Control Flow, Functions, OOP, Exceptions, Comprehensions, File I/O, Modules, Generators, Decorators, Types, Built-ins, Memory, Scope, Recursion, Operators, Advanced, Iterators, Python 3).
-   - **Free-text answers** — student writes their understanding in natural language (no multiple choice).
-   - **RAG-Enhanced diagnosis** using the Enhanced Methodology pipeline — retrieves related misconceptions from the 67-entry taxonomy bank and runs Chain-of-Thought analysis.
-   - **Correct answers** → reinforcement explanation with a confirming code example.
-   - **Wrong answers** → named misconception + friendly explanation + reasoning trace + RAG taxonomy matches.
-   - Pure learning tool — no scoring, no game mechanics. Focus on understanding *why* a concept works the way it does.
-
-3. **📈 Empirical Benchmark & Performance Matrix (Tab 3):**
-   - High-contrast KPI metric cards with live gain indicators.
-   - Interactive column-wise difference tables displaying Old vs New accuracy, precision, and false alarm reduction.
-   - Leaderboard comparing Groq, Gemini, OpenAI o3-mini, and Claude.
-
-4. **📚 Taxonomy Bank Explorer (Tab 4):**
-   - Instant search and filtering across all **67 Python misconceptions**.
-   - Search by keyword (`range`, `slicing`, `tuple`, `recursion`) or construct ID.
-   - Expandable documentation cards with code examples and expected outputs.
+| Page | What it does |
+| :--- | :--- |
+| **Overview** | Headline metrics, the four-step pipeline and a worked example. |
+| **Mining lab** | Paste a student submission or pick one of five examples (three buggy, two clean). Shows the diagnosis plus expandable **execution trace**, **verification gate** and **taxonomy candidates**. |
+| **Concept tutor** | Chat-style tutor: pick one of 75 questions, answer in plain English and get a diagnosis of your mental model. |
+| **Results** | Per-model metric cards, a grouped bar chart and confusion counts, loaded directly from the stored evaluation JSON. |
+| **Taxonomy** | Search and filter all 67 misconceptions by keyword, ID or construct, with code examples. |
 
 ---
 
-## 🤖 Python Misconception Chatbot — How It Works
+## Concept tutor — how it works
 
-The **Python Misconception Chatbot** (Tab 2 of MisconAI Studio) is an interactive learning tool that diagnoses a student's conceptual misunderstandings from their **free-text answers** using the same Enhanced Methodology pipeline used for automated code mining.
-
-### 🎯 Purpose
-Unlike the Mining Lab (which analyses code), the Chatbot targets **conceptual understanding** — a student selects a Python concept question, explains their understanding in plain English, and the AI tells them precisely what they got right, what they got wrong, and *why* their mental model is incorrect.
-
-### 🔄 End-to-End Flow
+The tutor applies the same Enhanced Methodology to **free-text answers** instead of code.
 
 ```
-┌────────────────────────────────────────────────────────────────────────────┐
-│                  Python Misconception Chatbot — Architecture               │
-│                                                                            │
-│  [Question Bank]  75 questions across 18 topics                           │
-│       │                                                                    │
-│       ▼                                                                    │
-│  Student selects a question + types their answer in natural language       │
-│       │                                                                    │
-│       ▼                                                                    │
-│  ┌─────────────────────────────────────────────────────┐                  │
-│  │  Step 1: RAG Retrieval (misconception_rag.py)        │                  │
-│  │  Query = topic + question + student_answer +         │                  │
-│  │          misconception_hint                          │                  │
-│  │  → Retrieves Top-K related misconceptions from      │                  │
-│  │    the 67-entry misconception_bank.json              │                  │
-│  └─────────────────────────────────────────────────────┘                  │
-│       │                                                                    │
-│       ▼                                                                    │
-│  ┌─────────────────────────────────────────────────────┐                  │
-│  │  Step 2: Enhanced Chain-of-Thought Prompt            │                  │
-│  │  Injected context:                                   │                  │
-│  │    • The question text + correct reference answer    │                  │
-│  │    • The student's free-text answer                  │                  │
-│  │    • RAG-retrieved taxonomy candidates               │                  │
-│  │  Required output format:                             │                  │
-│  │    <reasoning>                                       │                  │
-│  │      <trace>  ← How the student's mental model works│                  │
-│  │      <verification>  ← What Python actually does    │                  │
-│  │    <misconception>                                   │                  │
-│  │      <description>  ← Named misconception or NONE   │                  │
-│  │      <explanation>  ← Friendly pedagogical fix      │                  │
-│  └─────────────────────────────────────────────────────┘                  │
-│       │                                                                    │
-│       ▼                                                                    │
-│  ┌─────────────────────────────────────────────────────┐                  │
-│  │  Step 3: Structured Response Parsing                 │                  │
-│  │  parse_mining_response() extracts XML tags →        │                  │
-│  │    trace, verification, description, explanation     │                  │
-│  └─────────────────────────────────────────────────────┘                  │
-│       │                                                                    │
-│       ▼                                                                    │
-│  ✅ CORRECT  → Green banner + reinforcing explanation                      │
-│  ⚠️ MISCONCEPTION → Named misconception + explanation + trace + RAG panel  │
-└────────────────────────────────────────────────────────────────────────────┘
+┌────────────────────────────────────────────────────────────────┐
+│  Question bank — 75 questions across 24 topics                 │
+│       │                                                        │
+│       ▼                                                        │
+│  Student picks a question and answers in natural language      │
+│       │                                                        │
+│       ▼                                                        │
+│  1. RAG retrieval                                              │
+│     query = topic + question + answer + misconception hint     │
+│     → top-K related entries from misconception_bank.json       │
+│       │                                                        │
+│       ▼                                                        │
+│  2. Enhanced CoT prompt                                        │
+│     <trace>         the student's mental model, step by step   │
+│     <verification>  what Python actually does                  │
+│     <description>   named misconception, or NONE               │
+│     <explanation>   friendly correction or reinforcement       │
+│       │                                                        │
+│       ▼                                                        │
+│  3. Parsed into a chat reply                                   │
+│     ✔ correct   → reinforcement + example                      │
+│     ⚠ wrong     → misconception + explanation + trace + RAG    │
+└────────────────────────────────────────────────────────────────┘
 ```
 
-### 🧠 Methods Used
+| Mechanism | Role in the tutor |
+| --- | --- |
+| **RAG retrieval** | The answer text and topic form the query, so retrieved entries match what the student actually wrote. |
+| **`<trace>`** | Reconstructs the student's reasoning: *"The student appears to believe that `b = a` copies the list because…"* |
+| **`<verification>`** | States the real Python behaviour, grounded in language semantics. |
 
-The chatbot reuses the **same three core innovations** as the Enhanced Methodology:
+Topics include Basics, Strings, Lists, Tuples, Sets, Dicts, Control Flow, Functions, OOP, Exceptions, Comprehensions, File I/O, Modules, Generators, Decorators, Types, Built-ins, Memory, Scope, Recursion, Operators, Iterators, Python 3 and Advanced.
 
-| Method | How it applies to the Chatbot |
-|--------|-------------------------------|
-| **RAG Retrieval** | The student's answer text + topic is used as the RAG query to fetch the most relevant misconception entries from `misconception_bank.json` and inject them into the LLM prompt. |
-| **`<trace>` — Mental Model Analysis** | The LLM traces the student's reasoning: *"The student appears to believe that `b = a` copies the list because..."* — it models the incorrect mental model step by step. |
-| **`<verification>` — Python Reality Check** | The LLM explicitly states what Python actually does and why, grounded in language semantics, not hallucination. |
-
-### 📋 Question Bank Design
-
-The 75 questions are designed to target the most common Python misconceptions in introductory programming education:
-
-| Topic Category | Example Misconceptions Targeted |
-|---|---|
-| **Lists** | Reference vs. copy (`b = a`), `.append()` returns `None`, slicing exclusivity |
-| **Strings** | Immutability, 0-based indexing, method return values |
-| **Functions** | Mutable default arguments, implicit `None` return, `*args` vs `**kwargs` |
-| **Control Flow** | `range()` exclusivity, `break` vs `continue`, `for/else` semantics |
-| **OOP** | `self` is convention not keyword, `__init__` vs `__new__`, `@staticmethod` vs `@classmethod` |
-| **Memory** | `is` vs `==`, shallow vs deep copy, variable referencing |
-| **Types** | `bool` is subclass of `int`, dynamic typing, type hints not enforced |
-| **Scope** | LEGB rule, `global` vs `nonlocal`, closures |
-| **Advanced** | GIL, generators vs lists, star unpacking |
-
-### ⚡ Diagnosis Output Structure
-
-When a student submits a **wrong or partial answer**, the chatbot produces:
-
-```
-⚠️  Misconception Detected
-    ─────────────────────────────────────────
-    🧩  Misconception: [Named misconception, e.g. "Reference Copy Confusion"]
-
-    📖  Explanation & Correction:
-        [Friendly text: why the student's thinking is logical but wrong,
-         what Python actually does, concrete code example, memorable tip]
-
-    🔍  How Your Reasoning Led Here (Trace expander):
-        [Step-by-step mental model the student was using]
-
-    🛡️  What Python Actually Does (Verification expander):
-        [The actual Python runtime behavior with evidence]
-
-    📚  Related Misconceptions from Taxonomy Bank (RAG expander):
-        [Top matching entries from the 67-misconception bank]
-
-    📋  Reference Answer (always available in expander)
-```
-
-When the answer is **correct**:
-```
-✅  Correct Understanding
-    [Reinforcement explanation confirming why the student's model is sound]
-```
-
-### 🔑 Key Design Decisions
-
-1. **Free-text over multiple choice** — Forces the student to actually articulate their mental model, not guess. The LLM evaluates *reasoning quality*, not keyword matching.
-2. **No scoring** — The chatbot is a learning tool, not an assessment. Removing scores reduces anxiety and encourages exploration.
-3. **Topic filter** — Students can drill into specific topics (e.g., "I struggle with Lists") rather than being forced through sequential questions.
-4. **Reference answer always available** — Transparency: students can always see the authoritative explanation after attempting their own answer.
-5. **Same LLM + model selection as Mining Lab** — The sidebar provider/model toggle applies to the chatbot too, so students and researchers can compare how different models diagnose misconceptions.
+**Design choices**
+1. **Free text, not multiple choice** — the student has to articulate a mental model; the model judges reasoning, not keywords.
+2. **No scoring** — it is a learning tool, not an assessment.
+3. **Conversation per question** — answer, read the feedback, try again; the reference answer is one click away.
+4. **Same engine settings** — the provider/model chosen in the header applies here too.
 
 ---
 
-## 📁 Datasets & Benchmark Composition
+## Datasets
 
-All datasets are contained in the `dataset/` directory:
+All data lives in `dataset/`:
 
-1. **`dataset/problems_processed.json` (501 Programming Tasks):**
-   - Curated from MBPP (438 problems), Socratic Debugging (27 problems), Auckland Logic Errors (8 problems), FalconCode (6 problems), and handcrafted educator tasks (19 problems).
-   - Averaging **3.31 automated unit tests per problem**.
-
-2. **`dataset/misconception_bank.json` (67 Standardized Misconceptions):**
-   - Adapted from the Python Programming Misconception Bank (17 items), SIDELib (36 items), and educational research (14 items, including out-of-domain patterns).
-   - Indexed with related constructs and canonical error examples.
-
-3. **`dataset/corrupted_codes_best/` (1,063 Ground-Truth Code Samples):**
-   - Synthetic and student code submissions paired with validated ground-truth misconception annotations.
-
-4. **`dataset/bags_and_results/`:**
-   - Multi-instance problem bags for evaluating collective misconception discovery across student submissions.
+1. **`problems_processed.json`** — 501 programming tasks (MBPP, Socratic Debugging, Auckland logic errors, FalconCode and handcrafted educator tasks), averaging 3.31 unit tests per problem.
+2. **`misconception_bank.json`** — 67 standardized misconceptions (drawn from the Python Programming Misconception Bank, SIDELib and education research), each with related constructs and a canonical example.
+3. **`corrupted_codes_best/`** — 1,063 code samples with ground-truth misconception annotations.
+4. **`bags_and_results/`** — multi-instance problem bags and stored evaluation runs.
 
 ---
 
-## 🗂️ Project File Structure
+## Project structure
 
 ```text
-miscon-ai/
-├── dataset/                               # Dataset & Benchmark files
-│   ├── bags_and_results/                  # Multi-instance problem bags & evaluation runs
-│   │   ├── enhanced_evaluations/          # Baseline vs Enhanced comparison JSONs
-│   │   ├── gemini_evaluations/            # Gemini prediction outputs & summaries
-│   │   └── groq_evaluations/              # Groq model benchmark outputs
-│   ├── corrupted_codes_best/              # Ground-truth student code samples
-│   ├── misconception_bank.json            # 67 standardized Python misconceptions
-│   └── problems_processed.json            # 501 programming problems with unit tests
-├── src/                                   # Application source code
-│   ├── app.py                             # Modern Streamlit Web UI (Studio)
-│   └── prompt_templates/mining/           # Prompt definitions
-│       ├── enhanced-cot-mining.md         # Enhanced CoT + Trace + RAG prompt template
-│       └── zeroshot-no-reasoning.md       # Standard zero-shot baseline prompt
-├── utils/                                 # Core engines & utilities
-│   ├── llm_clients.py                     # OpenAI, Groq, and Gemini API connectors
-│   └── misconception_rag.py               # AST & construct-based Taxonomy RAG indexer
-├── history.txt                            # Chronological project progress & milestones
-├── performance_matrix_analysis.md         # Detailed empirical evaluation reports
-├── requirements.txt                       # Project dependencies
-├── LICENSE                                # MIT License (NIKHIL KUMAR SAH)
-└── README.md                              # Comprehensive project documentation
+mcminer/
+├── dataset/
+│   ├── bags_and_results/              # Problem bags & evaluation outputs
+│   ├── corrupted_codes_best/          # Ground-truth code samples
+│   ├── misconception_bank.json        # 67 misconceptions
+│   └── problems_processed.json        # 501 problems with unit tests
+├── src/
+│   ├── server.py                      # FastAPI service consumed by the frontend
+│   ├── core/
+│   │   ├── engine.py                  # Enhanced pipeline: prompt, LLM call, parsing
+│   │   ├── questions.py               # 75-question concept bank
+│   │   ├── presets.py                 # Mining-lab examples
+│   │   └── results.py                 # Loads stored evaluation metrics
+│   └── prompt_templates/mining/
+│       └── enhanced-cot-mining.md     # Enhanced trace + verification + RAG prompt
+├── utils/
+│   ├── llm_clients.py                 # Groq, Gemini and OpenAI connectors
+│   └── misconception_rag.py           # Construct-based taxonomy RAG
+├── web/                               # Next.js frontend (App Router + Tailwind)
+│   └── src/
+│       ├── app/                       # /, /lab, /tutor, /results, /taxonomy
+│       ├── components/                # Header, engine picker, diagnosis view, UI kit
+│       └── lib/                       # Typed API client
+├── requirements.txt
+└── LICENSE
 ```
 
 ---
 
-## 🚀 Installation & Setup
+## Installation
 
-### Prerequisites
-* Python 3.10, 3.11, 3.12, or 3.13
-* Windows, macOS, or Linux
+**Prerequisites:** Python 3.10–3.13 and Node.js 20.9+ on Windows, macOS or Linux.
 
-### 1. Clone & Setup Virtual Environment
 ```bash
-# Clone the repository
 git clone https://github.com/nikhilkumarsah/miscon-ai.git
 cd miscon-ai
 
-# Create and activate Python virtual environment
 python -m venv venv
-
-# On Windows:
+# Windows
 venv\Scripts\activate
-
-# On macOS/Linux:
+# macOS / Linux
 source venv/bin/activate
-```
 
-### 2. Install Dependencies
-```bash
 pip install -r requirements.txt
+
+cd web && npm install && cd ..
 ```
 
-### 3. Configure API Keys
-Create a `.env` file in the project root:
+Create a `.env` file in the project root (see `.env.example`):
+
 ```env
-# Groq API Key (for ultra-fast LPU inference: Qwen 3.8 27B, GPT-OSS)
 GROQ_API_KEY=your_groq_api_key_here
-
-# Google Gemini API Key (for Gemini Flash Lite & Gemini 3.8)
 GEMINI_API_KEY=your_gemini_api_key_here
-
-# Optional: OpenAI API Key (for o3-mini, GPT-4o)
-OPENAI_API_KEY=your_openai_api_key_here
+OPENAI_API_KEY=your_openai_api_key_here   # optional
 ```
+
+Only the key for the provider you pick is required. The engine picker shows whether it was found.
 
 ---
 
-## 💻 Running the Application & Evaluations
+## Running the app
 
-### 1. Launch the Streamlit Web Application
+Run the API and the frontend in two terminals:
+
 ```bash
-streamlit run src/app.py
+# Terminal 1 — project root, with the venv active
+python src/server.py          # API on http://127.0.0.1:8000
+
+# Terminal 2
+cd web
+npm run dev                   # UI on http://localhost:3000
 ```
-Open your browser and navigate to **`http://localhost:8501`**.
 
-### 2. Run the Baseline vs. Enhanced Empirical Benchmark
-To reproduce the head-to-head evaluation across 50 balanced dataset bags:
+Then open **http://localhost:3000**. The frontend proxies `/api/*` to the Python service. Set `MISCONAI_API_URL` to point it elsewhere.
 
-* **For Groq (`qwen/qwen3.8-27b`):**
-  ```bash
-  python scratch/test_enhanced_methodology.py
-  ```
-
-* **For Google Gemini (`gemini-flash-lite-latest`):**
-  ```bash
-  python scratch/evaluate_gemini_enhanced.py
-  ```
-
-Results will automatically save to:
-- `dataset/bags_and_results/enhanced_evaluations/baseline_vs_enhanced_comparison.json`
-- `dataset/bags_and_results/gemini_evaluations/gemini_baseline_vs_enhanced.json`
+For a production build: `cd web && npm run build && npm start`.
 
 ---
 
-## 📜 License
+## Acknowledgments
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.  
-**Copyright (c) 2026 NIKHIL KUMAR SAH**
+MisconAI builds on the open-source **MCMiner** research framework for automated misconception mining, released under the MIT License. It also builds on the public datasets and misconception collections listed under [Datasets](#datasets).
+
+---
+
+## License
+
+Released under the **MIT License**. See [LICENSE](LICENSE).

@@ -1,0 +1,306 @@
+@import "tailwindcss";
+
+/*
+ * MisconAI palette — "Midnight Aurora"
+ * Deep indigo night for structure, electric violet for actions,
+ * an aqua accent for highlights, and lavender-tinted neutrals.
+ */
+@theme {
+  --color-night-950: #0b0920;
+  --color-night-900: #141137;
+  --color-night-800: #221c56;
+  --color-night-700: #332a7c;
+
+  --color-brand-50: #f3f1ff;
+  --color-brand-100: #e5e0ff;
+  --color-brand-200: #c9bfff;
+  --color-brand-500: #7563f7;
+  --color-brand-600: #5d47ea;
+  --color-brand-700: #4a34c7;
+
+  --color-accent-100: #d3faf3;
+  --color-accent-400: #45e3cb;
+  --color-accent-500: #17c9b0;
+  --color-accent-700: #0a7a6c;
+
+  --color-canvas: #f7f6fd;
+  --color-surface: #ffffff;
+  --color-line: #e7e4f4;
+  --color-ink: #16132e;
+  --color-muted: #4e4a6e;
+  --color-subtle: #706b90;
+
+  --color-ok-50: #ecfdf5;
+  --color-ok-200: #a7f3d0;
+  --color-ok-700: #047857;
+  --color-bad-50: #fff1f3;
+  --color-bad-200: #fecdd6;
+  --color-bad-700: #be123c;
+  --color-warn-50: #fffaeb;
+  --color-warn-200: #fde68a;
+  --color-warn-700: #b45309;
+
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  background:
+    radial-gradient(1100px 520px at 105% -10%, rgb(109 92 246 / 0.10), transparent 60%),
+    radial-gradient(900px 480px at -10% 15%, rgb(20 200 176 / 0.08), transparent 55%),
+    radial-gradient(800px 400px at 50% 110%, rgb(236 72 153 / 0.05), transparent 60%),
+    var(--color-canvas);
+  background-attachment: fixed;
+  color: var(--color-ink);
+}
+
+/* Thin, quiet scrollbars that match the palette */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(100 116 139 / 0.35) transparent;
+}
+
+/* Entrance motion: content rises in, children stagger */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  animation: rise 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.stagger > * {
+  animation: rise 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.stagger > *:nth-child(2) { animation-delay: 60ms; }
+.stagger > *:nth-child(3) { animation-delay: 120ms; }
+.stagger > *:nth-child(4) { animation-delay: 180ms; }
+.stagger > *:nth-child(5) { animation-delay: 240ms; }
+.stagger > *:nth-child(6) { animation-delay: 300ms; }
+
+@keyframes float {
+  50% {
+    transform: translate3d(0, -14px, 0) scale(1.04);
+  }
+}
+.float-slow {
+  animation: float 9s ease-in-out infinite;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(100deg, #a99bff, #5eead4 40%, #f0abfc 70%, #a99bff);
+  background-size: 250% 100%;
+  animation: gradient-pan 6s linear infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise,
+  .stagger > *,
+  .float-slow,
+  .aurora,
+  .text-gradient,
+  .aurora-line,
+  .shine::after,
+  .grow-x,
+  .spin-border::before,
+  .reveal {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+::selection {
+  background: var(--color-brand-100);
+}
+
+/* Markdown produced by the model and the taxonomy bank */
+.prose-md {
+  line-height: 1.65;
+  color: var(--color-ink);
+}
+.prose-md > * + * {
+  margin-top: 0.75em;
+}
+.prose-md h1,
+.prose-md h2,
+.prose-md h3,
+.prose-md h4 {
+  font-weight: 600;
+  color: var(--color-night-900);
+}
+.prose-md ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+.prose-md ol {
+  list-style: decimal;
+  padding-left: 1.25rem;
+}
+.prose-md li + li {
+  margin-top: 0.25em;
+}
+.prose-md strong {
+  font-weight: 600;
+}
+.prose-md a {
+  color: var(--color-brand-600);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prose-md :not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: var(--color-brand-50);
+  color: var(--color-night-800);
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+}
+.prose-md pre {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  background: var(--color-night-950);
+  color: #e2e8f0;
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+  overflow-x: auto;
+}
+.prose-md table {
+  border-collapse: collapse;
+  font-size: 0.9em;
+}
+.prose-md th,
+.prose-md td {
+  border: 1px solid var(--color-line);
+  padding: 0.35em 0.6em;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes gradient-pan {
+  to {
+    background-position: -250% 0;
+  }
+}
+
+/* Slow drifting colour blobs behind hero sections */
+@keyframes aurora {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+  33% {
+    transform: translate3d(6%, -8%, 0) rotate(20deg) scale(1.1);
+  }
+  66% {
+    transform: translate3d(-6%, 6%, 0) rotate(-15deg) scale(0.95);
+  }
+}
+.aurora {
+  animation: aurora 18s ease-in-out infinite;
+}
+
+/* Light sweep across primary buttons on hover */
+.shine {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(110deg, transparent 30%, rgb(255 255 255 / 0.35) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.7s ease;
+}
+.shine:hover::after {
+  transform: translateX(120%);
+}
+
+/* Bars grow in from the left on mount */
+@keyframes grow-x {
+  from {
+    transform: scaleX(0);
+  }
+}
+.grow-x {
+  transform-origin: left;
+  animation: grow-x 1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+/* Rotating gradient border (used on the hero code card) */
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes spin-angle {
+  to {
+    --angle: 360deg;
+  }
+}
+.spin-border {
+  position: relative;
+}
+.spin-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(from var(--angle), transparent 0 55%, #7563f7, #45e3cb, #f0abfc, transparent 95%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: spin-angle 5s linear infinite;
+  pointer-events: none;
+}
+
+/* Scroll reveal: the Reveal component adds .is-visible */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Blinking caret for the typed hero snippet */
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+.caret {
+  animation: blink 1s step-end infinite;
+}
+
+/* Animated aurora stripe along the top of the header */
+.aurora-line {
+  background: linear-gradient(90deg, #7563f7, #45e3cb, #f0abfc, #7563f7);
+  background-size: 250% 100%;
+  animation: gradient-pan 6s linear infinite;
+}
